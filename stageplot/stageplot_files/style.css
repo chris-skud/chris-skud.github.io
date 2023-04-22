@@ -1,0 +1,363 @@
+body {
+    background: rgb(17, 17, 17);
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.siteNav {
+    border-bottom: 1px solid #717070;
+    margin: 3em auto 2em;
+    width: 675px;
+}
+
+#site-navigation {
+    width: 99%;
+    margin: 0 auto 2em;
+}
+
+ul.nav-menu {
+	display: grid;
+	padding: 0;
+	grid-template-columns: repeat(auto-fill, 1fr);
+    grid-gap: 2px;
+    list-style-type: none;
+    text-align: center;
+}
+
+.nav-menu > li {
+	border-left: 0;
+    background-color: rgba(255,255,255,.04);
+    transition: background-color .3s ease-in-out;
+}
+.nav-menu > li:hover,
+.nav-menu .current_page_item, .nav-menu li.current_page_item:hover, .nav-menu .current_page_ancestor, .nav-menu .current-menu-item, li.current-menu-item:hover, .nav-menu .current-menu-ancestor {
+    background-color: transparent;
+}
+
+.nav-menu .sub-menu,
+.nav-menu .children {
+	position: relative;
+}
+
+.nav-menu li a {
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    line-height: 1;
+    padding: 15px 10px;
+    text-decoration: none;
+    transition: color .4s ease 0s;
+}
+.nav-menu li:hover > a, .nav-menu li a:hover, .print-button a:hover {
+    color: #717070;
+}
+.nav-menu .current_page_item > a, .nav-menu li.current_page_item:hover > a, .nav-menu .current_page_ancestor > a, .nav-menu .current-menu-item > a, li.current-menu-item:hover > a, .nav-menu .current-menu-ancestor > a, .small:hover {
+    color: #0065a9;
+}
+
+#main {
+    margin: 3em auto 1.2em;
+    width: 675px;
+    font-size: .8em;
+}
+
+#main > h1 {
+    text-align: center;
+}
+
+.printButton,
+.printPreview,
+.shelfToggle,
+#shelf .instrument,
+.instrument .controlsToggle,
+.controlsOnOff span,
+.controls aside,
+.clearStage {
+    cursor: pointer;
+}
+
+.controls .dragHandle,
+#theStage .instrument {
+    cursor: move;
+}
+
+h2 span {
+    display: inline-block;
+    position: absolute;
+    font-size: .6em;
+    text-transform: none;
+    padding: .5em .7em;
+    vertical-align: top;
+}
+.printPreview {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.bandDetails {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 2em;
+    margin-top: 15px;
+}
+.bandDetails h3 {
+    margin: 0;
+}
+.bandDetails input {
+    padding: 2%;
+    width: 98%;
+    font-size: 1.2em;
+}
+
+#stage {
+    position: relative;
+    z-index: 10;
+}
+#theStage {
+    background: #fff;
+    color: #000;
+    border: 2px inset;
+    position: relative;
+    height: 407px;
+    height: 314px;
+    width: 100%;
+    width: 675px;
+    margin: 1em auto;
+}
+
+#shelf > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 70px);
+    grid-auto-rows: 100px;
+    grid-row-gap: 1em;
+    background: #fff;
+    color: #000;
+    padding: 15px;
+    border: 2px inset;
+    font-size: 0.8;
+}
+
+.instrument {
+    position: relative;
+    display: grid;
+    justify-content: center;
+}
+#theStage .instrument {
+    grid-template-areas:
+        ". controls"
+        "image controls"
+        "image controls"
+        "name controls";
+}
+#shelf .instrument {
+    grid-template-areas: "controls" "image" "name";
+    align-content: end;
+}
+.instrument img {
+    max-width: 80%;
+    max-height: 80%;
+    grid-area: image;
+    display: block;
+    margin: 0 auto .8em;
+}
+#theStage .instrument img {
+    max-width: initial;
+    max-height: initial;
+    transform: scale(0.6);
+}
+.instrument h3 {
+    text-align: center;
+    grid-area: name;
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: 0.8em;
+    background: #ddd;
+    padding: 0.6em;
+    display: none;
+}
+#theStage .instrument h3 {
+    max-width: initial;
+    font-size: 0.9em;
+    display: none;
+}
+
+.controlsOnOff,
+.clearStage {
+    position: relative;
+    z-index: 21;
+    font-size: 1.2em;
+    padding: 0.1em 0;
+    display: inline-block;
+}
+.controlsOnOff span,
+.controlsOnOff span.off {
+    background-color: #444;
+    padding: 0 0.2em;
+    transition: background-color .2s ease-in-out, color .3s ease-in-out;
+}
+.controlsOnOff span.on {
+    background-color: #ddd;
+    color: #000;
+}
+
+.clearStage {
+    float: right;
+    background-color: #444;
+    padding: 0 0.2em;
+}
+
+#shelf .instrument .controlsToggle,
+#shelf .instrument .controls {
+    display: none;
+}
+.instrument .controlsToggle {
+    background: url('images/glyphicons-281-settings@3x.png');
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    display: block;
+    position: relative;
+    z-index: 21;
+    transition: transform .2s ease-in-out;
+    grid-area: controlsToggle;
+}
+.instrument .controlsToggle.hide {
+    transform: scale(0);
+}
+.instrument .controlsToggle.show {
+    transform: scale(1);
+}
+.controls { 
+    z-index: 20;
+    grid-area: controls;
+    position: absolute;
+    top: 0;
+    transform: translateY(-20%);
+    display: block;
+}
+
+.controls aside {
+    background: #eee;
+    text-align: center;
+    overflow: hidden;
+    padding: 0.3em;
+    font-size: 1.2em;
+    margin: 1em;
+    transition: transform .3s ease-in-out, width .3s ease-in-out;
+}
+.controls.show aside:first-of-type {
+    transform: scale(1) rotateZ(-10deg) translateX(0);
+}
+.controls.show aside:nth-of-type(2) {
+    transform: scale(1) rotateZ(0) translateX(5px);
+}
+.controls.show aside:nth-of-type(3) {
+    transform: scale(1) rotateZ(10deg) translateX(0);
+}
+
+.controls.hide aside {
+    transform: scale(0) rotateZ(0) translateX(-200px);
+}
+
+#inputs table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#inputs td {
+    color: #000;
+    border: 2px solid;
+    text-align: center;
+    background: #eee;
+}
+#inputs .inputText input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    font-size: 1.2em;
+}
+#inputs .inputText input:focus {
+    outline: none;
+}
+#inputs td:nth-of-type(odd) {
+    padding: .5em 1em;
+}
+#inputs tr:nth-of-type(odd) td:nth-of-type(4n+1),
+#inputs tr:nth-of-type(odd) td:nth-of-type(4n+2),
+#inputs tr:nth-of-type(even) td:nth-of-type(4n+3),
+#inputs tr:nth-of-type(even) td:nth-of-type(4n+4) {
+    background: #ccc;
+}
+
+#notes {
+    width: 100%;
+    height: 100px;
+}
+#notes textarea {
+    height: 100%;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    color: #555;
+}
+
+
+@media screen and (min-width: 56.25em) {
+    .siteNav {
+        width: 813px;
+    }
+    ul.nav-menu {
+        grid-template-columns: repeat(4, minmax(200px,1fr));
+    }
+    
+    #main {
+        font-size: 1em;
+        max-width: 99%;
+    }
+}
+
+@media print {
+	body {
+		background: none !important;
+		color: #000;
+        font-size: 10pt;
+        width: 98%;
+	}
+
+	footer a[rel="bookmark"]:link:after,
+	footer a[rel="bookmark"]:visited:after {
+		content: " [" attr(href) "] "; /* Show URLs */
+	}
+
+	#main {
+        max-width: 95%;
+        width: auto;
+	}
+
+    .printHide, .printPreview {
+        display: none;
+    }
+
+    #theStage {
+        height: 314px;
+        border: 2px solid;
+    }
+}
+

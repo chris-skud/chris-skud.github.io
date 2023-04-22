@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>Stageplot</title>
+        <meta name="description" content="Plot your stage layout with this handy tool.">
+        <!-- link rel="shortcut icon" type="image/png" href="https://www.bossradioatx.com/favicon.ico" -->
+        <link rel="stylesheet" href="./stageplot_files/style.css">
+    </head>
+    <body>
+        <div id="main">
+            <h1 class="printHide">Stage Plot Designer</h1>
+            <h2 class="printPreview">Screenshot Mode<!-- <span>Hide all non-printed elements except this one.</span> --></h2>
+<!-- Band Details -->
+            <section class="bandDetails">
+                <span>
+                    <h3>Band Name</h3>
+                    <input id="name" type="text">
+                </span>
+                <span>
+                    <h3>Venue</h3>
+                    <input id="venue" type="text">
+                </span>
+                <span>
+                    <h3>Date / Time</h3>
+                    <input id="date" type="text">
+                </span>
+            </section>
+<!-- The Stage -->
+            <div id="stage">
+                <h2>Stage</h2>
+                <div class="printHide controlsOnOff">
+                    Instrument Rotation Controls: 
+                    <span class="controlsShow off">Show</span>
+                    <span class="controlsHide off">Hide</span>
+                </div>
+                <div class="printHide clearStage">Reset Stage</div>
+                <div id="theStage">
+                    <!-- Script Happens Here -->
+                </div>
+            </div>
+<!-- The Instrument Shelf -->
+            <h2 class="printHide shelfToggle">Gear Shelf <span>(show/hide)</span></h2>
+            <div class="printHide gearTip">Click or tap an item to add it to the stage</div>
+            <div id="shelf" class="printHide show">
+                <div>
+                    <span class="instrument guitar">
+                        <img src="./stageplot_files/guitar.png" alt="Guitar" title="Guitar">
+                        <h3>Guitar</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument bassElectric">
+                        <img src="./stageplot_files/bassElectric.png" alt="Bass" title="Bass">
+                        <h3>Bass</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument keyboard">
+                        <img src="./stageplot_files/keyboard.png" alt="Keyboard" title="Keyboard">
+                        <h3>Keyboard</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument laptop">
+                        <img src="./stageplot_files/laptop.png" alt="Laptop" title="Laptop">
+                        <h3>Laptop</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">rotate</aside>
+                            <aside class="reset">reset</aside>
+                            <aside class="remove">remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument keytar">
+                        <img src="./stageplot_files/keytar.png" alt="Keytar" title="Keytar">
+                        <h3>Keytar</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument guitarAcoustic">
+                        <img src="./stageplot_files/guitarAcoustic.png" alt="Acoustic" title="Acoustic">
+                        <h3>Acoustic</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument bassUpright">
+                        <img src="./stageplot_files/bassUpright.png" alt="Double Bass" title="Double Bass">
+                        <h3>Double Bass</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument standMicStraight">
+                        <img src="./stageplot_files/standMicStraight.png" alt="Mic Stand" title="Mic Stand">
+                        <h3>Mic Stand</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument standMicBoom">
+                        <img src="./stageplot_files/standMicBoom.png" alt="Boom Stand" title="Boom Stand">
+                        <h3>Boom Stand</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument barstool">
+                        <img src="./stageplot_files/barstool.png" alt="Barstool" title="Barstool">
+                        <h3>Barstool</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument drumsFour">
+                        <img src="./stageplot_files/drumsFour.png" alt="4 Piece" title="4 Piece">
+                        <h3>4 Piece</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument drumsSix">
+                        <img src="./stageplot_files/drumsSix.png" alt="6 Piece" title="6 Piece">
+                        <h3>6 Piece</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument monitorTop">
+                        <img src="./stageplot_files/monitorTop.png" alt="Monitor" title="Monitor">
+                        <h3>Monitor</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument monitorWedge">
+                        <img src="./stageplot_files/monitorWedge.png" alt="Monitor" title="Monitor">
+                        <h3>Monitor</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument comboGuitar">
+                        <img src="./stageplot_files/comboGuitar.png" alt="Combo" title="Combo">
+                        <h3>Combo</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument comboBass">
+                        <img src="./stageplot_files/comboBass.png" alt="Bass Combo" title="Bass Combo">
+                        <h3>Bass Combo</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument stackFull">
+                        <img src="./stageplot_files/stackFull.png" alt="Stack" title="Stack">
+                        <h3>Stack</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument stackHalf">
+                        <img src="./stageplot_files/stackHalf.png" alt="Half Stack" title="Half Stack">
+                        <h3>Half Stack</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument cabinetBassSixTen">
+                        <img src="./stageplot_files/cabinetBassSixTen.png" alt="6x10 Bass Cab" title="6x10 Bass Cab">
+                        <h3>6x10 Bass Cab</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument cabinetBassEightTen">
+                        <img src="./stageplot_files/cabinetBassEightTen.png" alt="8x10 Bass Cab" title="8x10 Bass Cab">
+                        <h3>8x10 Bass Cab</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument pianoGrand">
+                        <img src="./stageplot_files/pianoGrand.png" alt="Grand Piano" title="Grand Piano">
+                        <h3>Grand Piano</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument pianoUpright">
+                        <img src="./stageplot_files/pianoUpright.png" alt="Upright Piano" title="Upright Piano">
+                        <h3>Upright Piano</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument mandolin">
+                        <img src="./stageplot_files/mandolin.png" alt="Mandolin" title="Mandolin">
+                        <h3>Mandolin</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument violin">
+                        <img src="./stageplot_files/violin.png" alt="Violin" title="Violin">
+                        <h3>Violin</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument electric">
+                        <img src="./stageplot_files/electric.png" alt="Electricity" title="Electricity">
+                        <h3>Electricity</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                    <span class="instrument banjo">
+                        <img src="./stageplot_files/banjo.png" alt="Banjo" title="Banjo">
+                        <h3>Banjo</h3>
+                        <section class="controls hide printHide">
+                            <aside class="rotate">Rotate</aside>
+                            <aside class="reset">Reset</aside>
+                            <aside class="remove">Remove</aside>
+                        </section>
+                    </span>
+                </div>
+            </div>
+<!-- Input List Table -->
+            <h2>Input List</h2>
+            <div id="inputs" class="show">
+                <form id="input_list">
+                <table><tbody>
+                    <tr>
+                        <td class="num">1</td>
+                        <td class="inputText"><input type="text" name="input1" id="input1"></td>
+                        <td class="num">9</td>
+                        <td class="inputText"><input type="text" id="input9"></td>
+                        <td class="num">17</td>
+                        <td class="inputText"><input type="text" id="input17"></td>
+                        <td class="num">25</td>
+                        <td class="inputText"><input type="text" id="input25"></td>
+                    </tr>
+                    <tr>
+                        <td class="num">2</td>
+                        <td class="inputText"><input type="text" id="input2"></td>
+                        <td class="num">10</td>
+                        <td class="inputText"><input type="text" id="input10"></td>
+                        <td class="num">18</td>
+                        <td class="inputText"><input type="text" id="input18"></td>
+                        <td class="num">26</td>
+                        <td class="inputText"><input type="text" id="input26"></td>
+                    </tr>
+                    <tr>
+                        <td class="num">3</td>
+                        <td class="inputText"><input type="text" id="input3"></td>
+                        <td class="num">11</td>
+                        <td class="inputText"><input type="text" id="input11"></td>
+                        <td class="num">19</td>
+                        <td class="inputText"><input type="text" id="input19"></td>
+                        <td class="num27">27</td>
+                        <td class="inputText"><input type="text" id="input27"></td>
+                    </tr>
+                    <tr>
+                        <td class="num">4</td>
+                        <td class="inputText"><input type="text" id="input4"></td>
+                        <td class="num">12</td>
+                        <td class="inputText"><input type="text" id="input12"></td>
+                        <td class="num">20</td>
+                        <td class="inputText"><input type="text" id="input20"></td>
+                        <td class="num">28</td>
+                        <td class="inputText"><input type="text" id="input28"></td>
+                    </tr>
+                    <tr>
+                        <td class="num">5</td>
+                        <td class="inputText"><input type="text" id="input5"></td>
+                        <td class="num">13</td>
+                        <td class="inputText"><input type="text" id="input13"></td>
+                        <td class="num">21</td>
+                        <td class="inputText"><input type="text" id="input21"></td>
+                        <td class="num">29</td>
+                        <td class="inputText"><input type="text" id="input29"></td>
+                    </tr>
+                    <tr>
+                        <td class="num">6</td>
+                        <td class="inputText"><input type="text" id="input6"></td>
+                        <td class="num">14</td>
+                        <td class="inputText"><input type="text" id="input14"></td>
+                        <td class="num">22</td>
+                        <td class="inputText"><input type="text" id="input22"></td>
+                        <td class="num">30</td>
+                        <td class="inputText"><input type="text" id="input30"></td>
+                    </tr>
+                    <tr>
+                        <td class="num">7</td>
+                        <td class="inputText"><input type="text" id="input7"></td>
+                        <td class="num">15</td>
+                        <td class="inputText"><input type="text" id="input15"></td>
+                        <td class="num">23</td>
+                        <td class="inputText"><input type="text" id="input23"></td>
+                        <td class="num">31</td>
+                        <td class="inputText"><input type="text" id="input31"></td>
+                    </tr>
+                    <tr>
+                        <td class="num">8</td>
+                        <td class="inputText"><input type="text" id="input8"></td>
+                        <td class="num">16</td>
+                        <td class="inputText"><input type="text" id="input16"></td>
+                        <td class="num">24</td>
+                        <td class="inputText"><input type="text" id="input24"></td>
+                        <td class="num">32</td>
+                        <td class="inputText"><input type="text" id="input32"></td>
+                    </tr>
+
+                </tbody></table>
+            </form>
+            </div>
+<!-- Notes -->
+            <h2 class="notesTitle">Notes</h2>
+            <div id="notes">
+                <textarea id="notes_text" name="text" style="margin-bottom: 20px;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+        <script src="./stageplot_files/bootstrap.min.js"></script>
+        <script src="./stageplot_files/jquery.event.ue.js"></script>
+        <script src="./stageplot_files/jquery-udraggable.js"></script>
+        <script src="./stageplot_files/scripts.js"></script>
+        <script>
+          window.onload = function () {
+            if (typeof(Storage) !== "undefined") {
+                if (typeof localStorage["name"] !== "undefined") {
+                    document.getElementById("name").value = localStorage["name"] ? localStorage["name"] : "";
+                    document.getElementById("venue").value = localStorage["venue"] ? localStorage["venue"] : "";
+                    document.getElementById("date").value = localStorage["date"] ? localStorage["date"] : "";
+                    document.getElementById("notes_text").value = localStorage["notes_text"] ? localStorage["notes_text"] : "";
+                    document.getElementById("theStage").innerHTML = localStorage["theStage"] ? localStorage["theStage"] : "";
+                    const input_list = localStorage["input_list"] ? JSON.parse(localStorage["input_list"]) : [];
+                    const container = document.getElementById('input_list');
+                    const elems = container.getElementsByTagName('input');
+                    for (let i = 0; i < input_list.length; i++) {
+                        document.getElementById(input_list[i].id).value = input_list[i].value;
+                    }
+                }
+                // Code for localStorage/sessionStorage.
+                setInterval(function () {
+                    localStorage.setItem("name", document.getElementById("name").value);
+                    localStorage.setItem("venue", document.getElementById("venue").value);
+                    localStorage.setItem("date", document.getElementById("date").value);
+                    localStorage.setItem("notes_text", document.getElementById("notes_text").value);
+                    localStorage.setItem("theStage", document.getElementById("theStage").innerHTML);
+
+                    let items = [];
+                    const elems = $('#input_list *').filter(':input');
+                    for (let i = 0; i < elems.length -1; i++) {
+                        if (elems[i].value !== "") {
+                            let fObj = {id: elems[i].id, value: elems[i].value};
+                            // fObj[elems[i].id] = elems[i].value;
+                            items.push(fObj);
+                        }       
+                    }
+                    localStorage.setItem("input_list", JSON.stringify(items));
+                }, 5000);
+            }
+          };
+        </script>
+    
+</body></html>
