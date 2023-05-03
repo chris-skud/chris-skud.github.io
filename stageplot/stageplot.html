@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>Stageplot</title>
-        <meta name="description" content="Plot your stage layout with this handy tool.">
-        <!-- link rel="shortcut icon" type="image/png" href="https://www.bossradioatx.com/favicon.ico" -->
-        <link rel="stylesheet" href="./stageplot_files/style.css">
-    </head>
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
     <body>
         <div id="main">
+            <form id="stageplot">
             <h1 class="printHide">Stage Plot Designer</h1>
             <h2 class="printPreview">Screenshot Mode<!-- <span>Hide all non-printed elements except this one.</span> --></h2>
 <!-- Band Details -->
@@ -25,13 +41,14 @@
                 </span>
             </section>
 <!-- The Stage -->
-            <div id="stage">
+            <div id="theStage">
                 <h2>Stage</h2>
                 <div class="printHide controlsOnOff">
                     Instrument Rotation Controls: 
                     <span class="controlsShow off">Show</span>
                     <span class="controlsHide off">Hide</span>
                 </div>
+                <div onclick="share()" style="margin-left:1em" class="printHide clearStage">Share</div>
                 <div class="printHide clearStage">Reset Stage</div>
                 <div id="theStage">
                     <!-- Script Happens Here -->
@@ -281,7 +298,7 @@
 <!-- Input List Table -->
             <h2>Input List</h2>
             <div id="inputs" class="show">
-                <form id="input_list">
+                <!-- form id="input_list" -->
                 <table><tbody>
                     <tr>
                         <td class="num">1</td>
@@ -365,13 +382,14 @@
                     </tr>
 
                 </tbody></table>
-            </form>
+            
             </div>
 <!-- Notes -->
             <h2 class="notesTitle">Notes</h2>
             <div id="notes">
-                <textarea id="notes_text" name="text" style="margin-bottom: 20px;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+                <textarea id="notes" name="notes" style="margin-bottom: 20px;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
             </div>
+        </form>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
         <script src="./stageplot_files/bootstrap.min.js"></script>
@@ -379,42 +397,114 @@
         <script src="./stageplot_files/jquery-udraggable.js"></script>
         <script src="./stageplot_files/scripts.js"></script>
         <script>
-          window.onload = function () {
-            if (typeof(Storage) !== "undefined") {
-                if (typeof localStorage["name"] !== "undefined") {
-                    document.getElementById("name").value = localStorage["name"] ? localStorage["name"] : "";
-                    document.getElementById("venue").value = localStorage["venue"] ? localStorage["venue"] : "";
-                    document.getElementById("date").value = localStorage["date"] ? localStorage["date"] : "";
-                    document.getElementById("notes_text").value = localStorage["notes_text"] ? localStorage["notes_text"] : "";
-                    document.getElementById("theStage").innerHTML = localStorage["theStage"] ? localStorage["theStage"] : "";
-                    const input_list = localStorage["input_list"] ? JSON.parse(localStorage["input_list"]) : [];
-                    const container = document.getElementById('input_list');
-                    const elems = container.getElementsByTagName('input');
-                    for (let i = 0; i < input_list.length; i++) {
-                        document.getElementById(input_list[i].id).value = input_list[i].value;
-                    }
+            const state = new Proxy(
+                {
+                    name: "",
+                    venue: "",
+                    date: "",
+                    input_channels: [],
+                    stage: "",
+                },
+                {
+                    set(obj, prop, value) {
+                        obj[prop] = value;
+                        // updateUI();
+                    },
                 }
-                // Code for localStorage/sessionStorage.
-                setInterval(function () {
-                    localStorage.setItem("name", document.getElementById("name").value);
-                    localStorage.setItem("venue", document.getElementById("venue").value);
-                    localStorage.setItem("date", document.getElementById("date").value);
-                    localStorage.setItem("notes_text", document.getElementById("notes_text").value);
-                    localStorage.setItem("theStage", document.getElementById("theStage").innerHTML);
+            );
+        //   const state = {
+        //     name: "",
+        //     venue: "",
+        //     date: "",
+        //     input_channels: [],
+        //     stage: "",
+        //   };
+          window.addEventListener("DOMContentLoaded", init);
+          
+          function init() {
+            load_data();
+            const form = document.getElementById("stageplot");
+            form.addEventListener("input", function (e) {
+                console.log(e.target.id);
+                switch(e.target.id) {
+                    case 'name':
+                        state.name = e.target.value;
+                        break;
+                    default:
+                        console.log('not implemented');
+                }
+            });
+          }
 
-                    let items = [];
-                    const elems = $('#input_list *').filter(':input');
-                    for (let i = 0; i < elems.length -1; i++) {
-                        if (elems[i].value !== "") {
-                            let fObj = {id: elems[i].id, value: elems[i].value};
-                            // fObj[elems[i].id] = elems[i].value;
-                            items.push(fObj);
-                        }       
-                    }
-                    localStorage.setItem("input_list", JSON.stringify(items));
-                }, 5000);
+          function load_data() {
+            const u = new URL(window.location.href);
+            if (u.searchParams.has("s")) {
+                // build state of off url session
+                state = JSON.parse(atob(u.searchParams.get("s")));
+            } else {
+                // build state out of local storage
+                if (typeof(Storage) !== "undefined" && localStorage.getItem("username") !== null) {
+                    state = JSON.parse(localStorage["s"]);
+                }
             }
-          };
+
+            document.getElementById("name").value = state.name;
+            document.getElementById("venue").value = state.venue;
+            document.getElementById("date").value = state.date;
+            document.getElementById("notes").value = state.notes;
+            document.getElementById("stage").innerHTML = state.stage;
+            const input_list = state.input_channels;
+            const container = document.getElementById('inputs');
+            const elems = container.getElementsByTagName('input');
+            for (let i = 0; i < input_list.length; i++) {
+                document.getElementById(input_list[i].id).value = input_list[i].value;
+            }
+          }
+          
+          // window.onload = function () {
+            
+            // if (typeof(Storage) !== "undefined") {
+            //     if (typeof localStorage["name"] !== "undefined") {
+            //         document.getElementById("name").value = localStorage["name"] ? localStorage["name"] : "";
+            //         document.getElementById("venue").value = localStorage["venue"] ? localStorage["venue"] : "";
+            //         document.getElementById("date").value = localStorage["date"] ? localStorage["date"] : "";
+            //         document.getElementById("notes_text").value = localStorage["notes_text"] ? localStorage["notes_text"] : "";
+            //         document.getElementById("stage").innerHTML = localStorage["stage"] ? localStorage["stage"] : "";
+            //         const input_list = localStorage["input_list"] ? JSON.parse(localStorage["input_list"]) : [];
+            //         const container = document.getElementById('input_list');
+            //         const elems = container.getElementsByTagName('input');
+            //         for (let i = 0; i < input_list.length; i++) {
+            //             document.getElementById(input_list[i].id).value = input_list[i].value;
+            //         }
+            //     }
+            //     // Code for localStorage/sessionStorage.
+            //     setInterval(function () {
+            //         localStorage.setItem("name", document.getElementById("name").value);
+            //         localStorage.setItem("venue", document.getElementById("venue").value);
+            //         localStorage.setItem("date", document.getElementById("date").value);
+            //         localStorage.setItem("notes_text", document.getElementById("notes_text").value);
+            //         localStorage.setItem("stage", document.getElementById("stage").innerHTML);
+
+            //         let items = [];
+            //         const elems = $('#input_list *').filter(':input');
+            //         for (let i = 0; i < elems.length -1; i++) {
+            //             if (elems[i].value !== "") {
+            //                 let fObj = {id: elems[i].id, value: elems[i].value};
+            //                 // fObj[elems[i].id] = elems[i].value;
+            //                 items.push(fObj);
+            //             }       
+            //         }
+            //         localStorage.setItem("input_list", JSON.stringify(items));
+            //     }, 5000);
+            // }
+          // };
+          function share() {
+            const b64_state = btoa(JSON.stringify(state));
+            const u = new URL(window.location.href);
+            u.searchParams.append('s', b64_state);
+            navigator.clipboard.writeText(u.href);
+            console.log(u.href);
+          }
         </script>
     
 </body></html>

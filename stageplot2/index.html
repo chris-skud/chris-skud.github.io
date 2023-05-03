@@ -1,0 +1,240 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!-- link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous" -->
+  <link rel="stylesheet" href="main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+    <div id="main">
+        <div id="details" style="float:left">
+            <span>
+                Band <input id="name" type="text">
+            </span>
+            <span class="details">
+                Venue <input id="venue" type="text">
+            </span>
+            <span class="details">
+                Date / Time <input id="date" type="text">
+            </span>
+        </div>
+        <div>
+            <h2>Stage</h2>
+            <div id="stage"></div>
+        </div>
+        <div><a href="#" onclick="share()">Share</a></div>
+        <div id="palette"></div>
+        <h2>Input List</h2>
+        <div id="inputs">
+            <table class="input_list"><tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="input1" id="input1"></td>
+                    <td>9</td>
+                    <td><input type="text" id="input9"></td>
+                    <td>17</td>
+                    <td><input type="text" id="input17"></td>
+                    <td>25</td>
+                    <td><input type="text" id="input25"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" id="input2"></td>
+                    <td>10</td>
+                    <td><input type="text" id="input10"></td>
+                    <td>18</td>
+                    <td><input type="text" id="input18"></td>
+                    <td>26</td>
+                    <td><input type="text" id="input26"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text" id="input3"></td>
+                    <td>11</td>
+                    <td><input type="text" id="input11"></td>
+                    <td>19</td>
+                    <td><input type="text" id="input19"></td>
+                    <td>27</td>
+                    <td><input type="text" id="input27"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><input type="text" id="input4"></td>
+                    <td>12</td>
+                    <td><input type="text" id="input12"></td>
+                    <td>20</td>
+                    <td><input type="text" id="input20"></td>
+                    <td>28</td>
+                    <td><input type="text" id="input28"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><input type="text" id="input5"></td>
+                    <td>13</td>
+                    <td><input type="text" id="input13"></td>
+                    <td>21</td>
+                    <td><input type="text" id="input21"></td>
+                    <td>29</td>
+                    <td><input type="text" id="input29"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><input type="text" id="input6"></td>
+                    <td>14</td>
+                    <td><input type="text" id="input14"></td>
+                    <td>22</td>
+                    <td><input type="text" id="input22"></td>
+                    <td>30</td>
+                    <td><input type="text" id="input30"></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><input type="text" id="input7"></td>
+                    <td>15</td>
+                    <td><input type="text" id="input15"></td>
+                    <td>23</td>
+                    <td><input type="text" id="input23"></td>
+                    <td>31</td>
+                    <td><input type="text" id="input31"></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><input type="text" id="input8"></td>
+                    <td>16</td>
+                    <td><input type="text" id="input16"></td>
+                    <td>24</td>
+                    <td><input type="text" id="input24"></td>
+                    <td>32</td>
+                    <td><input type="text" id="input32"></td>
+                </tr>
+
+            </tbody></table>
+        
+        </div>
+        <h2>Notes</h2>
+        <div id="notes">
+            <textarea id="notes" name="notes" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        </div>
+    </form>
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="./stageplot_files/bootstrap.min.js"></script>
+    <script src="./stageplot_files/jquery.event.ue.js"></script>
+    <script src="./stageplot_files/jquery-udraggable.js"></script>
+    <script src="./stageplot_files/scripts.js"></script> -->
+    <script>
+        const state = new Proxy(
+            {
+                name: "",
+                venue: "",
+                date: "",
+                input_channels: [],
+                stage: "",
+            },
+            {
+                set(obj, prop, value) {
+                    obj[prop] = value;
+                    // updateUI();
+                },
+            }
+        );
+        window.addEventListener("DOMContentLoaded", init);
+        
+        function init() {
+        const icons = {
+            "Guitar": () => { const i = new Image(); i.src = `icons/guitar.png`; return i;},
+            "Banjo": () => { const i = new Image(); i.src = `icons/banjo.png`; return i;},
+            "Barstool": () => { const i = new Image(); i.src = `icons/barstool.png`; return i;},
+            "Electric Bass": () => { const i = new Image(); i.src = `icons/bassElectric.png`; return i;},
+            "Upright Bass": () => { const i = new Image(); i.src = `icons/bassUpright.png`; return i;},
+            "Bass Cabinet Eight": () => { const i = new Image(); i.src = `icons/cabinetBassEightTen.png`; return i;},
+            "Bass Cabinet Six": () => { const i = new Image(); i.src = `icons/cabinetBassSixTen.png`; return i;},
+            "Bass Combo": () => { const i = new Image(); i.src = `icons/comboBass.png`; return i;},
+            "Guitar Combo": () => { const i = new Image(); i.src = `icons/comboGuitar.png`; return i;},
+            "Drums Four Piece": () => { const i = new Image(); i.src = `icons/drumsFour.png`; return i;},
+            "Drums Six Piece": () => { const i = new Image(); i.src = `icons/drumsSix.png`; return i;},
+            "Power": () => { const i = new Image(); i.src = `icons/electric.png`; return i;},
+            "Acoustic Guitar": () => { const i = new Image(); i.src = `icons/guitarAcoustic.png`; return i;},
+            "Keyboard": () => { const i = new Image(); i.src = `icons/keyboard.png`; return i;},
+            "Keytar": () => { const i = new Image(); i.src = `icons/keytar.png`; return i;},
+            "Laptop": () => { const i = new Image(); i.src = `icons/laptop.png`; return i;},
+            "Mandolin": () => { const i = new Image(); i.src = `icons/mandolin.png`; return i;},
+            "Monitor": () => { const i = new Image(); i.src = `icons/monitorTop.png`; return i;},
+            "Wedge": () => { const i = new Image(); i.src = `icons/monitorWedge.png`; return i;},
+            "Grand Piano": () => { const i = new Image(); i.src = `icons/pianoGrand.png`; return i;},
+            "Upright Piano": () => { const i = new Image(); i.src = `icons/pianoUpright.png`; return i;},
+            "Full Stack": () => { const i = new Image(); i.src = `icons/stackFull.png`; return i;},
+            "Half Stack": () => { const i = new Image(); i.src = `icons/stackHalf.png`; return i;},
+            "Boom Stand": () => { const i = new Image(); i.src = `icons/standMicBoom.png`; return i;},
+            "Mic Stand": () => { const i = new Image(); i.src = `icons/standMicStraight.png`; return i;},
+            "Violin": () => { const i = new Image(); i.src = `icons/violin.png`; return i;},
+        };
+        for (const key in icons) {
+            document.getElementById("palette").appendChild(icons[key]())    
+        }
+
+        load_data();
+        const form = document.getElementById("stageplot");
+        form.addEventListener("input", function (e) {
+            console.log(e.target.id);
+            switch(e.target.id) {
+                case 'name':
+                    state.name = e.target.value;
+                    break;
+                default:
+                    console.log('not implemented');
+            }
+        });
+        }
+
+        function load_data() {
+        const u = new URL(window.location.href);
+        if (u.searchParams.has("s")) {
+            // build state of off url session
+            state = JSON.parse(atob(u.searchParams.get("s")));
+        } else {
+            // build state out of local storage
+            if (typeof(Storage) !== "undefined" && localStorage.getItem("username") !== null) {
+                state = JSON.parse(localStorage["s"]);
+            }
+        }
+
+        document.getElementById("name").value = state.name;
+        document.getElementById("venue").value = state.venue;
+        document.getElementById("date").value = state.date;
+        document.getElementById("notes").value = state.notes;
+        document.getElementById("stage").innerHTML = state.stage;
+        const input_list = state.input_channels;
+        const container = document.getElementById('inputs');
+        const elems = container.getElementsByTagName('input');
+        for (let i = 0; i < input_list.length; i++) {
+            document.getElementById(input_list[i].id).value = input_list[i].value;
+        }
+        }
+
+        function share() {
+        const b64_state = btoa(JSON.stringify(state));
+        const u = new URL(window.location.href);
+        u.searchParams.append('s', b64_state);
+        navigator.clipboard.writeText(u.href);
+        console.log(u.href);
+        }
+    </script>
+    
+</body>
+</html>
