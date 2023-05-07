@@ -1,126 +1,109 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
   <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <!-- link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous" -->
   <link rel="stylesheet" href="main.css">
-
-  <meta name="theme-color" content="#fafafa">
 </head>
 <body>
     <div id="main">
         <div id="details" style="float:left">
-            <span>
-                Band <input id="name" type="text">
-            </span>
-            <span class="details">
-                Venue <input id="venue" type="text">
-            </span>
-            <span class="details">
-                Date / Time <input id="date" type="text">
-            </span>
+            <span><label for="name">Band </label><input id="name" type="text"></span>
+            <span class="details"><label class="details" for="venue">Venue </label><input id="venue" type="text"></span>
+            <span class="details"></span><label class="details" for="date">Date </label><input id="date" name="date" type="text"></span>
         </div>
-        <div>
-            <h2>Stage</h2>
+        <h2>Stage</h2>
+        <div style="text-align: center;">
             <div id="stage"></div>
         </div>
-        <div><a href="#" onclick="share()">Share</a></div>
         <div id="palette"></div>
         <h2>Input List</h2>
         <div id="inputs">
-            <table class="input_list"><tbody>
+            <table class="input_list">
+                <tbody id="inputs_tbody">
                 <tr>
-                    <td>1</td>
-                    <td><input type="text" name="input1" id="input1"></td>
-                    <td>9</td>
-                    <td><input type="text" id="input9"></td>
-                    <td>17</td>
+                    <td class="number">1</td>
+                    <td class="inputTd"><span></span><input type="text" name="input1" id="input1"></td>
+                    <td class="even number">9</td>
+                    <td class="even"><input type="text" id="input9"></td>
+                    <td class="number">17</td>
                     <td><input type="text" id="input17"></td>
-                    <td>25</td>
-                    <td><input type="text" id="input25"></td>
+                    <td class="even number">25</td>
+                    <td class="even"><input type="text" id="input25"></td>
                 </tr>
                 <tr>
-                    <td>2</td>
+                    <td class="number">2</td>
                     <td><input type="text" id="input2"></td>
-                    <td>10</td>
-                    <td><input type="text" id="input10"></td>
-                    <td>18</td>
+                    <td class="even number">10</td>
+                    <td class="even"><input type="text" id="input10"></td>
+                    <td class="number">18</td>
                     <td><input type="text" id="input18"></td>
-                    <td>26</td>
-                    <td><input type="text" id="input26"></td>
+                    <td class="even number">26</td>
+                    <td class="even"><input type="text" id="input26"></td>
                 </tr>
                 <tr>
-                    <td>3</td>
+                    <td class="number">3</td>
                     <td><input type="text" id="input3"></td>
-                    <td>11</td>
-                    <td><input type="text" id="input11"></td>
-                    <td>19</td>
+                    <td class="even number">11</td>
+                    <td class="even"><input type="text" id="input11"></td>
+                    <td class="number">19</td>
                     <td><input type="text" id="input19"></td>
-                    <td>27</td>
-                    <td><input type="text" id="input27"></td>
+                    <td class="even number">27</td>
+                    <td class="even"><input type="text" id="input27"></td>
                 </tr>
                 <tr>
-                    <td>4</td>
+                    <td class="number">4</td>
                     <td><input type="text" id="input4"></td>
-                    <td>12</td>
-                    <td><input type="text" id="input12"></td>
-                    <td>20</td>
+                    <td class="even number">12</td>
+                    <td class="even"><input type="text" id="input12"></td>
+                    <td class="number">20</td>
                     <td><input type="text" id="input20"></td>
-                    <td>28</td>
-                    <td><input type="text" id="input28"></td>
+                    <td class="even number">28</td>
+                    <td class="even"><input type="text" id="input28"></td>
                 </tr>
                 <tr>
-                    <td>5</td>
+                    <td class="number">5</td>
                     <td><input type="text" id="input5"></td>
-                    <td>13</td>
-                    <td><input type="text" id="input13"></td>
-                    <td>21</td>
+                    <td class="even number">13</td>
+                    <td class="even"><input type="text" id="input13"></td>
+                    <td class="number">21</td>
                     <td><input type="text" id="input21"></td>
-                    <td>29</td>
-                    <td><input type="text" id="input29"></td>
+                    <td class="even number">29</td>
+                    <td class="even"><input type="text" id="input29"></td>
                 </tr>
                 <tr>
-                    <td>6</td>
+                    <td class="number">6</td>
                     <td><input type="text" id="input6"></td>
-                    <td>14</td>
-                    <td><input type="text" id="input14"></td>
-                    <td>22</td>
+                    <td class="even number">14</td>
+                    <td class="even"><input type="text" id="input14"></td>
+                    <td class="number">22</td>
                     <td><input type="text" id="input22"></td>
-                    <td>30</td>
-                    <td><input type="text" id="input30"></td>
+                    <td class="even number">30</td>
+                    <td class="even"><input type="text" id="input30"></td>
                 </tr>
                 <tr>
-                    <td>7</td>
+                    <td class="number">7</td>
                     <td><input type="text" id="input7"></td>
-                    <td>15</td>
-                    <td><input type="text" id="input15"></td>
-                    <td>23</td>
+                    <td class="even number">15</td>
+                    <td class="even"><input type="text" id="input15"></td>
+                    <td class="number">23</td>
                     <td><input type="text" id="input23"></td>
-                    <td>31</td>
-                    <td><input type="text" id="input31"></td>
+                    <td class="even number">31</td>
+                    <td class="even"><input type="text" id="input31"></td>
                 </tr>
                 <tr>
-                    <td>8</td>
+                    <td class="number">8</td>
                     <td><input type="text" id="input8"></td>
-                    <td>16</td>
-                    <td><input type="text" id="input16"></td>
-                    <td>24</td>
+                    <td class="even number">16</td>
+                    <td class="even"><input type="text" id="input16"></td>
+                    <td class="number">24</td>
                     <td><input type="text" id="input24"></td>
-                    <td>32</td>
-                    <td><input type="text" id="input32"></td>
+                    <td class="even number">32</td>
+                    <td class="even"><input type="text" id="input32"></td>
                 </tr>
 
             </tbody></table>
@@ -188,6 +171,8 @@
             document.getElementById("palette").appendChild(icons[key]())    
         }
 
+        // tableCreate();
+
         load_data();
         const form = document.getElementById("stageplot");
         form.addEventListener("input", function (e) {
@@ -228,12 +213,46 @@
         }
 
         function share() {
-        const b64_state = btoa(JSON.stringify(state));
-        const u = new URL(window.location.href);
-        u.searchParams.append('s', b64_state);
-        navigator.clipboard.writeText(u.href);
-        console.log(u.href);
+            const b64_state = btoa(JSON.stringify(state));
+            const u = new URL(window.location.href);
+            u.searchParams.append('s', b64_state);
+            navigator.clipboard.writeText(u.href);
+            console.log(u.href);
         }
+    </script>
+
+    <script>
+        // function tableCreate() {
+        //     const tbdy = document.getElementById('inputs_tbody');
+        //     const rowCount = 8;
+        //     const columnCount = 4;
+        //     for (let i = 0; i < rowCount; i++) {
+        //         let tr = document.createElement('tr');
+        //         for (let j = 0; j < columnCount; j++) {
+        //             let td = document.createElement('td');
+        //             td.appendChild(document.createTextNode('hi'))
+        //             tr.appendChild(td)
+        //         }
+        //         tbdy.appendChild(tr);
+        //     }
+        //     tbl.appendChild(tbdy);
+        //     body.appendChild(tbl)
+        // }
+        // drag image whilst leaving original in place
+        document.getElementById("drag-with-create-add").addEventListener("dragstart", function(e) {
+            var crt = this.cloneNode(true);
+
+            crt.style.position = "absolute"; 
+            crt.style.top = "0px"; 
+            crt.style.left = "-100px";
+            
+            var inner = crt.getElementsByClassName("inner")[0];
+            inner.style.backgroundColor = "orange";
+            inner.style.transform = "rotate(20deg)";
+            
+            document.body.appendChild(crt);
+            e.dataTransfer.setDragImage(crt, 20, 20);
+        }, false);
     </script>
     
 </body>
