@@ -5,6 +5,12 @@ body {
   margin-left: auto; */
 }
 
+@media print {
+  #palette {
+     display: none;
+  }
+}
+
 h2{
   margin: .5em;
   font-size: medium;
@@ -18,7 +24,7 @@ h2{
 #details input[type="text"] {
   border: 0;
   border-bottom: solid 1px;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .details {
@@ -38,7 +44,7 @@ table input[type="text"] {
   background: transparent;
   width: 99%;
   height: 100%;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 input[type="text"]:focus {
