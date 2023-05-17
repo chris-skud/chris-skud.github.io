@@ -1,24 +1,82 @@
+html,
 body {
-  /* margin: .5em; */
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  /* margin-right: auto;
-  margin-left: auto; */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ----- start nav bar ----- */
+header {
+  width: 100%;
+  height: 60px;
+  background-color: #ccc;
+}
+
+.header-content {
+  padding-top: 5px;
+  height: 100%;
+}
+
+.logo {
+  letter-spacing: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  display: inline;
+  float:left;display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+
+.share {
+  font-size: 1.2em;
+  float: right;
+}
+
+/* @media screen and (max-width: 678px) {
+  .burger {
+      display: block;
+  }
+  .nav {
+      margin: 0;
+      background: #343434;
+      position: absolute;
+      right: -100%;
+      top: 70px;
+      width: 50%;
+      height: calc(100% - 70px);
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 0;
+      transition: all 400ms;
+  }
+  .navlink {
+      text-align: center;
+  }
+
+  .nav-active {
+      right: 0;
+  }
+} */
+/* ----- end nav bar ----- */
 @media print {
   #palette {
      display: none;
   }
 }
 
+#main {
+  padding: 10px;
+}
+
 h2{
-  margin: .5em;
   font-size: medium;
 }
 
 #details {
   text-align: center;
   width: 100%;
+  margin-top: 28px;
 }
 
 #details input[type="text"] {
@@ -31,11 +89,15 @@ h2{
   padding-left: 16px;
 }
 
+#palette {
+  text-align:center;
+}
+
 table {
   width: 100%;
   border: none;
   border-collapse: collapse;
-  margin: .5em;
+  margin-bottom: 50px;
 }
 
 table input[type="text"] {
@@ -59,17 +121,16 @@ td.number {
 }
 
 #stage {
-  height: 420px;
+  height: 600px;
   border: 1px solid;
   text-align: center;
-  margin: .5em;
-  /* max-width: 800px; */
+  margin-bottom:50px;
 }
 
 textarea {
   /* max-width: 670px; */
+  min-height: 296px;
   height: 100px;
   width: 100%;
-  margin: .5em;
   font-family: 'Helvetica', 'Arial', sans-serif;
 }

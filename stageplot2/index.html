@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Stageplot</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="icon.png">
@@ -11,17 +11,18 @@
   <script src="https://unpkg.com/konva@9.0.2/konva.min.js"></script>
 </head>
 <body>
+    <header>
+        <div class="logo"><img src="stageplot_logo.png" width="50" height="50">&nbsp;<div>Stageplot.band</div></div>
+        <div class="share header-content">about&nbsp;<a href="#">share</a></div>
+    </header>
     <div id="main">
-        <div id="details" style="float:left">
+        <div id="details">
             <span><label for="name">Band </label><input id="name" type="text"></span>
             <span class="details"><label class="details" for="venue">Venue </label><input id="venue" type="text"></span>
             <span class="details"></span><label class="details" for="date">Date </label><input id="date" name="date" type="text"></span>
         </div>
         <h2>Stage</h2>
-        <div id="stage">
-            <!-- <div id="stage" ondrop="drop_handler(event)" ondragover="dragover_handler(event)"></div> -->
-            <!-- <canvas id="c" style="border: solid 1px black"></canvas> -->
-        </div>
+        <div id="stage"></div>
         <div id="palette"></div>
         <h2>Input List</h2>
         <div id="inputs">
@@ -29,7 +30,7 @@
                 <tbody id="inputs_tbody">
                 <tr>
                     <td class="number">1</td>
-                    <td class="inputTd"><span></span><input type="text" name="input1" id="input1"></td>
+                    <td class="inputTd" tabindex="10"><input type="text" name="input1" id="input1"></td>
                     <td class="even number">9</td>
                     <td class="even"><input type="text" id="input9"></td>
                     <td class="number">17</td>
@@ -39,7 +40,7 @@
                 </tr>
                 <tr>
                     <td class="number">2</td>
-                    <td><input type="text" id="input2"></td>
+                    <td><input type="text" id="input2" tabindex="11"></td>
                     <td class="even number">10</td>
                     <td class="even"><input type="text" id="input10"></td>
                     <td class="number">18</td>
@@ -49,7 +50,7 @@
                 </tr>
                 <tr>
                     <td class="number">3</td>
-                    <td><input type="text" id="input3"></td>
+                    <td><input type="text" id="input3" tabindex="12"></td>
                     <td class="even number">11</td>
                     <td class="even"><input type="text" id="input11"></td>
                     <td class="number">19</td>
@@ -59,7 +60,7 @@
                 </tr>
                 <tr>
                     <td class="number">4</td>
-                    <td><input type="text" id="input4"></td>
+                    <td><input type="text" id="input4" tabindex="13"></td>
                     <td class="even number">12</td>
                     <td class="even"><input type="text" id="input12"></td>
                     <td class="number">20</td>
@@ -69,7 +70,7 @@
                 </tr>
                 <tr>
                     <td class="number">5</td>
-                    <td><input type="text" id="input5"></td>
+                    <td><input type="text" id="input5" tabindex="14"></td>
                     <td class="even number">13</td>
                     <td class="even"><input type="text" id="input13"></td>
                     <td class="number">21</td>
@@ -79,7 +80,7 @@
                 </tr>
                 <tr>
                     <td class="number">6</td>
-                    <td><input type="text" id="input6"></td>
+                    <td><input type="text" id="input6" tabindex="15"></td>
                     <td class="even number">14</td>
                     <td class="even"><input type="text" id="input14"></td>
                     <td class="number">22</td>
@@ -89,7 +90,7 @@
                 </tr>
                 <tr>
                     <td class="number">7</td>
-                    <td><input type="text" id="input7"></td>
+                    <td><input type="text" id="input7" tabindex="16"></td>
                     <td class="even number">15</td>
                     <td class="even"><input type="text" id="input15"></td>
                     <td class="number">23</td>
@@ -99,7 +100,7 @@
                 </tr>
                 <tr>
                     <td class="number">8</td>
-                    <td><input type="text" id="input8"></td>
+                    <td><input type="text" id="input8" tabindex="17"></td>
                     <td class="even number">16</td>
                     <td class="even"><input type="text" id="input16"></td>
                     <td class="number">24</td>
@@ -117,11 +118,6 @@
         </div>
     </form>
     </div>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
-    <script src="./stageplot_files/bootstrap.min.js"></script>
-    <script src="./stageplot_files/jquery.event.ue.js"></script>
-    <script src="./stageplot_files/jquery-udraggable.js"></script>
-    <script src="./stageplot_files/scripts.js"></script> -->
     <script>
         const state = new Proxy(
             {
@@ -172,13 +168,13 @@
             
         //     // ev.target.appendChild(cloned);
         // 
-        const MAX_WIDTH = 600;
+        const MAX_WIDTH = 200;
         let width = window.innerWidth;
-        let height = window.innerHeight;
+        // let height = window.innerHeight;
         let stage = new Konva.Stage({
             container: 'stage',
             width: width,
-            height: height,
+            height: 600, // force stage height, optimized for printing portrait
         });
         let layer = new Konva.Layer();
         let transformer = new Konva.Transformer({
@@ -332,9 +328,6 @@
             navigator.clipboard.writeText(u.href);
             console.log(u.href);
         }
-    </script>
-
-    <script>
         // function tableCreate() {
         //     const tbdy = document.getElementById('inputs_tbody');
         //     const rowCount = 8;
@@ -365,10 +358,21 @@
         //     document.body.appendChild(crt);
         //     e.dataTransfer.setDragImage(crt, 20, 20);
         // }, false);
+        // Selection of HTML objects
+        const burger = document.querySelector('.burger i');
+        const nav = document.querySelector('.nav');
+
+        // Defining a function
+        function toggleNav() {
+            burger.classList.toggle('fa-bars');
+            burger.classList.toggle('fa-times');
+            nav.classList.toggle('nav-active');
+        }
+
+        // Calling the function after click event occurs
+        burger.addEventListener('click', function() {
+            toggleNav();
+        });
     </script>
-    <script>
-        
-      </script>
-    
 </body>
 </html>
