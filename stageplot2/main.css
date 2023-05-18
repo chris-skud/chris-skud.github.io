@@ -120,7 +120,7 @@ td.number {
   text-align: right;
 }
 
-#stage {
+#stage-container {
   height: 600px;
   border: 1px solid;
   text-align: center;
@@ -133,4 +133,8 @@ textarea {
   height: 100px;
   width: 100%;
   font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.controls {
+  display: inline-block;
 }
