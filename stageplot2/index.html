@@ -6,14 +6,13 @@
   <title>Stageplot</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="apple-touch-icon" href="icons/icon.png">
   <link rel="stylesheet" href="main.css">
-  <script src="https://unpkg.com/konva@9.0.2/konva.min.js"></script>
 </head>
 <body>
     <header>
         <div class="logo"><img src="stageplot_logo.png" width="50" height="50">&nbsp;<div>Stageplot.band</div></div>
-        <div class="share header-content">about&nbsp;<a href="#">share</a></div>
+        <div class="share header-content"><a href="#" onclick="setLocalStorage()">about</a>&nbsp;<a href="#" onclick="share()">share</a></div>
     </header>
     <div id="main">
         <div id="details">
@@ -53,101 +52,100 @@
                 <tbody id="inputs_tbody">
                 <tr>
                     <td class="number">1</td>
-                    <td class="inputTd" tabindex="10"><input type="text" name="input1" id="input1"></td>
-                    <td class="even number">9</td>
-                    <td class="even"><input type="text" id="input9"></td>
+                    <td><input type="text" id="input1" tabindex="11" value=""></td>
+                    <td class="number">9</td>
+                    <td><input type="text" id="input9" tabindex="19" value=""></td>
                     <td class="number">17</td>
-                    <td><input type="text" id="input17"></td>
-                    <td class="even number">25</td>
-                    <td class="even"><input type="text" id="input25"></td>
+                    <td><input type="text" id="input17" tabindex="27" value=""></td>
+                    <td class="number">25</td>
+                    <td><input type="text" id="input25" tabindex="35" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">2</td>
-                    <td><input type="text" id="input2" tabindex="11"></td>
-                    <td class="even number">10</td>
-                    <td class="even"><input type="text" id="input10"></td>
+                    <td><input type="text" id="input2" tabindex="12" value=""></td>
+                    <td class="number">10</td>
+                    <td><input type="text" id="input10" tabindex="20" value=""></td>
                     <td class="number">18</td>
-                    <td><input type="text" id="input18"></td>
-                    <td class="even number">26</td>
-                    <td class="even"><input type="text" id="input26"></td>
+                    <td><input type="text" id="input18" tabindex="28" value=""></td>
+                    <td class="number">26</td>
+                    <td><input type="text" id="input26" tabindex="36" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">3</td>
-                    <td><input type="text" id="input3" tabindex="12"></td>
-                    <td class="even number">11</td>
-                    <td class="even"><input type="text" id="input11"></td>
+                    <td><input type="text" id="input3" tabindex="13" value=""></td>
+                    <td class="number">11</td>
+                    <td><input type="text" id="input11" tabindex="21" value=""></td>
                     <td class="number">19</td>
-                    <td><input type="text" id="input19"></td>
-                    <td class="even number">27</td>
-                    <td class="even"><input type="text" id="input27"></td>
+                    <td><input type="text" id="input19" tabindex="29" value=""></td>
+                    <td class="number">27</td>
+                    <td><input type="text" id="input27" tabindex="37" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">4</td>
-                    <td><input type="text" id="input4" tabindex="13"></td>
-                    <td class="even number">12</td>
-                    <td class="even"><input type="text" id="input12"></td>
+                    <td><input type="text" id="input4" tabindex="14" value=""></td>
+                    <td class="number">12</td>
+                    <td><input type="text" id="input12" tabindex="22" value=""></td>
                     <td class="number">20</td>
-                    <td><input type="text" id="input20"></td>
-                    <td class="even number">28</td>
-                    <td class="even"><input type="text" id="input28"></td>
+                    <td><input type="text" id="input20" tabindex="30" value=""></td>
+                    <td class="number">28</td>
+                    <td><input type="text" id="input28" tabindex="38" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">5</td>
-                    <td><input type="text" id="input5" tabindex="14"></td>
-                    <td class="even number">13</td>
-                    <td class="even"><input type="text" id="input13"></td>
+                    <td><input type="text" id="input5" tabindex="15" value=""></td>
+                    <td class="number">13</td>
+                    <td><input type="text" id="input13" tabindex="23" value=""></td>
                     <td class="number">21</td>
-                    <td><input type="text" id="input21"></td>
-                    <td class="even number">29</td>
-                    <td class="even"><input type="text" id="input29"></td>
+                    <td><input type="text" id="input21" tabindex="31" value=""></td>
+                    <td class="number">29</td>
+                    <td><input type="text" id="input29" tabindex="39" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">6</td>
-                    <td><input type="text" id="input6" tabindex="15"></td>
-                    <td class="even number">14</td>
-                    <td class="even"><input type="text" id="input14"></td>
+                    <td><input type="text" id="input6" tabindex="16" value=""></td>
+                    <td class="number">14</td>
+                    <td><input type="text" id="input14" tabindex="24" value=""></td>
                     <td class="number">22</td>
-                    <td><input type="text" id="input22"></td>
-                    <td class="even number">30</td>
-                    <td class="even"><input type="text" id="input30"></td>
+                    <td><input type="text" id="input22" tabindex="32" value=""></td>
+                    <td class="number">30</td>
+                    <td><input type="text" id="input30" tabindex="40" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">7</td>
-                    <td><input type="text" id="input7" tabindex="16"></td>
-                    <td class="even number">15</td>
-                    <td class="even"><input type="text" id="input15"></td>
+                    <td><input type="text" id="input7" tabindex="17" value=""></td>
+                    <td class="number">15</td>
+                    <td><input type="text" id="input15" tabindex="25" value=""></td>
                     <td class="number">23</td>
-                    <td><input type="text" id="input23"></td>
-                    <td class="even number">31</td>
-                    <td class="even"><input type="text" id="input31"></td>
+                    <td><input type="text" id="input23" tabindex="33" value=""></td>
+                    <td class="number">31</td>
+                    <td><input type="text" id="input31" tabindex="41" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">8</td>
-                    <td><input type="text" id="input8" tabindex="17"></td>
-                    <td class="even number">16</td>
-                    <td class="even"><input type="text" id="input16"></td>
+                    <td><input type="text" id="input8" tabindex="18" value=""></td>
+                    <td class="number">16</td>
+                    <td><input type="text" id="input16" tabindex="26" value=""></td>
                     <td class="number">24</td>
-                    <td><input type="text" id="input24"></td>
-                    <td class="even number">32</td>
-                    <td class="even"><input type="text" id="input32"></td>
+                    <td><input type="text" id="input24" tabindex="34" value=""></td>
+                    <td class="number">32</td>
+                    <td><input type="text" id="input32" tabindex="42" value=""></td>
                 </tr>
-
             </tbody></table>
-        
         </div>
         <h2>Notes</h2>
-        <div id="notes">
-            <textarea id="notes" name="notes" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        <div>
+            <textarea id="notes" name="notes" tabindex="43" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
         </div>
     </form>
     </div>
     <script src="scripts/fabric.js"></script>
+    <script src="scripts/main.js"></script>
     <script>
         let canvas = null;
         const deleteIcon = "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='595.275px' height='595.275px' viewBox='200 215 230 470' xml:space='preserve'%3E%3Ccircle style='fill:%23F44336;' cx='299.76' cy='439.067' r='218.516'/%3E%3Cg%3E%3Crect x='267.162' y='307.978' transform='matrix(0.7071 -0.7071 0.7071 0.7071 -222.6202 340.6915)' style='fill:white;' width='65.545' height='262.18'/%3E%3Crect x='266.988' y='308.153' transform='matrix(0.7071 0.7071 -0.7071 0.7071 398.3889 -83.3116)' style='fill:white;' width='65.544' height='262.179'/%3E%3C/g%3E%3C/svg%3E";
         const deleteImg = document.createElement('img');
         deleteImg.src = deleteIcon;
-        const renderCanvas = () => {
+        const init = () => {
             canvas = this.__canvas = new fabric.Canvas('c');
             window.addEventListener('resize', resizeCanvas, false);
 
@@ -174,6 +172,8 @@
                 render: renderIcon(deleteImg),
                 cornerSize: 24
             });
+
+            loadData();
         }
         const add = (elem) => {
             const imgInstance = new fabric.Image(elem, {
@@ -198,8 +198,15 @@
                 ctx.drawImage(icon, -size/2, -size/2, size, size);
                 ctx.restore();
             }
-        }      
-        window.addEventListener('load', renderCanvas);
+        }
+        const setLocalStorage = () => {
+            const state = getPageState();
+            localStorage.setItem("state", JSON.stringify(state));
+            console.log(state);
+        }
+
+        window.addEventListener('load', init);
+        window.addEventListener('unload', setLocalStorage);
     </script>
 </body>
 </html>
