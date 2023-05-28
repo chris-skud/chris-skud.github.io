@@ -77,7 +77,7 @@ const loadData = () => {
     console.log(`geting from url: ${state}`);
   }
   
-  window.history.replaceState('', 'Stageplot', 'http://localhost:9000');
+  window.history.replaceState('', 'Stageplot', 'https://chris-skud.github.io');
 
   document.getElementById("name").value = state.name;
   document.getElementById("venue").value = state.venue;
@@ -93,7 +93,7 @@ const loadData = () => {
 
 const share = () => {
   const state = btoa(JSON.stringify(getPageState()));
-  const url = "localhost:9000?s="+state;
+  const url = "https://chris-skud.github.io/s="+state;
   console.log(state);
   navigator.clipboard.writeText(url);
 }
