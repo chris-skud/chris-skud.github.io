@@ -6,373 +6,144 @@
   <title>Stageplot</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="apple-touch-icon" href="icons/icon.png">
   <link rel="stylesheet" href="main.css">
-  <script src="https://unpkg.com/konva@9.0.2/konva.min.js"></script>
 </head>
 <body>
     <header>
-        <div class="logo"><img src="stageplot_logo.png" width="50" height="50">&nbsp;<div>Stageplot.band</div></div>
-        <div class="share header-content">about&nbsp;<a href="#">share</a></div>
+        <div class="logo"><img src="stageplot_logo.png" width="50" height="50" alt="stageplot">&nbsp;<div>Stageplot.band</div></div>
+        <!-- <div class="share header-content"><a href="#" onclick="share()"><img src="link.png" width="32" height="32" alt="share link"></a></div> -->
     </header>
     <div id="main">
         <div id="details">
-            <span><label for="name">Band </label><input id="name" type="text"></span>
-            <span class="details"><label class="details" for="venue">Venue </label><input id="venue" type="text"></span>
-            <span class="details"></span><label class="details" for="date">Date </label><input id="date" name="date" type="text"></span>
+            <label for="name">Band <input id="name" type="text" size="32"></label>
+            <label class="details" for="venue">Venue <input id="venue" type="text" size="32"></label>
+            <label class="details" for="date">Date <input id="date" name="date" type="text" size="32"></label>
         </div>
-        <h2>Stage</h2>
-        <div id="stage"></div>
-        <div id="palette"></div>
+        <h2>Stage <span id="link-share"><a href="#" onclick="share()"><img src="link.png" width="16" height="16" alt="share link"></a></span></h2>
+        <div id="stage-container">
+            <canvas id="c" height="600" style="border:1px solid #ccc; width:100%"></canvas>
+        </div>
+        <div id="palette">
+            <img id="guitar" src="icons/guitar.png" onclick="add(this)">
+            <img id="banjo" src="icons/banjo.png" onclick="add(this)">
+            <img title="Drums Four Piece" id="drums4" src="icons/drumsFour.png" onclick="add(this)">
+            <img title="Barstool" src="icons/barstool.png" onclick="add(this)">
+            <img title="Electric Bass" src="icons/bassElectric.png" onclick="add(this)">
+            <img title="Upright Bass" src="icons/bassUpright.png" onclick="add(this)">
+            <img title="Bass Combo" src="icons/comboBass.png" onclick="add(this)">
+            <img title="Guitar Combo" src="icons/comboGuitar.png" onclick="add(this)">
+            <img title="Power" src="icons/electric.png" onclick="add(this)">
+            <img title="Acoustic Guitar" src="icons/guitarAcoustic.png" onclick="add(this)">
+            <img title="Keyboard" src="icons/keyboard.png" onclick="add(this)">
+            <img title="Laptop" src="icons/laptop.png" onclick="add(this)">
+            <img title="Mandolin" src="icons/mandolin.png" onclick="add(this)">
+            <img title="Monitor" src="icons/monitorTop.png" onclick="add(this)">
+            <img title="Wedge" src="icons/monitorWedge.png" onclick="add(this)">
+            <img title="Grand Piano" src="icons/pianoGrand.png" onclick="add(this)">
+            <img title="Upright Piano" src="icons/pianoUpright.png" onclick="add(this)">
+            <img title="Boom Stand" src="icons/standMicBoom.png" onclick="add(this)">
+            <img title="Mic Stand" src="icons/standMicStraight.png" onclick="add(this)">
+            <img title="Violin" src="icons/violin.png" onclick="add(this)">
+        </div>
         <h2>Input List</h2>
         <div id="inputs">
             <table class="input_list">
                 <tbody id="inputs_tbody">
                 <tr>
                     <td class="number">1</td>
-                    <td class="inputTd" tabindex="10"><input type="text" name="input1" id="input1"></td>
-                    <td class="even number">9</td>
-                    <td class="even"><input type="text" id="input9"></td>
+                    <td><input type="text" id="input1" tabindex="11" value=""></td>
+                    <td class="number">9</td>
+                    <td><input type="text" id="input9" tabindex="19" value=""></td>
                     <td class="number">17</td>
-                    <td><input type="text" id="input17"></td>
-                    <td class="even number">25</td>
-                    <td class="even"><input type="text" id="input25"></td>
+                    <td><input type="text" id="input17" tabindex="27" value=""></td>
+                    <td class="number">25</td>
+                    <td><input type="text" id="input25" tabindex="35" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">2</td>
-                    <td><input type="text" id="input2" tabindex="11"></td>
-                    <td class="even number">10</td>
-                    <td class="even"><input type="text" id="input10"></td>
+                    <td><input type="text" id="input2" tabindex="12" value=""></td>
+                    <td class="number">10</td>
+                    <td><input type="text" id="input10" tabindex="20" value=""></td>
                     <td class="number">18</td>
-                    <td><input type="text" id="input18"></td>
-                    <td class="even number">26</td>
-                    <td class="even"><input type="text" id="input26"></td>
+                    <td><input type="text" id="input18" tabindex="28" value=""></td>
+                    <td class="number">26</td>
+                    <td><input type="text" id="input26" tabindex="36" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">3</td>
-                    <td><input type="text" id="input3" tabindex="12"></td>
-                    <td class="even number">11</td>
-                    <td class="even"><input type="text" id="input11"></td>
+                    <td><input type="text" id="input3" tabindex="13" value=""></td>
+                    <td class="number">11</td>
+                    <td><input type="text" id="input11" tabindex="21" value=""></td>
                     <td class="number">19</td>
-                    <td><input type="text" id="input19"></td>
-                    <td class="even number">27</td>
-                    <td class="even"><input type="text" id="input27"></td>
+                    <td><input type="text" id="input19" tabindex="29" value=""></td>
+                    <td class="number">27</td>
+                    <td><input type="text" id="input27" tabindex="37" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">4</td>
-                    <td><input type="text" id="input4" tabindex="13"></td>
-                    <td class="even number">12</td>
-                    <td class="even"><input type="text" id="input12"></td>
+                    <td><input type="text" id="input4" tabindex="14" value=""></td>
+                    <td class="number">12</td>
+                    <td><input type="text" id="input12" tabindex="22" value=""></td>
                     <td class="number">20</td>
-                    <td><input type="text" id="input20"></td>
-                    <td class="even number">28</td>
-                    <td class="even"><input type="text" id="input28"></td>
+                    <td><input type="text" id="input20" tabindex="30" value=""></td>
+                    <td class="number">28</td>
+                    <td><input type="text" id="input28" tabindex="38" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">5</td>
-                    <td><input type="text" id="input5" tabindex="14"></td>
-                    <td class="even number">13</td>
-                    <td class="even"><input type="text" id="input13"></td>
+                    <td><input type="text" id="input5" tabindex="15" value=""></td>
+                    <td class="number">13</td>
+                    <td><input type="text" id="input13" tabindex="23" value=""></td>
                     <td class="number">21</td>
-                    <td><input type="text" id="input21"></td>
-                    <td class="even number">29</td>
-                    <td class="even"><input type="text" id="input29"></td>
+                    <td><input type="text" id="input21" tabindex="31" value=""></td>
+                    <td class="number">29</td>
+                    <td><input type="text" id="input29" tabindex="39" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">6</td>
-                    <td><input type="text" id="input6" tabindex="15"></td>
-                    <td class="even number">14</td>
-                    <td class="even"><input type="text" id="input14"></td>
+                    <td><input type="text" id="input6" tabindex="16" value=""></td>
+                    <td class="number">14</td>
+                    <td><input type="text" id="input14" tabindex="24" value=""></td>
                     <td class="number">22</td>
-                    <td><input type="text" id="input22"></td>
-                    <td class="even number">30</td>
-                    <td class="even"><input type="text" id="input30"></td>
+                    <td><input type="text" id="input22" tabindex="32" value=""></td>
+                    <td class="number">30</td>
+                    <td><input type="text" id="input30" tabindex="40" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">7</td>
-                    <td><input type="text" id="input7" tabindex="16"></td>
-                    <td class="even number">15</td>
-                    <td class="even"><input type="text" id="input15"></td>
+                    <td><input type="text" id="input7" tabindex="17" value=""></td>
+                    <td class="number">15</td>
+                    <td><input type="text" id="input15" tabindex="25" value=""></td>
                     <td class="number">23</td>
-                    <td><input type="text" id="input23"></td>
-                    <td class="even number">31</td>
-                    <td class="even"><input type="text" id="input31"></td>
+                    <td><input type="text" id="input23" tabindex="33" value=""></td>
+                    <td class="number">31</td>
+                    <td><input type="text" id="input31" tabindex="41" value=""></td>
                 </tr>
                 <tr>
                     <td class="number">8</td>
-                    <td><input type="text" id="input8" tabindex="17"></td>
-                    <td class="even number">16</td>
-                    <td class="even"><input type="text" id="input16"></td>
+                    <td><input type="text" id="input8" tabindex="18" value=""></td>
+                    <td class="number">16</td>
+                    <td><input type="text" id="input16" tabindex="26" value=""></td>
                     <td class="number">24</td>
-                    <td><input type="text" id="input24"></td>
-                    <td class="even number">32</td>
-                    <td class="even"><input type="text" id="input32"></td>
+                    <td><input type="text" id="input24" tabindex="34" value=""></td>
+                    <td class="number">32</td>
+                    <td><input type="text" id="input32" tabindex="42" value=""></td>
                 </tr>
-
             </tbody></table>
-        
         </div>
         <h2>Notes</h2>
-        <div id="notes">
-            <textarea id="notes" name="notes" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        <div>
+            <textarea id="notes" name="notes" tabindex="43" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
         </div>
     </form>
     </div>
+    <footer> <small>&copy; Copyright 2023, Cowshoes Inc. All Rights Reserved.</small> </footer> 
+    <script src="scripts/fabric.js"></script>
+    <script src="scripts/main.js"></script>
     <script>
-        const state = new Proxy(
-            {
-                name: "",
-                venue: "",
-                date: "",
-                input_channels: [],
-                stage: "",
-            },
-            {
-                set(obj, prop, value) {
-                    obj[prop] = value;
-                    // updateUI();
-                },
-            }
-        );
-        // let canvas = null;
-        // let context = null;
-        window.addEventListener("DOMContentLoaded", init);
-
-        // function dragstart_handler(ev) {
-        //     console.log('drag');
-        //     ev.dataTransfer.setData("text", ev.target.id);
-        //     // ev.dataTransfer.dropEffect = "copy";
-        // }
-        // function dragover_handler(ev) {
-        //     console.log('dragover');
-        //     ev.preventDefault();
-        //     // ev.dataTransfer.dropEffect = "move"
-        // }
-        // function drop_handler(ev) {
-        //     console.log('drop');
-        //     ev.preventDefault();
-        //     console.log(ev.target.id);
-
-        //     console.log(ev.pageX);
-        //     // Get the id of the target and add the moved element to the target's DOM
-        //     const data = ev.dataTransfer.getData("text");
-        //     const img = new Image();
-        //     img.src = document.getElementById(data).src;
-        //     img.onload = function(){
-        //         context.drawImage(img, 0, 0);
-        //     }
-        //     // context.drawImage(img, 100, 100);
-
-        //     // console.log(JSON.stringify(cloned.style));
-
-            
-        //     // ev.target.appendChild(cloned);
-        // 
-        const MAX_WIDTH = 200;
-        let width = window.innerWidth;
-        // let height = window.innerHeight;
-        let stage = new Konva.Stage({
-            container: 'stage',
-            width: width,
-            height: 600, // force stage height, optimized for printing portrait
-        });
-        let layer = new Konva.Layer();
-        let transformer = new Konva.Transformer({
-            boundBoxFunc: function (oldBoundBox, newBoundBox) {
-            if (Math.abs(newBoundBox.width) > MAX_WIDTH) {
-                return oldBoundBox;
-            }
-
-            return newBoundBox;
-            },
-            nodes: [],
-            centeredScaling: true,
-            resizeEnabled: true,
-        });
-        layer.add(transformer);
-  
-        const drawImage = (imageObj) => {
-          let img = new Konva.Image({
-            image: imageObj,
-            x: stage.width() / 2 - 200 / 2,
-            y: stage.height() / 2 - 137 / 2,
-            // width: 200,
-            // height: 137,
-            draggable: true,
-          });
-  
-          // add cursor styling
-          img.on('mouseover', function () {
-            document.body.style.cursor = 'grab';
-          });
-          img.on('mouseout', function () {
-            document.body.style.cursor = 'default';
-          });
-  
-          const tNodes = transformer.nodes();
-          tNodes.push(img);
-          transformer.nodes(tNodes);
-          layer.add(img);
-          stage.add(layer);
-        }
-
-        const addImageToStage = (e) => {
-            console.log('here')
-            let imageObj = new Image();
-            imageObj.onload = function () {
-                drawImage(this);
-            };
-            imageObj.src = e.target.src;
-        }
-        
-        function init() {
-            // canvas = document.getElementById('c'),
-            // context = canvas.getContext('2d');
-            const icons = {
-                "Guitar": () => { 
-                    const i = new Image();
-                    i.id = 'guitar';
-                    
-                    // i.addEventListener("onclick", addImageToStage);
-                    i.src = `icons/guitar.png`;
-                    i.onclick = addImageToStage;
-                    // i.draggable = true;
-                    // i.addEventListener("dragstart", dragstart_handler);
-                    
-                    return i; 
-                },
-                "Banjo": () => { const i = new Image(); i.src = `icons/banjo.png`; return i;},
-                "Barstool": () => { const i = new Image(); i.src = `icons/barstool.png`; return i;},
-                "Electric Bass": () => { const i = new Image(); i.src = `icons/bassElectric.png`; return i;},
-                "Upright Bass": () => { const i = new Image(); i.src = `icons/bassUpright.png`; return i;},
-                "Bass Cabinet Eight": () => { const i = new Image(); i.src = `icons/cabinetBassEightTen.png`; return i;},
-                "Bass Cabinet Six": () => { const i = new Image(); i.src = `icons/cabinetBassSixTen.png`; return i;},
-                "Bass Combo": () => { const i = new Image(); i.src = `icons/comboBass.png`; return i;},
-                "Guitar Combo": () => { const i = new Image(); i.src = `icons/comboGuitar.png`; return i;},
-                "Drums Four Piece": () => { const i = new Image(); i.src = `icons/drumsFour.png`; return i;},
-                "Drums Six Piece": () => { const i = new Image(); i.src = `icons/drumsSix.png`; return i;},
-                "Power": () => { const i = new Image(); i.src = `icons/electric.png`; return i;},
-                "Acoustic Guitar": () => { const i = new Image(); i.src = `icons/guitarAcoustic.png`; return i;},
-                "Keyboard": () => { const i = new Image(); i.src = `icons/keyboard.png`; return i;},
-                "Keytar": () => { const i = new Image(); i.src = `icons/keytar.png`; return i;},
-                "Laptop": () => { const i = new Image(); i.src = `icons/laptop.png`; return i;},
-                "Mandolin": () => { const i = new Image(); i.src = `icons/mandolin.png`; return i;},
-                "Monitor": () => { const i = new Image(); i.src = `icons/monitorTop.png`; return i;},
-                "Wedge": () => { const i = new Image(); i.src = `icons/monitorWedge.png`; return i;},
-                "Grand Piano": () => { const i = new Image(); i.src = `icons/pianoGrand.png`; return i;},
-                "Upright Piano": () => { const i = new Image(); i.src = `icons/pianoUpright.png`; return i;},
-                "Full Stack": () => { const i = new Image(); i.src = `icons/stackFull.png`; return i;},
-                "Half Stack": () => { const i = new Image(); i.src = `icons/stackHalf.png`; return i;},
-                "Boom Stand": () => { const i = new Image(); i.src = `icons/standMicBoom.png`; return i;},
-                "Mic Stand": () => { const i = new Image(); i.src = `icons/standMicStraight.png`; return i;},
-                "Violin": () => { const i = new Image(); i.src = `icons/violin.png`; return i;},
-            };
-            for (const key in icons) {
-                document.getElementById("palette").appendChild(icons[key]())    
-            }
-
-            // const stage = document.getElementById("stage");
-            // stage.addEventListener("dragstart", dragstart_handler);
-            // stage.addEventListener("ondrop", drop_handler);
-        
-            // Get the element by id
-            // Add the ondragstart event listener
-            // const g = document.getElementById("guitar");
-            // g.addEventListener("dragstart", dragstart_handler);
-
-            // tableCreate();
-            // load_data();
-            // const form = document.getElementById("stageplot");
-            // form.addEventListener("input", function (e) {
-            //     console.log(e.target.id);
-            //     switch(e.target.id) {
-            //         case 'name':
-            //             state.name = e.target.value;
-            //             break;
-            //         default:
-            //             console.log('not implemented');
-            //     }
-            // });
-            // }
-        }
-
-        // function load_data() {
-        //     const u = new URL(window.location.href);
-        //     if (u.searchParams.has("s")) {
-        //         // build state of off url session
-        //         state = JSON.parse(atob(u.searchParams.get("s")));
-        //     } else {
-        //         // build state out of local storage
-        //         if (typeof(Storage) !== "undefined" && localStorage.getItem("username") !== null) {
-        //             state = JSON.parse(localStorage["s"]);
-        //         }
-        //     }
-
-        //     document.getElementById("name").value = state.name;
-        //     document.getElementById("venue").value = state.venue;
-        //     document.getElementById("date").value = state.date;
-        //     document.getElementById("notes").value = state.notes;
-        //     document.getElementById("stage").innerHTML = state.stage;
-        //     const input_list = state.input_channels;
-        //     const container = document.getElementById('inputs');
-        //     const elems = container.getElementsByTagName('input');
-        //     for (let i = 0; i < input_list.length; i++) {
-        //         document.getElementById(input_list[i].id).value = input_list[i].value;
-        //     }
-        // }
-
-        function share() {
-            const b64_state = btoa(JSON.stringify(state));
-            const u = new URL(window.location.href);
-            u.searchParams.append('s', b64_state);
-            navigator.clipboard.writeText(u.href);
-            console.log(u.href);
-        }
-        // function tableCreate() {
-        //     const tbdy = document.getElementById('inputs_tbody');
-        //     const rowCount = 8;
-        //     const columnCount = 4;
-        //     for (let i = 0; i < rowCount; i++) {
-        //         let tr = document.createElement('tr');
-        //         for (let j = 0; j < columnCount; j++) {
-        //             let td = document.createElement('td');
-        //             td.appendChild(document.createTextNode('hi'))
-        //             tr.appendChild(td)
-        //         }
-        //         tbdy.appendChild(tr);
-        //     }
-        //     tbl.appendChild(tbdy);
-        //     body.appendChild(tbl)
-        // }
-        // drag image whilst leaving original in place
-        // document.getElementById("drag-with-create-add").addEventListener("dragstart", function(e) {
-        //     var crt = this.cloneNode(true);
-
-        //     crt.style.position = "absolute"; 
-        //     crt.style.top = "0px"; 
-        //     crt.style.left = "-100px";
-            
-        //     var inner = crt.getElementsByClassName("inner")[0];
-        //     inner.style.backgroundColor = "orange";
-            
-        //     document.body.appendChild(crt);
-        //     e.dataTransfer.setDragImage(crt, 20, 20);
-        // }, false);
-        // Selection of HTML objects
-        const burger = document.querySelector('.burger i');
-        const nav = document.querySelector('.nav');
-
-        // Defining a function
-        function toggleNav() {
-            burger.classList.toggle('fa-bars');
-            burger.classList.toggle('fa-times');
-            nav.classList.toggle('nav-active');
-        }
-
-        // Calling the function after click event occurs
-        burger.addEventListener('click', function() {
-            toggleNav();
-        });
+        window.addEventListener('load', init);
+        window.addEventListener('unload', setLocalStorage);
     </script>
 </body>
 </html>
