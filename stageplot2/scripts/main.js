@@ -75,7 +75,7 @@ const loadData = () => {
   } else {
     // state = JSON.parse(atob(u.searchParams.get("s")));
     state = JSON.parse(LZString.decompressFromEncodedURIComponent(u.searchParams.get("s")));
-    console.log(`geting from url: ${state}`);
+    console.log(`geting from url: ${JSON.stringify(state)}`);
   }
   
   window.history.replaceState('', 'Stageplot', 'https://chris-skud.github.io/stageplot2');
@@ -93,6 +93,7 @@ const loadData = () => {
 }
 
 const share = () => {
+  console.log(`share state: ${JSON.stringify(getPageState())}`)
   const state = LZString.compressToEncodedURIComponent(JSON.stringify(getPageState()));
   console.log("Size of compressed sample is: " + state.length);
   // const state = btoa(JSON.stringify(getPageState()));
