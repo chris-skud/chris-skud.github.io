@@ -73,7 +73,8 @@ const loadData = () => {
         console.log(`geting from localstorage: ${state}`);
       }
   } else {
-    state = JSON.parse(atob(u.searchParams.get("s")));
+    // state = JSON.parse(atob(u.searchParams.get("s")));
+    state = JSON.parse9LZString.LZString.decompressFromEncodedURIComponent(u.searchParams.get("s"));
     console.log(`geting from url: ${state}`);
   }
   
