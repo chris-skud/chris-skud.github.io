@@ -77,7 +77,7 @@ const loadData = () => {
     console.log(`geting from url: ${state}`);
   }
   
-  window.history.replaceState('', 'Stageplot', 'https://chris-skud.github.io');
+  window.history.replaceState('', 'Stageplot', 'https://chris-skud.github.io/stageplot2');
 
   document.getElementById("name").value = state.name;
   document.getElementById("venue").value = state.venue;
@@ -92,8 +92,11 @@ const loadData = () => {
 }
 
 const share = () => {
-  const state = btoa(JSON.stringify(getPageState()));
-  const url = "https://chris-skud.github.io/s="+state;
+  const state = LZString.compressToEncodedURIComponent(JSON.stringify(getPageState()));
+  console.log("Size of compressed sample is: " + state.length);
+  // const state = btoa(JSON.stringify(getPageState()));
+  // console.log("otherwise " + state.length);
+  const url = "https://chris-skud.github.io/stageplot2?s="+state;
   console.log(state);
   navigator.clipboard.writeText(url);
 }
