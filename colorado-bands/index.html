@@ -20,7 +20,7 @@
     .filters {
       display: flex;
       gap: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: .25rem;
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -66,6 +66,13 @@
     .social-links a:hover {
       text-decoration: underline;
     }
+
+    .count {
+      justify-content: center;
+      font-size: .75em;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -76,6 +83,10 @@
     <input type="text" id="nameFilter" placeholder="Filter by name..." />
     <input type="text" id="genreFilter" placeholder="Filter by genre..." />
     <input type="text" id="locationFilter" placeholder="Filter by location..." />
+  </div>
+
+  <div class="count">
+    (count: <span id="count"></span>)
   </div>
 
   <div id="band-list"></div>
@@ -2444,6 +2455,9 @@
     const locationInput = document.getElementById("locationFilter");
     const container = document.getElementById("band-list");
 
+    function updateCount(count) {
+      document.getElementById("count").innerText = count;
+    }
     function renderBands(data) {
       container.innerHTML = "";
       data.forEach(band => {
@@ -2497,13 +2511,15 @@
         return nameMatch && genreMatch && locationMatch;
       });
 
+      updateCount(filtered.length);
       renderBands(filtered);
     }
 
     nameInput.addEventListener("input", filterBands);
     genreInput.addEventListener("input", filterBands);
     locationInput.addEventListener("input", filterBands);
-
+    console.log("{bands.count}");
+    updateCount(bands.length);
     renderBands(bands);
   </script>
 </body>
