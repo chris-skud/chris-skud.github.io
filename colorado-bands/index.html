@@ -2505,9 +2505,9 @@
       const locationValue = locationInput.value.toLowerCase();
 
       const filtered = bands.filter(band => {
-        const nameMatch = band.name.toLowerCase().includes(nameValue);
-        const genreMatch = band.genres.some(g => g.toLowerCase().includes(genreValue));
-        const locationMatch = band.location.toLowerCase().includes(locationValue);
+        const nameMatch = !nameValue || band.name.toLowerCase().includes(nameValue);
+        const genreMatch = !genreValue || band.genres.some(g => g.toLowerCase().includes(genreValue));
+        const locationMatch = !locationValue || band.location.toLowerCase().includes(locationValue);
         return nameMatch && genreMatch && locationMatch;
       });
 
@@ -2518,7 +2518,7 @@
     nameInput.addEventListener("input", filterBands);
     genreInput.addEventListener("input", filterBands);
     locationInput.addEventListener("input", filterBands);
-    console.log("{bands.count}");
+    // Render initial unfiltered elements
     updateCount(bands.length);
     renderBands(bands);
   </script>
