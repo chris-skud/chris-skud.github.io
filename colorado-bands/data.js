@@ -2355,4 +2355,4 @@ const bands = [
 {"name": "Zepp11", "location": "Colorado Springs", "genres": ["cover", "tribute"], "spotify_id": "", "links": ["https://www.facebook.com/Zepp11Colorado/"]},
 {"name": "Zoe Berman", "location": "Denver", "genres": ["singer-songwriter"], "spotify_id": "1JfUyyDtdR9H7r9L8k73lQ", "links": ["https://instagram.com/zoebermanmusic/", "https://www.facebook.com/zbermanmusic/", "https://open.spotify.com/artist/1JfUyyDtdR9H7r9L8k73lQ?si=BIi_0tfKR1u-f65NrqMSZA&nd=1", "https://zoeberman.bandcamp.com/", "https://www.youtube.com/channel/UCJ27CwLHJ-AbItyZTR5i57Q"]},
 {"name": "ZOLA", "location": "Colorado", "genres": [], "spotify_id": "4pVzM8k1zHEMOQpvASJ5ix", "links": ["https://open.spotify.com/artist/4pVzM8k1zHEMOQpvASJ5ix", "https://www.zolamusicofficial.com/", "https://www.instagram.com/zolamusicofficial/", "https://www.songkick.com/artists/10143386", "https://soundcloud.com/zolamusicofficial", "https://music.apple.com/bw/artist/1438556810", "https://www.youtube.com/channel/UCNR5TaB4a_tgCKQ-xVqz73w"]}
-]
+];

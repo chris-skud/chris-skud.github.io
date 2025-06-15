@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Give some love to your local Colorado band</title>
+  <title>Colorado Bands</title>
+  <script src="https://kit.fontawesome.com/1e86da1209.js" crossorigin="anonymous"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      /* 
-      background-image: url("chicken-moon.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center; */
-
-      /* margin: 2rem;
-      background: #f8f8f8;
-      color: #333; */
-
       background: #010422;
+    }
+
+    input {
+      font-size: 16px;
     }
 
     h1 {
@@ -88,7 +83,7 @@
 </head>
 <body>
 
-  <h1 class="header">Colorado Local Bands</h1>
+  <h1 class="header">All your band are belong to us</h1>
 
   <div class="filters">
     <input type="text" id="nameFilter" placeholder="Filter by name..." />
@@ -111,6 +106,72 @@
     function updateCount(count) {
       document.getElementById("count").innerText = count;
     }
+
+    // extract root domain
+    function getRootDomain(url) {
+      const complexTLDs = ['co.uk', 'org.uk', 'gov.uk', 'ac.uk', 'com.au', 'net.au', 'co.jp'];
+      const hostname = new URL(url).hostname;
+      const parts = hostname.split('.');
+
+      const lastTwo = parts.slice(-2).join('.');
+      const lastThree = parts.slice(-3).join('.');
+
+      if (complexTLDs.includes(lastTwo)) {
+        return parts.slice(-3).join('.');
+      } else if (complexTLDs.includes(lastThree)) {
+        return parts.slice(-4).join('.');
+      }
+
+      return lastTwo;
+    }
+
+    function getIconClassFromUrl(url) {
+      const rootDomain = getRootDomain(url);
+
+      // let iconClass = 'fa fa-globe';
+      let iconClass = 'fa fa-globe';
+      switch (rootDomain) {
+        case 'tiktok.com':
+          iconClass = 'fa fa-tiktok';
+          break;
+        case 'youtube.com' || 'youtu.be':
+          iconClass = 'fa fa-youtube';
+          break;
+        case 'facebook.com':
+          iconClass = 'fa fa-facebook-f';
+          break;
+        case 'instagram.com':
+          iconClass = 'fa fa-instagram';
+          break;
+        case 'spotify.com':
+          iconClass = 'fa fa-spotify';
+          break;
+        case 'bandcamp.com':
+          iconClass = 'fa fa-bandcamp';
+          break;
+        case 'apple.com':
+          iconClass = 'fa fa-apple';
+          break;
+        case 'last.fm':
+          iconClass = 'fa fa-lastfm';
+          break;
+        case 'wikidata.org' || 'wikipedia.org' || 'wikipedia.com':
+          iconClass = 'fa fa-wikipedia-w';
+          break;
+          case 'twitter.com' || 'x.com':
+          iconClass = 'fa fa-x';
+          break;
+          case 'tumblr.com':
+          iconClass = 'fa fa-tumblr';
+          break;
+          case 'imdb.com':
+          iconClass = 'fa fa-imdb';
+          break;
+      }
+
+      return iconClass;
+    }
+    
     function renderBands(data) {
       container.innerHTML = "";
       data.forEach(band => {
@@ -134,15 +195,24 @@
         const socialLinks = document.createElement("div");
         socialLinks.className = "social-links";
 
+        // <a href="https://www.instagram.com/holdenreedmusic/" target="_blank" title="instagram">
+				// 			<i class="fab fa-instagram"></i>
+				// 		</a>
+
         band.links.forEach(href => {
           try {
             const link = document.createElement("a");
             link.href = href;
             link.target = "_blank";
-            const url = new URL(link);
-            link.textContent = url.hostname;
+            link.title = href;
+            const icon = document.createElement("i");
+            const className = getIconClassFromUrl(href);
+            icon.className = className;
+            link.appendChild(icon);
             socialLinks.appendChild(link);
           } catch (err) {
+            console.log(err);
+            console.log(err);
             return null; // or handle invalid URLs differently
           }
         });
