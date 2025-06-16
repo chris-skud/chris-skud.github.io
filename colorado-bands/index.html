@@ -83,7 +83,7 @@
 </head>
 <body>
 
-  <h1 class="header">Git Yur Colorado Bands Here</h1>
+  <h1 class="header">Colorado Bands</h1>
 
   <div class="filters">
     <input type="text" id="nameFilter" placeholder="Filter by name..." />
@@ -96,7 +96,7 @@
   </div>
 
   <div id="band-list"></div>
-  <script src="data.js?v1"></script>
+  <script src="data.js?v2"></script>
   <script>
     const nameInput = document.getElementById("nameFilter");
     const genreInput = document.getElementById("genreFilter");
@@ -152,6 +152,9 @@
         case 'apple.com':
           iconClass = 'fa fa-apple';
           break;
+        case 'amazon.com':
+          iconClass = 'fa fa-amazon';
+          break;
         case 'soundcloud.com':
           iconClass = 'fab fa-soundcloud';
           break;
@@ -163,6 +166,9 @@
           break;
         case 'twitter.com' || 'x.com':
           iconClass = 'fa fa-x';
+          break;
+        case 'threads.com':
+          iconClass = 'fab fa-threads';
           break;
         case 'tumblr.com':
           iconClass = 'fa fa-tumblr';
