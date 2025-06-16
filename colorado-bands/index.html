@@ -83,7 +83,7 @@
 </head>
 <body>
 
-  <h1 class="header">All your band are belong to us</h1>
+  <h1 class="header">Git Yur Colorado Bands Here</h1>
 
   <div class="filters">
     <input type="text" id="nameFilter" placeholder="Filter by name..." />
@@ -96,7 +96,7 @@
   </div>
 
   <div id="band-list"></div>
-  <script src="data.js"></script>
+  <script src="data.js?v1"></script>
   <script>
     const nameInput = document.getElementById("nameFilter");
     const genreInput = document.getElementById("genreFilter");
@@ -132,7 +132,7 @@
       let iconClass = 'fa fa-globe';
       switch (rootDomain) {
         case 'tiktok.com':
-          iconClass = 'fa fa-tiktok';
+          iconClass = 'fab fa-tiktok';
           break;
         case 'youtube.com' || 'youtu.be':
           iconClass = 'fa fa-youtube';
@@ -152,20 +152,26 @@
         case 'apple.com':
           iconClass = 'fa fa-apple';
           break;
+        case 'soundcloud.com':
+          iconClass = 'fab fa-soundcloud';
+          break;
         case 'last.fm':
           iconClass = 'fa fa-lastfm';
           break;
         case 'wikidata.org' || 'wikipedia.org' || 'wikipedia.com':
           iconClass = 'fa fa-wikipedia-w';
           break;
-          case 'twitter.com' || 'x.com':
+        case 'twitter.com' || 'x.com':
           iconClass = 'fa fa-x';
           break;
-          case 'tumblr.com':
+        case 'tumblr.com':
           iconClass = 'fa fa-tumblr';
           break;
-          case 'imdb.com':
+        case 'imdb.com':
           iconClass = 'fa fa-imdb';
+          break;
+        case 'loc.gov':
+          iconClass = 'fa fa-landmark-dome';
           break;
       }
 
