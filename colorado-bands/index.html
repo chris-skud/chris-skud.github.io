@@ -1,345 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Colorado Bands</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/1e86da1209.js" crossorigin="anonymous"></script>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colorado Bands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1e86da1209.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0a0a0a;
-      color: #d0d0d0;
-      padding: 1.5rem 1rem;
-      line-height: 1.4;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-family: 'JetBrains Mono', monospace;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 1.75rem;
-      font-weight: 400;
-      color: #e0e0e0;
-      letter-spacing: 0.05em;
-      text-transform: lowercase;
-    }
-
-    .filters {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .filters input {
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #2a2a2a;
-      border-radius: 3px;
-      min-width: 180px;
-      background: #1a1a1a;
-      color: #d0d0d0;
-      transition: all 0.2s ease;
-    }
-
-    .filters input:focus {
-      outline: none;
-      border-color: #4a4a4a;
-      background: #1f1f1f;
-    }
-
-    .filters input::placeholder {
-      color: #5a5a5a;
-    }
-
-    #band-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 0.75rem;
-    }
-
-    .band {
-      background: #141414;
-      border: 1px solid #252525;
-      border-radius: 4px;
-      padding: 0.875rem;
-      transition: all 0.2s ease;
-    }
-
-    .band:hover {
-      border-color: #3a3a3a;
-      background: #181818;
-    }
-
-    .band h2 {
-      margin: 0 0 0.4rem;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #e8e8e8;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .genres {
-      font-size: 0.8rem;
-      color: #888;
-      margin-bottom: 0.35rem;
-      font-style: italic;
-    }
-
-    .location {
-      font-size: 0.8rem;
-      color: #666;
-      margin-bottom: 0.5rem;
-      font-style: italic;
-    }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      text-decoration: none;
-      color: #888;
-      transition: color 0.2s ease;
-      font-size: 0.9rem;
-    }
-
-    .social-links a:hover {
-      color: #d0d0d0;
-    }
-
-    .count {
-      color: #666;
-      font-size: 0.75rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .count span {
-      color: #888;
-    }
-
-    @media (max-width: 768px) {
       body {
-        padding: 1rem 0.75rem;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #0a0a0a;
+        color: #d0d0d0;
+        padding: 1.5rem 1rem;
+        line-height: 1.4;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-family: "JetBrains Mono", monospace;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        font-weight: 400;
+        color: #e0e0e0;
+        letter-spacing: 0.05em;
+        text-transform: lowercase;
       }
 
-      #band-list {
-        grid-template-columns: 1fr;
+      .filters {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
       .filters input {
-        min-width: 100%;
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #2a2a2a;
+        border-radius: 3px;
+        min-width: 180px;
+        background: #1a1a1a;
+        color: #d0d0d0;
+        transition: all 0.2s ease;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Colorado Bands</h1>
 
-    <div class="filters">
-      <input type="text" id="nameFilter" placeholder="Filter by name..." />
-      <input type="text" id="genreFilter" placeholder="Filter by genre..." />
-      <input type="text" id="locationFilter" placeholder="Filter by location..." />
+      .filters input:focus {
+        outline: none;
+        border-color: #4a4a4a;
+        background: #1f1f1f;
+      }
+
+      .filters input::placeholder {
+        color: #5a5a5a;
+      }
+
+      #band-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .band {
+        background: #141414;
+        border: 1px solid #252525;
+        border-radius: 4px;
+        padding: 0.875rem;
+        transition: all 0.2s ease;
+      }
+
+      .band:hover {
+        border-color: #3a3a3a;
+        background: #181818;
+      }
+
+      .band h2 {
+        margin: 0 0 0.4rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #e8e8e8;
+        font-family: "Inter", sans-serif;
+      }
+
+      .genres {
+        font-size: 0.8rem;
+        color: #888;
+        margin-bottom: 0.35rem;
+        font-style: italic;
+      }
+
+      .location {
+        font-size: 0.8rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+
+      .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        text-decoration: none;
+        color: #888;
+        transition: color 0.2s ease;
+        font-size: 0.9rem;
+      }
+
+      .social-links a:hover {
+        color: #d0d0d0;
+      }
+
+      .count {
+        color: #666;
+        font-size: 0.75rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .count span {
+        color: #888;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem 0.75rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        #band-list {
+          grid-template-columns: 1fr;
+        }
+
+        .filters input {
+          min-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Colorado Bands</h1>
+
+      <div class="filters">
+        <input type="text" id="nameFilter" placeholder="Filter by name..." />
+        <input type="text" id="genreFilter" placeholder="Filter by genre..." />
+        <input
+          type="text"
+          id="locationFilter"
+          placeholder="Filter by location..."
+        />
+      </div>
+
+      <div class="count">(filtered count: <span id="count"></span>)</div>
+
+      <div id="band-list"></div>
     </div>
+    <script src="data.js?v6"></script>
+    <script>
+      const nameInput = document.getElementById("nameFilter");
+      const genreInput = document.getElementById("genreFilter");
+      const locationInput = document.getElementById("locationFilter");
+      const container = document.getElementById("band-list");
 
-    <div class="count">
-      (filtered count: <span id="count"></span>)
-    </div>
-
-    <div id="band-list"></div>
-  </div>
-  <script src="data.js?v5"></script>
-  <script>
-    const nameInput = document.getElementById("nameFilter");
-    const genreInput = document.getElementById("genreFilter");
-    const locationInput = document.getElementById("locationFilter");
-    const container = document.getElementById("band-list");
-
-    function updateCount(count) {
-      document.getElementById("count").innerText = count;
-    }
-
-    // extract root domain
-    function getRootDomain(url) {
-      const complexTLDs = ['co.uk', 'org.uk', 'gov.uk', 'ac.uk', 'com.au', 'net.au', 'co.jp'];
-      const hostname = new URL(url).hostname;
-      const parts = hostname.split('.');
-
-      const lastTwo = parts.slice(-2).join('.');
-      const lastThree = parts.slice(-3).join('.');
-
-      if (complexTLDs.includes(lastTwo)) {
-        return parts.slice(-3).join('.');
-      } else if (complexTLDs.includes(lastThree)) {
-        return parts.slice(-4).join('.');
+      function updateCount(count) {
+        document.getElementById("count").innerText = count;
       }
 
-      return lastTwo;
-    }
+      // extract root domain
+      function getRootDomain(url) {
+        const complexTLDs = [
+          "co.uk",
+          "org.uk",
+          "gov.uk",
+          "ac.uk",
+          "com.au",
+          "net.au",
+          "co.jp",
+        ];
+        const hostname = new URL(url).hostname;
+        const parts = hostname.split(".");
 
-    function getIconClassFromUrl(url) {
-      const rootDomain = getRootDomain(url);
+        const lastTwo = parts.slice(-2).join(".");
+        const lastThree = parts.slice(-3).join(".");
 
-      // let iconClass = 'fa fa-globe';
-      let iconClass = 'fa fa-globe';
-      switch (rootDomain) {
-        case 'tiktok.com':
-          iconClass = 'fab fa-tiktok';
-          break;
-        case 'youtube.com' || 'youtu.be':
-          iconClass = 'fa fa-youtube';
-          break;
-        case 'facebook.com':
-          iconClass = 'fa fa-facebook-f';
-          break;
-        case 'instagram.com':
-          iconClass = 'fa fa-instagram';
-          break;
-        case 'spotify.com':
-          iconClass = 'fa fa-spotify';
-          break;
-        case 'bandcamp.com':
-          iconClass = 'fa fa-bandcamp';
-          break;
-        case 'apple.com':
-          iconClass = 'fa fa-apple';
-          break;
-        case 'amazon.com':
-          iconClass = 'fa fa-amazon';
-          break;
-        case 'soundcloud.com':
-          iconClass = 'fab fa-soundcloud';
-          break;
-        case 'last.fm':
-          iconClass = 'fa fa-lastfm';
-          break;
-        case 'wikidata.org' || 'wikipedia.org' || 'wikipedia.com':
-          iconClass = 'fa fa-wikipedia-w';
-          break;
-        case 'twitter.com' || 'x.com':
-          iconClass = 'fa fa-x';
-          break;
-        case 'threads.com':
-          iconClass = 'fab fa-threads';
-          break;
-        case 'tumblr.com':
-          iconClass = 'fa fa-tumblr';
-          break;
-        case 'imdb.com':
-          iconClass = 'fa fa-imdb';
-          break;
-        case 'loc.gov':
-          iconClass = 'fa fa-landmark-dome';
-          break;
+        if (complexTLDs.includes(lastTwo)) {
+          return parts.slice(-3).join(".");
+        } else if (complexTLDs.includes(lastThree)) {
+          return parts.slice(-4).join(".");
+        }
+
+        return lastTwo;
       }
 
-      return iconClass;
-    }
-    
-    function renderBands(data) {
-      container.innerHTML = "";
-      data.forEach(band => {
-        const bandEl = document.createElement("div");
-        bandEl.className = "band";
+      function getIconClassFromUrl(url) {
+        const rootDomain = getRootDomain(url);
 
-        const name = document.createElement("h2");
-        name.textContent = band.name;
-        bandEl.appendChild(name);
+        // let iconClass = 'fa fa-globe';
+        let iconClass = "fa fa-globe";
+        switch (rootDomain) {
+          case "tiktok.com":
+            iconClass = "fab fa-tiktok";
+            break;
+          case "youtube.com" || "youtu.be":
+            iconClass = "fa fa-youtube";
+            break;
+          case "facebook.com":
+            iconClass = "fa fa-facebook-f";
+            break;
+          case "instagram.com":
+            iconClass = "fa fa-instagram";
+            break;
+          case "spotify.com":
+            iconClass = "fa fa-spotify";
+            break;
+          case "bandcamp.com":
+            iconClass = "fa fa-bandcamp";
+            break;
+          case "apple.com":
+            iconClass = "fa fa-apple";
+            break;
+          case "amazon.com":
+            iconClass = "fa fa-amazon";
+            break;
+          case "soundcloud.com":
+            iconClass = "fab fa-soundcloud";
+            break;
+          case "last.fm":
+            iconClass = "fa fa-lastfm";
+            break;
+          case "wikidata.org" || "wikipedia.org" || "wikipedia.com":
+            iconClass = "fa fa-wikipedia-w";
+            break;
+          case "twitter.com" || "x.com":
+            iconClass = "fa fa-x";
+            break;
+          case "threads.com":
+            iconClass = "fab fa-threads";
+            break;
+          case "tumblr.com":
+            iconClass = "fa fa-tumblr";
+            break;
+          case "imdb.com":
+            iconClass = "fa fa-imdb";
+            break;
+          case "loc.gov":
+            iconClass = "fa fa-landmark-dome";
+            break;
+        }
 
-        const genres = document.createElement("div");
-        genres.className = "genres";
-        genres.textContent = band.genres.join(", ");
-        bandEl.appendChild(genres);
+        return iconClass;
+      }
 
-        const location = document.createElement("div");
-        location.className = "location";
-        location.textContent = band.location;
-        bandEl.appendChild(location);
+      function renderBands(data) {
+        container.innerHTML = "";
+        data.forEach((band) => {
+          const bandEl = document.createElement("div");
+          bandEl.className = "band";
 
-        const socialLinks = document.createElement("div");
-        socialLinks.className = "social-links";
+          const name = document.createElement("h2");
+          name.textContent = band.name;
+          bandEl.appendChild(name);
 
-        // <a href="https://www.instagram.com/holdenreedmusic/" target="_blank" title="instagram">
-				// 			<i class="fab fa-instagram"></i>
-				// 		</a>
+          const genres = document.createElement("div");
+          genres.className = "genres";
+          genres.textContent = band.genres.join(", ");
+          bandEl.appendChild(genres);
 
-        band.links.forEach(href => {
-          try {
-            const link = document.createElement("a");
-            link.href = href;
-            link.target = "_blank";
-            link.title = href;
-            const icon = document.createElement("i");
-            const className = getIconClassFromUrl(href);
-            icon.className = className;
-            link.appendChild(icon);
-            socialLinks.appendChild(link);
-          } catch (err) {
-            console.log(err);
-            console.log(err);
-            return null; // or handle invalid URLs differently
-          }
+          const location = document.createElement("div");
+          location.className = "location";
+          location.textContent = band.location;
+          bandEl.appendChild(location);
+
+          const socialLinks = document.createElement("div");
+          socialLinks.className = "social-links";
+
+          // <a href="https://www.instagram.com/holdenreedmusic/" target="_blank" title="instagram">
+          // 			<i class="fab fa-instagram"></i>
+          // 		</a>
+
+          band.links.forEach((href) => {
+            try {
+              const link = document.createElement("a");
+              link.href = href;
+              link.target = "_blank";
+              link.title = href;
+              const icon = document.createElement("i");
+              const className = getIconClassFromUrl(href);
+              icon.className = className;
+              link.appendChild(icon);
+              socialLinks.appendChild(link);
+            } catch (err) {
+              console.log(err);
+              console.log(err);
+              return null; // or handle invalid URLs differently
+            }
+          });
+          bandEl.appendChild(socialLinks);
+
+          container.appendChild(bandEl);
         });
-        bandEl.appendChild(socialLinks);
+      }
 
-        container.appendChild(bandEl);
-      });
-    }
+      function filterBands() {
+        const nameValue = nameInput.value.toLowerCase();
+        const genreValue = genreInput.value.toLowerCase();
+        const locationValue = locationInput.value.toLowerCase();
 
-    function filterBands() {
-      const nameValue = nameInput.value.toLowerCase();
-      const genreValue = genreInput.value.toLowerCase();
-      const locationValue = locationInput.value.toLowerCase();
+        const filtered = bands.filter((band) => {
+          const nameMatch =
+            !nameValue || band.name.toLowerCase().includes(nameValue);
+          const genreMatch =
+            !genreValue ||
+            band.genres.some((g) => g.toLowerCase().includes(genreValue));
+          const locationMatch =
+            !locationValue ||
+            band.location.toLowerCase().includes(locationValue);
+          return nameMatch && genreMatch && locationMatch;
+        });
 
-      const filtered = bands.filter(band => {
-        const nameMatch = !nameValue || band.name.toLowerCase().includes(nameValue);
-        const genreMatch = !genreValue || band.genres.some(g => g.toLowerCase().includes(genreValue));
-        const locationMatch = !locationValue || band.location.toLowerCase().includes(locationValue);
-        return nameMatch && genreMatch && locationMatch;
-      });
+        updateCount(filtered.length);
+        renderBands(filtered);
+      }
 
-      updateCount(filtered.length);
-      renderBands(filtered);
-    }
-
-    nameInput.addEventListener("input", filterBands);
-    genreInput.addEventListener("input", filterBands);
-    locationInput.addEventListener("input", filterBands);
-    // Render initial unfiltered elements
-    updateCount(bands.length);
-    renderBands(bands);
-  </script>
-</body>
+      nameInput.addEventListener("input", filterBands);
+      genreInput.addEventListener("input", filterBands);
+      locationInput.addEventListener("input", filterBands);
+      // Render initial unfiltered elements
+      updateCount(bands.length);
+      renderBands(bands);
+    </script>
+  </body>
 </html>
