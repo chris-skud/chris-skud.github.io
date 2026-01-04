@@ -334,6 +334,41 @@
         });
       }
 
+      function updateURL() {
+        const params = new URLSearchParams();
+        if (nameInput.value) {
+          params.set("name", nameInput.value);
+        }
+        if (genreInput.value) {
+          params.set("genre", genreInput.value);
+        }
+        if (locationInput.value) {
+          params.set("location", locationInput.value);
+        }
+
+        const newURL =
+          window.location.pathname +
+          (params.toString() ? "?" + params.toString() : "");
+        window.history.pushState({}, "", newURL);
+      }
+
+      function loadFiltersFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const nameParam = params.get("name");
+        const genreParam = params.get("genre");
+        const locationParam = params.get("location");
+
+        if (nameParam) {
+          nameInput.value = nameParam;
+        }
+        if (genreParam) {
+          genreInput.value = genreParam;
+        }
+        if (locationParam) {
+          locationInput.value = locationParam;
+        }
+      }
+
       function filterBands() {
         const nameValue = nameInput.value.toLowerCase();
         const genreValue = genreInput.value.toLowerCase();
@@ -353,14 +388,24 @@
 
         updateCount(filtered.length);
         renderBands(filtered);
+        updateURL();
       }
+
+      // Load filters from URL on page load
+      loadFiltersFromURL();
 
       nameInput.addEventListener("input", filterBands);
       genreInput.addEventListener("input", filterBands);
       locationInput.addEventListener("input", filterBands);
-      // Render initial unfiltered elements
-      updateCount(bands.length);
-      renderBands(bands);
+
+      // Handle browser back/forward buttons
+      window.addEventListener("popstate", () => {
+        loadFiltersFromURL();
+        filterBands();
+      });
+
+      // Render initial filtered elements
+      filterBands();
     </script>
   </body>
 </html>
