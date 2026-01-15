@@ -188,7 +188,7 @@
 
       <div id="band-list"></div>
     </div>
-    <script src="data.js?v1768272358"></script>
+    <script src="data.js?v1768435759"></script>
     <script>
       const nameInput = document.getElementById("nameFilter");
       const genreInput = document.getElementById("genreFilter");
@@ -296,7 +296,9 @@
 
           const genres = document.createElement("div");
           genres.className = "genres";
-          genres.textContent = band.genres.join(", ");
+          genres.textContent = Array.isArray(band.genres)
+            ? band.genres.join(", ")
+            : band.genres || "";
           bandEl.appendChild(genres);
 
           const location = document.createElement("div");
@@ -379,7 +381,8 @@
             !nameValue || band.name.toLowerCase().includes(nameValue);
           const genreMatch =
             !genreValue ||
-            band.genres.some((g) => g.toLowerCase().includes(genreValue));
+            (Array.isArray(band.genres) &&
+              band.genres.some((g) => g.toLowerCase().includes(genreValue)));
           const locationMatch =
             !locationValue ||
             band.location.toLowerCase().includes(locationValue);
