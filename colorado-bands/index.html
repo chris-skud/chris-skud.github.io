@@ -188,7 +188,7 @@
 
       <div id="band-list"></div>
     </div>
-    <script src="data.js?v1771086555"></script>
+    <script src="data.js?v1772920263"></script>
     <script>
       const nameInput = document.getElementById("nameFilter");
       const genreInput = document.getElementById("genreFilter");
@@ -284,11 +284,19 @@
         return iconClass;
       }
 
-      function renderBands(data) {
+      function preRenderBands(data) {
         container.innerHTML = "";
+        const fragment = document.createDocumentFragment();
         data.forEach((band) => {
           const bandEl = document.createElement("div");
           bandEl.className = "band";
+
+          // Store searchable data as lowercase attributes for fast filtering
+          bandEl.dataset.name = band.name.toLowerCase();
+          bandEl.dataset.genres = Array.isArray(band.genres)
+            ? band.genres.map((g) => g.toLowerCase()).join("\0")
+            : (band.genres || "").toLowerCase();
+          bandEl.dataset.location = (band.location || "").toLowerCase();
 
           const name = document.createElement("h2");
           name.textContent = band.name;
@@ -309,10 +317,6 @@
           const socialLinks = document.createElement("div");
           socialLinks.className = "social-links";
 
-          // <a href="https://www.instagram.com/holdenreedmusic/" target="_blank" title="instagram">
-          // 			<i class="fab fa-instagram"></i>
-          // 		</a>
-
           band.links.forEach((href) => {
             try {
               const link = document.createElement("a");
@@ -326,14 +330,14 @@
               socialLinks.appendChild(link);
             } catch (err) {
               console.log(err);
-              console.log(err);
-              return null; // or handle invalid URLs differently
+              return null;
             }
           });
           bandEl.appendChild(socialLinks);
 
-          container.appendChild(bandEl);
+          fragment.appendChild(bandEl);
         });
+        container.appendChild(fragment);
       }
 
       function updateURL() {
@@ -371,35 +375,50 @@
         }
       }
 
+      function debounce(fn, delay) {
+        let timer;
+        return function (...args) {
+          clearTimeout(timer);
+          timer = setTimeout(() => fn.apply(this, args), delay);
+        };
+      }
+
       function filterBands() {
         const nameValue = nameInput.value.toLowerCase();
         const genreValue = genreInput.value.toLowerCase();
         const locationValue = locationInput.value.toLowerCase();
 
-        const filtered = bands.filter((band) => {
-          const nameMatch =
-            !nameValue || band.name.toLowerCase().includes(nameValue);
+        let count = 0;
+        const cards = container.children;
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
+          const nameMatch = !nameValue || card.dataset.name.includes(nameValue);
           const genreMatch =
             !genreValue ||
-            (Array.isArray(band.genres) &&
-              band.genres.some((g) => g.toLowerCase().includes(genreValue)));
+            card.dataset.genres.split("\0").some((g) => g.includes(genreValue));
           const locationMatch =
-            !locationValue ||
-            band.location.toLowerCase().includes(locationValue);
-          return nameMatch && genreMatch && locationMatch;
-        });
+            !locationValue || card.dataset.location.includes(locationValue);
+          const visible = nameMatch && genreMatch && locationMatch;
+          card.style.display = visible ? "" : "none";
+          if (visible) count++;
+        }
 
-        updateCount(filtered.length);
-        renderBands(filtered);
+        updateCount(count);
         updateURL();
       }
+
+      // Pre-render all bands once
+      preRenderBands(bands);
 
       // Load filters from URL on page load
       loadFiltersFromURL();
 
-      nameInput.addEventListener("input", filterBands);
-      genreInput.addEventListener("input", filterBands);
-      locationInput.addEventListener("input", filterBands);
+      // Debounced filter for input events; URL update also debounced
+      const debouncedFilter = debounce(filterBands, 150);
+
+      nameInput.addEventListener("input", debouncedFilter);
+      genreInput.addEventListener("input", debouncedFilter);
+      locationInput.addEventListener("input", debouncedFilter);
 
       // Handle browser back/forward buttons
       window.addEventListener("popstate", () => {
@@ -407,7 +426,7 @@
         filterBands();
       });
 
-      // Render initial filtered elements
+      // Apply initial filter (from URL params or show all)
       filterBands();
     </script>
   </body>
