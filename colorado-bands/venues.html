@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colorado Venues</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #0a0a0a;
+        color: #d0d0d0;
+        padding: 1.5rem 1rem;
+        line-height: 1.4;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-family: "JetBrains Mono", monospace;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        font-size: 1.75rem;
+        font-weight: 400;
+        color: #e0e0e0;
+        letter-spacing: 0.05em;
+        text-transform: lowercase;
+      }
+
+      .nav {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+      }
+
+      .nav a {
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .nav a:hover {
+        color: #999;
+      }
+
+      .filters {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .filters input {
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #2a2a2a;
+        border-radius: 3px;
+        min-width: 260px;
+        background: #1a1a1a;
+        color: #d0d0d0;
+        transition: all 0.2s ease;
+      }
+
+      .filters input:focus {
+        outline: none;
+        border-color: #4a4a4a;
+        background: #1f1f1f;
+      }
+
+      .filters input::placeholder {
+        color: #5a5a5a;
+      }
+
+      .count {
+        color: #666;
+        font-size: 0.75rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .count span {
+        color: #888;
+      }
+
+      #venue-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .venue {
+        background: #141414;
+        border: 1px solid #252525;
+        border-radius: 4px;
+        padding: 0.875rem;
+        transition: all 0.2s ease;
+      }
+
+      .venue:hover {
+        border-color: #3a3a3a;
+        background: #181818;
+      }
+
+      .venue h2 {
+        margin: 0 0 0.3rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #e8e8e8;
+        font-family: "Inter", sans-serif;
+      }
+
+      .venue-city {
+        font-size: 0.8rem;
+        color: #888;
+        margin-bottom: 0.3rem;
+        font-style: italic;
+      }
+
+      .venue-address {
+        font-size: 0.75rem;
+        color: #555;
+        margin-bottom: 0.4rem;
+      }
+
+      .venue-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+      }
+
+      .venue-links a {
+        font-size: 0.7rem;
+        font-family: "JetBrains Mono", monospace;
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+      }
+
+      .venue-links a:hover {
+        color: #999;
+      }
+
+      #loading {
+        text-align: center;
+        color: #444;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        padding: 3rem;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem 0.75rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        #venue-list {
+          grid-template-columns: 1fr;
+        }
+
+        .filters input {
+          min-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Colorado Venues</h1>
+      <div class="nav"><a href="index.html">← bands</a></div>
+
+      <div class="filters">
+        <input type="text" id="nameFilter" placeholder="Filter by name..." />
+        <input type="text" id="cityFilter" placeholder="Filter by city..." />
+      </div>
+
+      <div class="count">(filtered count: <span id="count"></span>)</div>
+
+      <div id="loading">loading venues...</div>
+      <div id="venue-list"></div>
+    </div>
+
+    <script>
+      const nameInput = document.getElementById("nameFilter");
+      const cityInput = document.getElementById("cityFilter");
+      const container = document.getElementById("venue-list");
+      const loadingEl = document.getElementById("loading");
+
+      function updateCount(count) {
+        document.getElementById("count").innerText = count;
+      }
+
+      function getLinkLabel(url) {
+        try {
+          const host = new URL(url).hostname.replace(/^www\./, "");
+          return host;
+        } catch {
+          return url;
+        }
+      }
+
+      function preRenderVenues(data) {
+        const fragment = document.createDocumentFragment();
+        data.forEach((venue) => {
+          const el = document.createElement("div");
+          el.className = "venue";
+          el.dataset.name = (venue.name || "").toLowerCase();
+          el.dataset.city = (venue.city || "").toLowerCase();
+
+          const name = document.createElement("h2");
+          name.textContent = venue.name;
+          el.appendChild(name);
+
+          const city = document.createElement("div");
+          city.className = "venue-city";
+          city.textContent = venue.city + (venue.state ? ", " + venue.state : "");
+          el.appendChild(city);
+
+          if (venue.address) {
+            const addr = document.createElement("div");
+            addr.className = "venue-address";
+            addr.textContent = venue.address;
+            el.appendChild(addr);
+          }
+
+          const allLinks = [
+            venue.website,
+            ...(venue.social_links || []),
+          ].filter(Boolean);
+
+          if (allLinks.length) {
+            const links = document.createElement("div");
+            links.className = "venue-links";
+            allLinks.forEach((href) => {
+              try {
+                const a = document.createElement("a");
+                a.href = href;
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                a.title = href;
+                a.textContent = getLinkLabel(href);
+                links.appendChild(a);
+              } catch {}
+            });
+            el.appendChild(links);
+          }
+
+          fragment.appendChild(el);
+        });
+        container.appendChild(fragment);
+      }
+
+      function updateURL() {
+        const params = new URLSearchParams();
+        if (nameInput.value) params.set("name", nameInput.value);
+        if (cityInput.value) params.set("city", cityInput.value);
+        const newURL =
+          window.location.pathname +
+          (params.toString() ? "?" + params.toString() : "");
+        window.history.pushState({}, "", newURL);
+      }
+
+      function loadFiltersFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+        const city = params.get("city");
+        if (name) nameInput.value = name;
+        if (city) cityInput.value = city;
+      }
+
+      function debounce(fn, delay) {
+        let timer;
+        return function (...args) {
+          clearTimeout(timer);
+          timer = setTimeout(() => fn.apply(this, args), delay);
+        };
+      }
+
+      function filterVenues() {
+        const nameValue = nameInput.value.toLowerCase();
+        const cityValue = cityInput.value.toLowerCase();
+        let count = 0;
+        const cards = container.children;
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
+          const nameMatch = !nameValue || card.dataset.name.includes(nameValue);
+          const cityMatch = !cityValue || card.dataset.city.includes(cityValue);
+          const visible = nameMatch && cityMatch;
+          card.style.display = visible ? "" : "none";
+          if (visible) count++;
+        }
+        updateCount(count);
+        updateURL();
+      }
+
+      const debouncedFilter = debounce(filterVenues, 150);
+      nameInput.addEventListener("input", debouncedFilter);
+      cityInput.addEventListener("input", debouncedFilter);
+      window.addEventListener("popstate", () => {
+        loadFiltersFromURL();
+        filterVenues();
+      });
+
+      // Lazy-load venues.js only when the page is visible/idle
+      function loadVenues() {
+        const script = document.createElement("script");
+        script.src = "venues.js?v1773202321";
+        script.onload = () => {
+          loadingEl.style.display = "none";
+          preRenderVenues(venues);
+          loadFiltersFromURL();
+          filterVenues();
+        };
+        script.onerror = () => {
+          loadingEl.textContent = "failed to load venues.";
+        };
+        document.body.appendChild(script);
+      }
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadVenues, { timeout: 2000 });
+      } else {
+        setTimeout(loadVenues, 0);
+      }
+    </script>
+  </body>
+</html>

@@ -151,6 +151,23 @@
         color: #888;
       }
 
+      .nav {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+      }
+
+      .nav a {
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .nav a:hover {
+        color: #999;
+      }
+
       @media (max-width: 768px) {
         body {
           padding: 1rem 0.75rem;
@@ -173,6 +190,7 @@
   <body>
     <div class="container">
       <h1>Colorado Bands</h1>
+      <div class="nav"><a href="venues.html">venues →</a></div>
 
       <div class="filters">
         <input type="text" id="nameFilter" placeholder="Filter by name..." />
@@ -188,7 +206,7 @@
 
       <div id="band-list"></div>
     </div>
-    <script src="data.js?v1772922597"></script>
+    <script src="data.js?v1773202321"></script>
     <script>
       const nameInput = document.getElementById("nameFilter");
       const genreInput = document.getElementById("genreFilter");
