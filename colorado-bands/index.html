@@ -206,7 +206,7 @@
 
       <div id="band-list"></div>
     </div>
-    <script src="data.js?v1773202321"></script>
+    <script src="data.js?v1773630497"></script>
     <script>
       const nameInput = document.getElementById("nameFilter");
       const genreInput = document.getElementById("genreFilter");
@@ -302,6 +302,13 @@
         return iconClass;
       }
 
+      function slugify(name) {
+        return name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
       function preRenderBands(data) {
         container.innerHTML = "";
         const fragment = document.createDocumentFragment();
@@ -317,7 +324,12 @@
           bandEl.dataset.location = (band.location || "").toLowerCase();
 
           const name = document.createElement("h2");
-          name.textContent = band.name;
+          const nameLink = document.createElement("a");
+          nameLink.href = "artist.html?slug=" + encodeURIComponent(slugify(band.name));
+          nameLink.textContent = band.name;
+          nameLink.style.color = "inherit";
+          nameLink.style.textDecoration = "none";
+          name.appendChild(nameLink);
           bandEl.appendChild(name);
 
           const genres = document.createElement("div");

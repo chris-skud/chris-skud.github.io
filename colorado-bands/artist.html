@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artist - Colorado Bands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1e86da1209.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #0a0a0a;
+        color: #d0d0d0;
+        padding: 1.5rem 1rem;
+        line-height: 1.4;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-family: "JetBrains Mono", monospace;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        font-size: 1.75rem;
+        font-weight: 400;
+        color: #e0e0e0;
+        letter-spacing: 0.05em;
+        text-transform: lowercase;
+      }
+
+      .nav {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+      }
+
+      .nav a {
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .nav a:hover {
+        color: #999;
+      }
+
+      .artist-card {
+        background: #141414;
+        border: 1px solid #252525;
+        border-radius: 4px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .artist-card h2 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #e8e8e8;
+        margin-bottom: 0.5rem;
+      }
+
+      .genres {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 0.35rem;
+        font-style: italic;
+      }
+
+      .location {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 0.6rem;
+        font-style: italic;
+      }
+
+      .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        text-decoration: none;
+        color: #888;
+        transition: color 0.2s ease;
+        font-size: 0.9rem;
+      }
+
+      .social-links a:hover {
+        color: #d0d0d0;
+      }
+
+      .section-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: #777;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.75rem;
+      }
+
+      .events-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .event {
+        background: #141414;
+        border: 1px solid #252525;
+        border-radius: 4px;
+        padding: 0.875rem;
+        transition: all 0.2s ease;
+      }
+
+      .event:hover {
+        border-color: #3a3a3a;
+        background: #181818;
+      }
+
+      .event-date {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        color: #999;
+        margin-bottom: 0.25rem;
+      }
+
+      .event-title {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #e8e8e8;
+        margin-bottom: 0.25rem;
+      }
+
+      .event-venue {
+        font-size: 0.8rem;
+        color: #666;
+        font-style: italic;
+      }
+
+      .event-time {
+        font-size: 0.75rem;
+        color: #555;
+        margin-top: 0.2rem;
+      }
+
+      .event-ticket {
+        display: inline-block;
+        margin-top: 0.4rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .event-ticket:hover {
+        color: #999;
+      }
+
+      .no-events {
+        color: #444;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .not-found {
+        text-align: center;
+        color: #444;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        padding: 3rem;
+      }
+
+      .other-artists {
+        font-size: 0.75rem;
+        color: #555;
+        margin-top: 0.3rem;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem 0.75rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav"><a href="index.html">← bands</a></div>
+      <div id="content">
+        <div class="not-found">loading...</div>
+      </div>
+    </div>
+
+    <script>
+      function slugify(name) {
+        return name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      // reuse icon logic from index.html
+      function getRootDomain(url) {
+        const complexTLDs = [
+          "co.uk",
+          "org.uk",
+          "gov.uk",
+          "ac.uk",
+          "com.au",
+          "net.au",
+          "co.jp",
+        ];
+        const hostname = new URL(url).hostname;
+        const parts = hostname.split(".");
+        const lastTwo = parts.slice(-2).join(".");
+        const lastThree = parts.slice(-3).join(".");
+        if (complexTLDs.includes(lastTwo)) return parts.slice(-3).join(".");
+        if (complexTLDs.includes(lastThree)) return parts.slice(-4).join(".");
+        return lastTwo;
+      }
+
+      function getIconClassFromUrl(url) {
+        const rootDomain = getRootDomain(url);
+        const map = {
+          "tiktok.com": "fab fa-tiktok",
+          "youtube.com": "fa fa-youtube",
+          "youtu.be": "fa fa-youtube",
+          "facebook.com": "fa fa-facebook-f",
+          "instagram.com": "fa fa-instagram",
+          "spotify.com": "fa fa-spotify",
+          "bandcamp.com": "fa fa-bandcamp",
+          "apple.com": "fa fa-apple",
+          "amazon.com": "fa fa-amazon",
+          "soundcloud.com": "fab fa-soundcloud",
+          "last.fm": "fa fa-lastfm",
+          "wikidata.org": "fa fa-wikipedia-w",
+          "wikipedia.org": "fa fa-wikipedia-w",
+          "twitter.com": "fa fa-x",
+          "x.com": "fa fa-x",
+          "threads.com": "fab fa-threads",
+          "tumblr.com": "fa fa-tumblr",
+          "imdb.com": "fa fa-imdb",
+          "loc.gov": "fa fa-landmark-dome",
+        };
+        return map[rootDomain] || "fa fa-globe";
+      }
+
+      function formatDate(dateStr) {
+        const d = new Date(dateStr + "T00:00:00");
+        return d.toLocaleDateString("en-US", {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+      }
+
+      function formatTime(timeStr) {
+        if (!timeStr) return null;
+        const [h, m] = timeStr.split(":");
+        const hour = parseInt(h);
+        const ampm = hour >= 12 ? "pm" : "am";
+        const h12 = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
+        return m === "00" ? `${h12}${ampm}` : `${h12}:${m}${ampm}`;
+      }
+
+      function renderArtist(band, artistEvents) {
+        const content = document.getElementById("content");
+        content.innerHTML = "";
+
+        // title
+        const h1 = document.createElement("h1");
+        h1.textContent = band.name;
+        content.appendChild(h1);
+
+        // band info card
+        const card = document.createElement("div");
+        card.className = "artist-card";
+
+        if (band.genres && band.genres.length) {
+          const genres = document.createElement("div");
+          genres.className = "genres";
+          genres.textContent = Array.isArray(band.genres)
+            ? band.genres.join(", ")
+            : band.genres;
+          card.appendChild(genres);
+        }
+
+        if (band.location) {
+          const loc = document.createElement("div");
+          loc.className = "location";
+          loc.textContent = band.location;
+          card.appendChild(loc);
+        }
+
+        if (band.links && band.links.length) {
+          const links = document.createElement("div");
+          links.className = "social-links";
+          band.links.forEach((href) => {
+            try {
+              const a = document.createElement("a");
+              a.href = href;
+              a.target = "_blank";
+              a.title = href;
+              const icon = document.createElement("i");
+              icon.className = getIconClassFromUrl(href);
+              a.appendChild(icon);
+              links.appendChild(a);
+            } catch {}
+          });
+          card.appendChild(links);
+        }
+
+        content.appendChild(card);
+
+        // events section
+        const title = document.createElement("div");
+        title.className = "section-title";
+        title.textContent = "upcoming events";
+        content.appendChild(title);
+
+        if (!artistEvents || artistEvents.length === 0) {
+          const none = document.createElement("div");
+          none.className = "no-events";
+          none.textContent = "no upcoming events";
+          content.appendChild(none);
+          return;
+        }
+
+        const list = document.createElement("div");
+        list.className = "events-list";
+
+        artistEvents.forEach((ev) => {
+          const el = document.createElement("div");
+          el.className = "event";
+
+          const date = document.createElement("div");
+          date.className = "event-date";
+          date.textContent = formatDate(ev.date);
+          el.appendChild(date);
+
+          const evTitle = document.createElement("div");
+          evTitle.className = "event-title";
+          evTitle.textContent = ev.title;
+          el.appendChild(evTitle);
+
+          if (ev.venue_name) {
+            const venue = document.createElement("div");
+            venue.className = "event-venue";
+            let venueText = ev.venue_name;
+            if (ev.venue_city) {
+              venueText += " — " + ev.venue_city;
+              if (ev.venue_state) venueText += ", " + ev.venue_state;
+            }
+            venue.textContent = venueText;
+            el.appendChild(venue);
+          }
+
+          const times = [];
+          if (ev.doors_time) times.push("doors " + formatTime(ev.doors_time));
+          if (ev.show_time) times.push("show " + formatTime(ev.show_time));
+          if (times.length) {
+            const time = document.createElement("div");
+            time.className = "event-time";
+            time.textContent = times.join(" · ");
+            el.appendChild(time);
+          }
+
+          if (
+            ev.artists &&
+            ev.artists.length > 1
+          ) {
+            const others = ev.artists.filter(
+              (a) => a.toLowerCase() !== band.name.toLowerCase()
+            );
+            if (others.length) {
+              const otherEl = document.createElement("div");
+              otherEl.className = "other-artists";
+              otherEl.textContent = "with " + others.join(", ");
+              el.appendChild(otherEl);
+            }
+          }
+
+          if (ev.ticket_url) {
+            const ticket = document.createElement("a");
+            ticket.className = "event-ticket";
+            ticket.href = ev.ticket_url;
+            ticket.target = "_blank";
+            ticket.rel = "noopener noreferrer";
+            ticket.textContent = "tickets →";
+            el.appendChild(ticket);
+          }
+
+          list.appendChild(el);
+        });
+
+        content.appendChild(list);
+      }
+
+      // load data
+      const params = new URLSearchParams(window.location.search);
+      const artistSlug = params.get("slug");
+
+      if (!artistSlug) {
+        document.getElementById("content").innerHTML =
+          '<div class="not-found">no artist specified</div>';
+      } else {
+        const dataScript = document.createElement("script");
+        dataScript.src = "data.js?v1773368731";
+        dataScript.onload = () => {
+          const band = bands.find((b) => slugify(b.name) === artistSlug);
+          if (!band) {
+            document.getElementById("content").innerHTML =
+              '<div class="not-found">artist not found</div>';
+            return;
+          }
+
+          document.title = band.name + " - Colorado Bands";
+
+          const eventsScript = document.createElement("script");
+          eventsScript.src = "events.js?v1773368731";
+          eventsScript.onload = () => {
+            const today = new Date().toISOString().split("T")[0];
+            const artistEvents = (eventsByArtist[artistSlug] || []).filter(
+              (ev) => ev.date >= today
+            );
+            renderArtist(band, artistEvents);
+          };
+          eventsScript.onerror = () => {
+            renderArtist(band, []);
+          };
+          document.body.appendChild(eventsScript);
+        };
+        dataScript.onerror = () => {
+          document.getElementById("content").innerHTML =
+            '<div class="not-found">failed to load data</div>';
+        };
+        document.body.appendChild(dataScript);
+      }
+    </script>
+  </body>
+</html>
