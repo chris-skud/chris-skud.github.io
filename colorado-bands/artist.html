@@ -205,6 +205,48 @@
         margin-top: 0.3rem;
       }
 
+      .spotify-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+        padding: 0.35rem 0.75rem;
+        background: transparent;
+        border: 1px solid #333;
+        border-radius: 3px;
+        color: #666;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: border-color 0.2s ease, color 0.2s ease;
+      }
+
+      .spotify-btn:hover {
+        border-color: #1DB954;
+        color: #1DB954;
+      }
+
+      .spotify-status {
+        margin-top: 0.6rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: #555;
+      }
+
+      .spotify-status a {
+        color: #1DB954;
+        text-decoration: none;
+      }
+
+      .spotify-status a:hover {
+        text-decoration: underline;
+      }
+
+      .spotify-status.error {
+        color: #c04040;
+      }
+
       @media (max-width: 768px) {
         body {
           padding: 1rem 0.75rem;
@@ -225,6 +267,124 @@
     </div>
 
     <script>
+      // ── Spotify config ──────────────────────────────────────────────────────
+      const SPOTIFY_CLIENT_ID = 'YOUR_CLIENT_ID_HERE'; // fill in after creating app
+      const REDIRECT_URI = 'https://chris-skud.github.io/colorado-bands/artist.html';
+
+      function generateRandomString(len) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        return Array.from(crypto.getRandomValues(new Uint8Array(len)))
+          .map(x => chars[x % chars.length]).join('');
+      }
+
+      async function generateCodeChallenge(verifier) {
+        const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
+        return btoa(String.fromCharCode(...new Uint8Array(digest)))
+          .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+      }
+
+      async function startSpotifyAuth(slug) {
+        const verifier = generateRandomString(64);
+        const challenge = await generateCodeChallenge(verifier);
+        sessionStorage.setItem('spotify_verifier', verifier);
+        sessionStorage.setItem('spotify_slug', slug);
+        const params = new URLSearchParams({
+          client_id: SPOTIFY_CLIENT_ID,
+          response_type: 'code',
+          redirect_uri: REDIRECT_URI,
+          scope: 'playlist-modify-public playlist-modify-private',
+          code_challenge_method: 'S256',
+          code_challenge: challenge,
+        });
+        window.location = 'https://accounts.spotify.com/authorize?' + params.toString();
+      }
+
+      async function exchangeCode(code) {
+        const verifier = sessionStorage.getItem('spotify_verifier');
+        const res = await fetch('https://accounts.spotify.com/api/token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            grant_type: 'authorization_code',
+            code,
+            redirect_uri: REDIRECT_URI,
+            client_id: SPOTIFY_CLIENT_ID,
+            code_verifier: verifier,
+          }),
+        });
+        if (!res.ok) throw new Error('token exchange failed');
+        const data = await res.json();
+        return data.access_token;
+      }
+
+      async function createArtistPlaylist(token, spotifyArtistId, artistName) {
+        const headers = { Authorization: `Bearer ${token}` };
+
+        const [me, topTracks] = await Promise.all([
+          fetch('https://api.spotify.com/v1/me', { headers }).then(r => r.json()),
+          fetch(`https://api.spotify.com/v1/artists/${spotifyArtistId}/top-tracks?market=US`, { headers }).then(r => r.json()),
+        ]);
+
+        if (!topTracks.tracks || topTracks.tracks.length === 0) {
+          throw new Error('no tracks found');
+        }
+
+        const playlist = await fetch(`https://api.spotify.com/v1/users/${me.id}/playlists`, {
+          method: 'POST',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: artistName, description: `Top tracks · ${artistName}`, public: false }),
+        }).then(r => r.json());
+
+        await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
+          method: 'POST',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ uris: topTracks.tracks.slice(0, 10).map(t => t.uri) }),
+        });
+
+        return playlist;
+      }
+
+      function addSpotifyButton(card, band, slug) {
+        const statusEl = document.createElement('div');
+        statusEl.className = 'spotify-status';
+
+        const btn = document.createElement('button');
+        btn.className = 'spotify-btn';
+        btn.innerHTML = '<i class="fa fa-spotify"></i> save to spotify';
+        btn.onclick = async () => {
+          if (SPOTIFY_CLIENT_ID === 'YOUR_CLIENT_ID_HERE') {
+            statusEl.textContent = 'spotify client id not configured';
+            statusEl.classList.add('error');
+            return;
+          }
+          btn.disabled = true;
+          btn.textContent = 'connecting...';
+          await startSpotifyAuth(slug);
+        };
+
+        card.appendChild(btn);
+        card.appendChild(statusEl);
+      }
+
+      async function handleSpotifyCallback(code, band) {
+        const statusEl = document.getElementById('spotify-callback-status');
+        if (!statusEl) return;
+        try {
+          const token = await exchangeCode(code);
+          sessionStorage.removeItem('spotify_verifier');
+          // clear code from URL without reload
+          const cleanUrl = window.location.origin + window.location.pathname + '?slug=' + slugify(band.name);
+          history.replaceState({}, '', cleanUrl);
+          statusEl.textContent = 'creating playlist...';
+          const playlist = await createArtistPlaylist(token, band.spotify_id, band.name);
+          statusEl.innerHTML = `playlist created · <a href="${playlist.external_urls.spotify}" target="_blank" rel="noopener">open in spotify →</a>`;
+        } catch (err) {
+          statusEl.textContent = 'error: ' + (err.message || 'something went wrong');
+          statusEl.classList.add('error');
+        }
+      }
+      // ── end Spotify ──────────────────────────────────────────────────────────
+
       function slugify(name) {
         return name
           .toLowerCase()
@@ -344,6 +504,16 @@
           card.appendChild(links);
         }
 
+        if (band.spotify_id) {
+          addSpotifyButton(card, band, artistSlug);
+        }
+
+        // placeholder for OAuth callback status (filled after render)
+        const callbackStatus = document.createElement('div');
+        callbackStatus.id = 'spotify-callback-status';
+        callbackStatus.className = 'spotify-status';
+        card.appendChild(callbackStatus);
+
         content.appendChild(card);
 
         // events section
@@ -432,7 +602,9 @@
 
       // load data
       const params = new URLSearchParams(window.location.search);
-      const artistSlug = params.get("slug");
+      // on OAuth callback, slug comes from sessionStorage; otherwise from URL
+      const oauthCode = params.get("code");
+      const artistSlug = params.get("slug") || sessionStorage.getItem("spotify_slug");
 
       if (!artistSlug) {
         document.getElementById("content").innerHTML =
@@ -458,6 +630,13 @@
               (ev) => ev.date >= today
             );
             renderArtist(band, artistEvents);
+            // if returning from Spotify OAuth, kick off playlist creation
+            if (oauthCode && band.spotify_id) {
+              handleSpotifyCallback(oauthCode, band);
+            } else if (oauthCode) {
+              const s = document.getElementById('spotify-callback-status');
+              if (s) { s.textContent = 'no spotify id for this artist'; s.classList.add('error'); }
+            }
           };
           eventsScript.onerror = () => {
             renderArtist(band, []);

@@ -168,6 +168,63 @@
         color: #999;
       }
 
+      .playlist-bar {
+        display: none;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .playlist-buttons {
+        display: inline-flex;
+        gap: 0.5rem;
+      }
+
+      .playlist-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.75rem;
+        background: transparent;
+        border: 1px solid #333;
+        border-radius: 3px;
+        color: #666;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: border-color 0.2s ease, color 0.2s ease;
+      }
+
+      .playlist-btn:hover:not(:disabled) {
+        border-color: #1DB954;
+        color: #1DB954;
+      }
+
+      .playlist-btn:disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+
+      .playlist-status {
+        margin-top: 0.5rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: #555;
+        min-height: 1rem;
+      }
+
+      .playlist-status a {
+        color: #1DB954;
+        text-decoration: none;
+      }
+
+      .playlist-status a:hover {
+        text-decoration: underline;
+      }
+
+      .playlist-status.error {
+        color: #c04040;
+      }
+
       @media (max-width: 768px) {
         body {
           padding: 1rem 0.75rem;
@@ -204,17 +261,123 @@
 
       <div class="count">(filtered count: <span id="count"></span>)</div>
 
+      <div class="playlist-bar" id="playlist-bar">
+        <div class="playlist-buttons">
+          <button class="playlist-btn" id="playlist-btn-spotify">
+            <i class="fa fa-spotify"></i> spotify
+          </button>
+          <button class="playlist-btn" id="playlist-btn-tidal">
+            <i class="fa fa-music"></i> tidal
+          </button>
+        </div>
+        <div class="playlist-status" id="playlist-status"></div>
+      </div>
+
       <div id="band-list"></div>
     </div>
-    <script src="data.js?v1774583243"></script>
+    <script src="data.js?v1774920622"></script>
+    <script src="spotify.js"></script>
+    <script src="tidal.js"></script>
     <script>
       const nameInput = document.getElementById("nameFilter");
       const genreInput = document.getElementById("genreFilter");
       const locationInput = document.getElementById("locationFilter");
       const container = document.getElementById("band-list");
 
+      function getVisibleBands() {
+        const result = [];
+        const cards = container.children;
+        for (let i = 0; i < cards.length && result.length < 20; i++) {
+          if (cards[i].style.display !== 'none') {
+            const name = cards[i].dataset.name;
+            const band = bands.find(b => b.name.toLowerCase() === name);
+            if (band) result.push(band);
+          }
+        }
+        return result;
+      }
+
+      function derivePlaylistName() {
+        const genre = genreInput.value.trim();
+        const location = locationInput.value.trim();
+        const name = nameInput.value.trim();
+        const cap = s => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+        if (genre && location) return `${cap(location)} ${cap(genre)}`;
+        if (genre) return `Colorado ${cap(genre)}`;
+        if (location) return `${cap(location)} Bands`;
+        if (name) return `Colorado Bands: ${name}`;
+        return 'Colorado Bands Mix';
+      }
+
+      function setPlaylistStatus(msg, isError = false) {
+        const el = document.getElementById('playlist-status');
+        if (typeof msg === 'string') {
+          el.textContent = msg;
+        } else {
+          el.innerHTML = msg; // trusted internal HTML only
+        }
+        el.className = 'playlist-status' + (isError ? ' error' : '');
+      }
+
+      async function startPlaylistAuth(service) {
+        const adapter = service === 'tidal' ? Tidal : Spotify;
+        if (!adapter.isConfigured()) {
+          setPlaylistStatus(`${service} client id not configured`, true);
+          return;
+        }
+        await adapter.startAuth({
+          name: nameInput.value,
+          genre: genreInput.value,
+          location: locationInput.value,
+        });
+      }
+
+      async function handleCallback(code, service) {
+        const adapter = service === 'tidal' ? Tidal : Spotify;
+        const filters = adapter.getSavedFilters();
+        nameInput.value = filters.name;
+        genreInput.value = filters.genre;
+        locationInput.value = filters.location;
+
+        filterBands();
+
+        const visibleBands = getVisibleBands();
+        if (visibleBands.length === 0) {
+          setPlaylistStatus('no matching artists', true);
+          return;
+        }
+
+        const btnId = service === 'tidal' ? 'playlist-btn-tidal' : 'playlist-btn-spotify';
+        const btn = document.getElementById(btnId);
+        btn.disabled = true;
+        setPlaylistStatus(`fetching tracks... (0/${visibleBands.length})`);
+
+        try {
+          const { url, skipped } = await adapter.createPlaylistFromSearch({
+            code,
+            bands: visibleBands,
+            playlistName: derivePlaylistName(),
+            onProgress: msg => setPlaylistStatus(msg),
+          });
+          const skipNote = skipped > 0 ? ` (${skipped} not on ${service})` : '';
+          setPlaylistStatus(`playlist created${skipNote} · <a href="${url}" target="_blank" rel="noopener">open in ${service} →</a>`);
+        } catch (err) {
+          setPlaylistStatus('error: ' + (err.message || 'something went wrong'), true);
+          btn.disabled = false;
+        }
+      }
+
       function updateCount(count) {
         document.getElementById("count").innerText = count;
+        const anyFilter = nameInput.value || genreInput.value || locationInput.value;
+        const bar = document.getElementById('playlist-bar');
+        bar.style.display = (count > 0 && anyFilter) ? 'block' : 'none';
+        // reset status/buttons when filter changes (not during OAuth callback)
+        if (!new URLSearchParams(window.location.search).get('code')) {
+          setPlaylistStatus('');
+          document.getElementById('playlist-btn-spotify').disabled = false;
+          document.getElementById('playlist-btn-tidal').disabled = false;
+        }
       }
 
       // extract root domain
@@ -440,8 +603,23 @@
       // Pre-render all bands once
       preRenderBands(bands);
 
-      // Load filters from URL on page load
-      loadFiltersFromURL();
+      // Button clicks
+      document.getElementById('playlist-btn-spotify').addEventListener('click', () => startPlaylistAuth('spotify'));
+      document.getElementById('playlist-btn-tidal').addEventListener('click', () => startPlaylistAuth('tidal'));
+
+      // Check for OAuth callback before loading filters from URL
+      const _urlParams = new URLSearchParams(window.location.search);
+      const _oauthCode = _urlParams.get('code');
+
+      if (_oauthCode) {
+        // Returning from a streaming service — route by which service initiated auth
+        const _service = sessionStorage.getItem('streaming_service') || 'spotify';
+        handleCallback(_oauthCode, _service);
+      } else {
+        // Normal page load
+        loadFiltersFromURL();
+        filterBands();
+      }
 
       // Debounced filter for input events; URL update also debounced
       const debouncedFilter = debounce(filterBands, 150);
@@ -455,9 +633,6 @@
         loadFiltersFromURL();
         filterBands();
       });
-
-      // Apply initial filter (from URL params or show all)
-      filterBands();
     </script>
   </body>
 </html>
