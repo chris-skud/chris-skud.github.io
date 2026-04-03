@@ -2490,6 +2490,7 @@ const bands = [
 {"name": "Jimmel9", "location": "Littleton, CO", "genres": [], "spotify_id": "", "links": []},
 {"name": "Jimmy One Suit", "location": "Denver, CO", "genres": [], "spotify_id": "", "links": []},
 {"name": "Jimmy Timbre", "location": "Fort Collins, CO", "genres": ["acoustic", "folk"], "spotify_id": "1UOIRmkIpXAFQzkzXDHanC", "links": ["https://www.instagram.com/jimmytimbre", "https://open.spotify.com/artist/1UOIRmkIpXAFQzkzXDHanC", "https://jimmytimbre.bandcamp.com", "https://www.youtube.com/channel/UCUPSV8DCGYSjYHvJJhsuB7w"]},
+{"name": "Jingle Jangle Jabroni", "location": "Estes Park, CO", "genres": ["punk"], "spotify_id": "6h6BIwsU2twp3OtAQzYlBG", "links": ["https://open.spotify.com/artist/6h6BIwsU2twp3OtAQzYlBG", "https://tunepical.com/jingle-jangle-jabroni-pigdog/", "https://www.instagram.com/jabroni_rising/"]},
 {"name": "Jo Fuller", "location": "Denver, CO", "genres": ["americana", "folk", "alt-country"], "spotify_id": "0Qi2yW129e9FwySNRxuy4w", "links": ["https://www.jo-fuller.com/", "https://www.instagram.com/jofullermusic", "https://jofuller.bandcamp.com", "https://www.youtube.com/@JoFullerMusic"]},
 {"name": "Joe Bye & Friends", "location": "Fort Collins, CO", "genres": ["rock"], "spotify_id": "", "links": ["https://instagram.com/joebyelive", "https://www.facebook.com/profile.php?id=100063582103740", "https://www.youtube.com/watch?v=IC0-dBeCIKA"]},
 {"name": "Joe D'Esposito", "location": "Denver, CO", "genres": [], "spotify_id": "", "links": ["https://www.facebook.com/joe.desposito.7"]},
