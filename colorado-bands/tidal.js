@@ -42,7 +42,7 @@ const Tidal = (() => {
       client_id: CLIENT_ID,
       response_type: 'code',
       redirect_uri: REDIRECT_URI,
-      scope: 'r_usr w_usr',
+      scope: 'playlists.read playlists.write',
       code_challenge_method: 'S256',
       code_challenge: challenge,
     });
@@ -64,7 +64,7 @@ const Tidal = (() => {
   async function exchangeCode(code) {
     const verifier = sessionStorage.getItem('tidal_verifier');
     sessionStorage.removeItem('tidal_verifier');
-    const res = await fetch('https://login.tidal.com/oauth2/token', {
+    const res = await fetch('https://auth.tidal.com/v1/oauth2/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
