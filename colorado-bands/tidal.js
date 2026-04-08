@@ -12,8 +12,8 @@
 // Note: band data has no tidal_id field, so all artists are resolved by name search.
 
 const Tidal = (() => {
-  const CLIENT_ID = 'YOUR_TIDAL_CLIENT_ID_HERE';
-  const REDIRECT_URI = 'https://chris-skud.github.io/colorado-bands/index.html';
+  const CLIENT_ID = '3J1VouZvleR2RFrL';
+  const REDIRECT_URI = 'https://chris-skud.github.io/colorado-bands';
   const TRACKS_PER_ARTIST = 2;
   const MAX_ARTISTS = 20;
   const API = 'https://api.tidal.com/v1';
