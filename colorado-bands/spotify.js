@@ -52,13 +52,14 @@ const Spotify = (() => {
       location: sessionStorage.getItem('spotify_filter_location') || '',
     };
     ['spotify_filter_name', 'spotify_filter_genre', 'spotify_filter_location',
-     'spotify_verifier', 'streaming_service']
+     'streaming_service']
       .forEach(k => sessionStorage.removeItem(k));
     return filters;
   }
 
   async function exchangeCode(code) {
     const verifier = sessionStorage.getItem('spotify_verifier');
+    sessionStorage.removeItem('spotify_verifier');
     const res = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
