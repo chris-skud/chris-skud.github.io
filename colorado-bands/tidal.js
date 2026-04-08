@@ -46,7 +46,7 @@ const Tidal = (() => {
       code_challenge_method: 'S256',
       code_challenge: challenge,
     });
-    window.location = 'https://listen.tidal.com/login/auth?' + params.toString();
+    window.location = 'https://login.tidal.com/authorize?' + params.toString();
   }
 
   function getSavedFilters() {
