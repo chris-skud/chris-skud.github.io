@@ -9,7 +9,7 @@
 //   Spotify.TRACKS_PER_ARTIST          — tracks sampled per band
 
 const Spotify = (() => {
-  const CLIENT_ID = 'YOUR_CLIENT_ID_HERE';
+  const CLIENT_ID = '25db06a88755437188103fe964f7a169';
   const REDIRECT_URI = 'https://chris-skud.github.io/colorado-bands/index.html';
   const TRACKS_PER_ARTIST = 2;
   const MAX_ARTISTS = 20;
