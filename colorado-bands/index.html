@@ -725,8 +725,9 @@
       document.getElementById('modal-cancel').addEventListener('click', hidePlaylistModal);
       document.getElementById('modal-confirm').addEventListener('click', () => {
         const name = document.getElementById('playlist-name-input').value.trim() || derivePlaylistName();
+        const service = _pendingService;
         hidePlaylistModal();
-        startPlaylistAuth(_pendingService, name);
+        startPlaylistAuth(service, name);
       });
       document.getElementById('playlist-name-input').addEventListener('keydown', e => {
         if (e.key === 'Enter') document.getElementById('modal-confirm').click();
