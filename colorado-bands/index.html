@@ -232,6 +232,81 @@
         color: #c04040;
       }
 
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 100;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 1.25rem 1.5rem;
+        width: min(400px, 90vw);
+      }
+
+      .modal h3 {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: #aaa;
+        margin-bottom: 0.75rem;
+      }
+
+      .modal input[type="text"] {
+        width: 100%;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+        background: #0f0f0f;
+        border: 1px solid #333;
+        border-radius: 3px;
+        color: #e0e0e0;
+        margin-bottom: 0.75rem;
+      }
+
+      .modal input[type="text"]:focus {
+        outline: none;
+        border-color: #555;
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+      }
+
+      .modal-btn {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
+        background: transparent;
+        border: 1px solid #333;
+        border-radius: 3px;
+        color: #666;
+        cursor: pointer;
+        transition: border-color 0.2s ease, color 0.2s ease;
+      }
+
+      .modal-btn:hover {
+        border-color: #666;
+        color: #aaa;
+      }
+
+      .modal-btn.primary:hover {
+        border-color: #1DB954;
+        color: #1DB954;
+      }
+
       @media (max-width: 768px) {
         body {
           padding: 1rem 0.75rem;
@@ -283,6 +358,18 @@
 
       <div id="band-list"></div>
     </div>
+
+    <div class="modal-overlay" id="playlist-modal">
+      <div class="modal">
+        <h3>name your playlist</h3>
+        <input type="text" id="playlist-name-input" />
+        <div class="modal-actions">
+          <button class="modal-btn" id="modal-cancel">cancel</button>
+          <button class="modal-btn primary" id="modal-confirm">create</button>
+        </div>
+      </div>
+    </div>
+
     <script src="data.js?v1775615767"></script>
     <script src="spotify.js"></script>
     <script src="tidal.js"></script>
@@ -327,12 +414,28 @@
         el.className = 'playlist-status' + (isError ? ' error' : '');
       }
 
-      async function startPlaylistAuth(service) {
+      let _pendingService = null;
+
+      function showPlaylistModal(service) {
+        _pendingService = service;
+        const input = document.getElementById('playlist-name-input');
+        input.value = derivePlaylistName();
+        document.getElementById('playlist-modal').classList.add('active');
+        requestAnimationFrame(() => { input.select(); input.focus(); });
+      }
+
+      function hidePlaylistModal() {
+        document.getElementById('playlist-modal').classList.remove('active');
+        _pendingService = null;
+      }
+
+      async function startPlaylistAuth(service, playlistName) {
         const adapter = service === 'tidal' ? Tidal : Spotify;
         if (!adapter.isConfigured()) {
           setPlaylistStatus(`${service} client id not configured`, true);
           return;
         }
+        sessionStorage.setItem('playlist_name', playlistName);
         await adapter.startAuth({
           name: nameInput.value,
           genre: genreInput.value,
@@ -346,6 +449,9 @@
         nameInput.value = filters.name;
         genreInput.value = filters.genre;
         locationInput.value = filters.location;
+
+        const playlistName = sessionStorage.getItem('playlist_name') || derivePlaylistName();
+        sessionStorage.removeItem('playlist_name');
 
         filterBands();
 
@@ -364,7 +470,7 @@
           const { url, skipped } = await adapter.createPlaylistFromSearch({
             code,
             bands: visibleBands,
-            playlistName: derivePlaylistName(),
+            playlistName,
             onProgress: msg => setPlaylistStatus(msg),
           });
           const skipNote = skipped > 0 ? ` (${skipped} not on ${service})` : '';
@@ -611,9 +717,24 @@
       // Pre-render all bands once
       preRenderBands(bands);
 
-      // Button clicks
-      document.getElementById('playlist-btn-spotify').addEventListener('click', () => startPlaylistAuth('spotify'));
-      document.getElementById('playlist-btn-tidal').addEventListener('click', () => startPlaylistAuth('tidal'));
+      // Playlist button clicks — open modal
+      document.getElementById('playlist-btn-spotify').addEventListener('click', () => showPlaylistModal('spotify'));
+      document.getElementById('playlist-btn-tidal').addEventListener('click', () => showPlaylistModal('tidal'));
+
+      // Modal controls
+      document.getElementById('modal-cancel').addEventListener('click', hidePlaylistModal);
+      document.getElementById('modal-confirm').addEventListener('click', () => {
+        const name = document.getElementById('playlist-name-input').value.trim() || derivePlaylistName();
+        hidePlaylistModal();
+        startPlaylistAuth(_pendingService, name);
+      });
+      document.getElementById('playlist-name-input').addEventListener('keydown', e => {
+        if (e.key === 'Enter') document.getElementById('modal-confirm').click();
+        if (e.key === 'Escape') hidePlaylistModal();
+      });
+      document.getElementById('playlist-modal').addEventListener('click', e => {
+        if (e.target === e.currentTarget) hidePlaylistModal();
+      });
 
       // Check for OAuth callback before loading filters from URL
       const _urlParams = new URLSearchParams(window.location.search);

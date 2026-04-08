@@ -56,13 +56,14 @@ const Tidal = (() => {
       location: sessionStorage.getItem('tidal_filter_location') || '',
     };
     ['tidal_filter_name', 'tidal_filter_genre', 'tidal_filter_location',
-     'tidal_verifier', 'streaming_service']
+     'streaming_service']
       .forEach(k => sessionStorage.removeItem(k));
     return filters;
   }
 
   async function exchangeCode(code) {
     const verifier = sessionStorage.getItem('tidal_verifier');
+    sessionStorage.removeItem('tidal_verifier');
     const res = await fetch('https://login.tidal.com/oauth2/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
