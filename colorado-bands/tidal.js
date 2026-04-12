@@ -42,7 +42,7 @@ const Tidal = (() => {
       client_id: CLIENT_ID,
       response_type: 'code',
       redirect_uri: REDIRECT_URI,
-      scope: 'playlists.read playlists.write',
+      scope: 'playlists.write',
       code_challenge_method: 'S256',
       code_challenge: challenge,
     });
