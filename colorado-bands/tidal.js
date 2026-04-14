@@ -98,35 +98,22 @@ const Tidal = (() => {
 
       if (!artistId) return [];
 
-      // Search by name — results are popularity-ranked. Include track→artist
-      // relationships so we can verify each track actually belongs to this artist.
-      const res = await fetch(
-        `${API}/searchresults/${encodeURIComponent(band.name)}?countryCode=${countryCode}&include=tracks,tracks.artists`,
+      // Get artist albums, then pull tracks from the first one
+      const albumsRes = await fetch(
+        `${API}/artists/${artistId}/relationships/albums?countryCode=${countryCode}`,
         { headers }
       );
-      if (!res.ok) return [];
-      const json = await res.json();
+      if (!albumsRes.ok) return [];
+      const albumId = (await albumsRes.json()).data?.[0]?.id;
+      if (!albumId) return [];
 
-      // Build a map of track id → set of artist ids from the included resources
-      const trackArtists = {};
-      for (const item of (json.included || [])) {
-        if (item.type === 'tracks') {
-          trackArtists[item.id] = new Set(
-            (item.relationships?.artists?.data || []).map(a => a.id)
-          );
-        }
-      }
-
-      // Take the first TRACKS_PER_ARTIST tracks that belong to this artist
-      const ordered = json.data?.relationships?.tracks?.data || [];
-      const result = [];
-      for (const t of ordered) {
-        if (trackArtists[t.id]?.has(artistId)) {
-          result.push(t.id);
-          if (result.length >= TRACKS_PER_ARTIST) break;
-        }
-      }
-      return result;
+      const tracksRes = await fetch(
+        `${API}/albums/${albumId}/relationships/items?countryCode=${countryCode}`,
+        { headers }
+      );
+      if (!tracksRes.ok) return [];
+      const tracksJson = await tracksRes.json();
+      return (tracksJson.data || []).slice(0, TRACKS_PER_ARTIST).map(t => t.id);
     } catch {
       return [];
     }
