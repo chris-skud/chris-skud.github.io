@@ -279,6 +279,17 @@
         border-color: #555;
       }
 
+      .modal-coverage {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        color: #555;
+        margin-bottom: 0.75rem;
+      }
+
+      .modal-coverage.partial {
+        color: #7a6030;
+      }
+
       .modal-actions {
         display: flex;
         justify-content: flex-end;
@@ -363,6 +374,7 @@
       <div class="modal">
         <h3>name your playlist</h3>
         <input type="text" id="playlist-name-input" />
+        <div class="modal-coverage" id="modal-coverage"></div>
         <div class="modal-actions">
           <button class="modal-btn" id="modal-cancel">cancel</button>
           <button class="modal-btn primary" id="modal-confirm">create</button>
@@ -406,20 +418,32 @@
 
       function setPlaylistStatus(msg, isError = false) {
         const el = document.getElementById('playlist-status');
-        if (typeof msg === 'string') {
-          el.textContent = msg;
-        } else {
-          el.innerHTML = msg; // trusted internal HTML only
-        }
+        el.innerHTML = msg; // trusted internal HTML only
         el.className = 'playlist-status' + (isError ? ' error' : '');
       }
 
       let _pendingService = null;
 
+      function countEligibleBands(service, visibleBands) {
+        if (service === 'spotify') {
+          return visibleBands.filter(b => b.spotify_id).length;
+        }
+        return visibleBands.filter(b =>
+          (b.links || []).some(l => /tidal\.com\/(?:browse\/)?artist\/\d+/.test(l))
+        ).length;
+      }
+
       function showPlaylistModal(service) {
         _pendingService = service;
         const input = document.getElementById('playlist-name-input');
         input.value = derivePlaylistName();
+
+        const visible = getVisibleBands();
+        const eligible = countEligibleBands(service, visible);
+        const coverageEl = document.getElementById('modal-coverage');
+        coverageEl.textContent = `${eligible} of ${visible.length} bands have ${service} tracks`;
+        coverageEl.className = 'modal-coverage' + (eligible < visible.length ? ' partial' : '');
+
         document.getElementById('playlist-modal').classList.add('active');
         requestAnimationFrame(() => { input.select(); input.focus(); });
       }
