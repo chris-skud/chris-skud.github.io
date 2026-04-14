@@ -16,7 +16,7 @@ const Tidal = (() => {
   const REDIRECT_URI = 'https://chris-skud.github.io/colorado-bands';
   const TRACKS_PER_ARTIST = 2;
   const MAX_ARTISTS = 20;
-  const API = 'https://api.tidal.com/v1';
+  const API = 'https://openapi.tidal.com/v2';
 
   function generateRandomString(len) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -84,22 +84,46 @@ const Tidal = (() => {
   }
 
   async function fetchTopTracks(token, countryCode, band) {
-    const headers = { Authorization: `Bearer ${token}` };
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/vnd.api+json',
+    };
     try {
-      // Tidal has no tidal_id in band data — always resolve by name
-      const searchRes = await fetch(
-        `${API}/search?query=${encodeURIComponent(band.name)}&types=ARTISTS&limit=1&countryCode=${countryCode}`,
+      // Extract Tidal artist ID from band links (e.g. https://tidal.com/browse/artist/6478090)
+      let artistId = null;
+      for (const link of (band.links || [])) {
+        const m = link.match(/tidal\.com\/(?:browse\/)?artist\/(\d+)/);
+        if (m) { artistId = m[1]; break; }
+      }
+
+      // Fall back to searching by name
+      if (!artistId) {
+        const res = await fetch(
+          `${API}/searchresults/${encodeURIComponent(band.name)}?countryCode=${countryCode}&include=artists`,
+          { headers }
+        );
+        if (!res.ok) return [];
+        const json = await res.json();
+        artistId = json.data?.relationships?.artists?.data?.[0]?.id;
+        if (!artistId) return [];
+      }
+
+      // Get artist albums, then pull tracks from the first one
+      const albumsRes = await fetch(
+        `${API}/artists/${artistId}/relationships/albums?countryCode=${countryCode}`,
         { headers }
       );
-      const artistId = (await searchRes.json()).artists?.items?.[0]?.id;
-      if (!artistId) return [];
+      if (!albumsRes.ok) return [];
+      const albumId = (await albumsRes.json()).data?.[0]?.id;
+      if (!albumId) return [];
 
       const tracksRes = await fetch(
-        `${API}/artists/${artistId}/toptracks?limit=${TRACKS_PER_ARTIST}&countryCode=${countryCode}`,
+        `${API}/albums/${albumId}/relationships/items?countryCode=${countryCode}`,
         { headers }
       );
-      const items = (await tracksRes.json()).items || [];
-      return items.slice(0, TRACKS_PER_ARTIST).map(t => t.id);
+      if (!tracksRes.ok) return [];
+      const tracksJson = await tracksRes.json();
+      return (tracksJson.data || []).slice(0, TRACKS_PER_ARTIST).map(t => t.id);
     } catch {
       return [];
     }
@@ -109,7 +133,11 @@ const Tidal = (() => {
   // Returns { url, skipped } on success; throws on failure.
   async function createPlaylistFromSearch({ code, bands, playlistName, onProgress }) {
     const { token, countryCode } = await exchangeCode(code);
-    const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+    const jsonApiHeaders = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/vnd.api+json',
+      Accept: 'application/vnd.api+json',
+    };
     const total = bands.length;
     const allTrackIds = [];
     let skipped = 0;
@@ -126,29 +154,33 @@ const Tidal = (() => {
 
     if (allTrackIds.length === 0) throw new Error('no tracks found');
 
-    const playlist = await fetch(`${API.replace('/v1', '/v2')}/playlists`, {
+    const playlistRes = await fetch(`${API}/playlists`, {
       method: 'POST',
-      headers,
-      body: JSON.stringify({ name: playlistName, description: 'Colorado bands sampler' }),
-    }).then(r => r.json());
-
-    const uuid = playlist.data?.id || playlist.uuid || playlist.id;
+      headers: jsonApiHeaders,
+      body: JSON.stringify({
+        data: {
+          type: 'playlists',
+          attributes: { name: playlistName, description: 'Colorado bands sampler' },
+        },
+      }),
+    });
+    if (!playlistRes.ok) throw new Error('playlist creation failed');
+    const playlistJson = await playlistRes.json();
+    const uuid = playlistJson.data?.id;
     if (!uuid) throw new Error('playlist creation failed');
 
-    // Tidal takes track IDs as a comma-separated string, max 100 per request
+    // Add tracks in batches (JSON:API relationship format)
     for (let i = 0; i < allTrackIds.length; i += 100) {
-      await fetch(`${API}/playlists/${uuid}/items`, {
+      await fetch(`${API}/playlists/${uuid}/relationships/items`, {
         method: 'POST',
-        headers,
+        headers: jsonApiHeaders,
         body: JSON.stringify({
-          trackIds: allTrackIds.slice(i, i + 100).join(','),
-          onArtifactNotFound: 'SKIP',
-          onDupes: 'ADD',
+          data: allTrackIds.slice(i, i + 100).map(id => ({ id: String(id), type: 'tracks' })),
         }),
       });
     }
 
-    return { url: `https://listen.tidal.com/playlist/${uuid}`, skipped };
+    return { url: `https://tidal.com/browse/playlist/${uuid}`, skipped };
   }
 
   return {
