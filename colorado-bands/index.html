@@ -201,9 +201,19 @@
         transition: border-color 0.2s ease, color 0.2s ease;
       }
 
-      .playlist-btn:hover:not(:disabled) {
+      #playlist-btn-spotify:hover:not(:disabled) {
         border-color: #1DB954;
         color: #1DB954;
+      }
+
+      #playlist-btn-tidal:hover:not(:disabled) {
+        border-color: #3892DB;
+        color: #3892DB;
+      }
+
+      #playlist-btn-apple-music:hover:not(:disabled) {
+        border-color: #fc3c44;
+        color: #fc3c44;
       }
 
       .playlist-btn:disabled {
@@ -363,6 +373,9 @@
           <button class="playlist-btn" id="playlist-btn-tidal">
             <i class="fa fa-music"></i> tidal
           </button>
+          <button class="playlist-btn" id="playlist-btn-apple-music">
+            <i class="fa fa-apple"></i> apple music
+          </button>
         </div>
         <div class="playlist-status" id="playlist-status"></div>
       </div>
@@ -382,9 +395,11 @@
       </div>
     </div>
 
-    <script src="data.js?v1775615768"></script>
-    <script src="spotify.js?v1775615768"></script>
-    <script src="tidal.js?v1775615768"></script>
+    <script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"></script>
+    <script src="data.js?v1776135859"></script>
+    <script src="spotify.js?v1776135859"></script>
+    <script src="tidal.js?v1776135859"></script>
+    <script src="apple-music.js?v1776135859"></script>
     <script>
       const nameInput = document.getElementById("nameFilter");
       const genreInput = document.getElementById("genreFilter");
@@ -428,8 +443,17 @@
         if (service === 'spotify') {
           return visibleBands.filter(b => b.spotify_id).length;
         }
+        if (service === 'tidal') {
+          return visibleBands.filter(b =>
+            (b.links || []).some(l => /tidal\.com\/(?:browse\/)?artist\/\d+/.test(l))
+          ).length;
+        }
+        // apple-music: look for music.apple.com or itunes.apple.com artist links
         return visibleBands.filter(b =>
-          (b.links || []).some(l => /tidal\.com\/(?:browse\/)?artist\/\d+/.test(l))
+          (b.links || []).some(l =>
+            /music\.apple\.com\/[^/]+\/artist\/\d+/.test(l) ||
+            /itunes\.apple\.com\/[^/]+\/artist\/(?:[^/]+\/)?id\d+/.test(l)
+          )
         ).length;
       }
 
@@ -454,6 +478,31 @@
       }
 
       async function startPlaylistAuth(service, playlistName) {
+        // Apple Music uses popup auth — no redirect needed; run inline.
+        if (service === 'apple-music') {
+          if (!AppleMusic.isConfigured()) {
+            setPlaylistStatus('apple music developer token not configured', true);
+            return;
+          }
+          const btn = document.getElementById('playlist-btn-apple-music');
+          btn.disabled = true;
+          const visibleBands = getVisibleBands();
+          setPlaylistStatus(`fetching tracks... (0/${visibleBands.length})`);
+          try {
+            const { url, skipped } = await AppleMusic.createPlaylistFromBands({
+              bands: visibleBands,
+              playlistName,
+              onProgress: msg => setPlaylistStatus(msg),
+            });
+            const skipNote = skipped > 0 ? ` (${skipped} not on apple music)` : '';
+            setPlaylistStatus(`playlist created${skipNote} · <a href="${url}" target="_blank" rel="noopener">open in apple music →</a>`);
+          } catch (err) {
+            setPlaylistStatus('error: ' + (err.message || 'something went wrong'), true);
+            btn.disabled = false;
+          }
+          return;
+        }
+
         const adapter = service === 'tidal' ? Tidal : Spotify;
         if (!adapter.isConfigured()) {
           setPlaylistStatus(`${service} client id not configured`, true);
@@ -515,6 +564,7 @@
           setPlaylistStatus('');
           document.getElementById('playlist-btn-spotify').disabled = false;
           document.getElementById('playlist-btn-tidal').disabled = false;
+          document.getElementById('playlist-btn-apple-music').disabled = false;
         }
       }
 
@@ -744,6 +794,7 @@
       // Playlist button clicks — open modal
       document.getElementById('playlist-btn-spotify').addEventListener('click', () => showPlaylistModal('spotify'));
       document.getElementById('playlist-btn-tidal').addEventListener('click', () => showPlaylistModal('tidal'));
+      document.getElementById('playlist-btn-apple-music').addEventListener('click', () => showPlaylistModal('apple-music'));
 
       // Modal controls
       document.getElementById('modal-cancel').addEventListener('click', hidePlaylistModal);
