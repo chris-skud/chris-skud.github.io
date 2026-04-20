@@ -396,7 +396,7 @@
     </div>
 
     <script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"></script>
-    <script src="data.js?v1776135859"></script>
+    <script src="data.js?v1776653536"></script>
     <script src="spotify.js?v1776135859"></script>
     <script src="tidal.js?v1776135859"></script>
     <script src="apple-music.js?v1776135859"></script>
@@ -596,61 +596,48 @@
 
       function getIconClassFromUrl(url) {
         const rootDomain = getRootDomain(url);
-
-        // let iconClass = 'fa fa-globe';
-        let iconClass = "fa fa-globe";
-        switch (rootDomain) {
-          case "tiktok.com":
-            iconClass = "fab fa-tiktok";
-            break;
-          case "youtube.com" || "youtu.be":
-            iconClass = "fa fa-youtube";
-            break;
-          case "facebook.com":
-            iconClass = "fa fa-facebook-f";
-            break;
-          case "instagram.com":
-            iconClass = "fa fa-instagram";
-            break;
-          case "spotify.com":
-            iconClass = "fa fa-spotify";
-            break;
-          case "bandcamp.com":
-            iconClass = "fa fa-bandcamp";
-            break;
-          case "apple.com":
-            iconClass = "fa fa-apple";
-            break;
-          case "amazon.com":
-            iconClass = "fa fa-amazon";
-            break;
-          case "soundcloud.com":
-            iconClass = "fab fa-soundcloud";
-            break;
-          case "last.fm":
-            iconClass = "fa fa-lastfm";
-            break;
-          case "wikidata.org" || "wikipedia.org" || "wikipedia.com":
-            iconClass = "fa fa-wikipedia-w";
-            break;
-          case "twitter.com" || "x.com":
-            iconClass = "fa fa-x";
-            break;
-          case "threads.com":
-            iconClass = "fab fa-threads";
-            break;
-          case "tumblr.com":
-            iconClass = "fa fa-tumblr";
-            break;
-          case "imdb.com":
-            iconClass = "fa fa-imdb";
-            break;
-          case "loc.gov":
-            iconClass = "fa fa-landmark-dome";
-            break;
-        }
-
-        return iconClass;
+        const map = {
+          "tiktok.com": "fab fa-tiktok",
+          "youtube.com": "fa fa-youtube",
+          "youtu.be": "fa fa-youtube",
+          "facebook.com": "fa fa-facebook-f",
+          "instagram.com": "fa fa-instagram",
+          "spotify.com": "fa fa-spotify",
+          "bandcamp.com": "fa fa-bandcamp",
+          "apple.com": "fa fa-apple",
+          "amazon.com": "fa fa-amazon",
+          "soundcloud.com": "fab fa-soundcloud",
+          "last.fm": "fa fa-lastfm",
+          "wikidata.org": "fa fa-wikipedia-w",
+          "wikipedia.org": "fa fa-wikipedia-w",
+          "wikipedia.com": "fa fa-wikipedia-w",
+          "twitter.com": "fa fa-x",
+          "x.com": "fa fa-x",
+          "threads.com": "fab fa-threads",
+          "tumblr.com": "fa fa-tumblr",
+          "imdb.com": "fa fa-imdb",
+          "loc.gov": "fa fa-landmark-dome",
+          "tidal.com": "fa fa-music",
+          "deezer.com": "fa fa-music",
+          "discogs.com": "fa fa-record-vinyl",
+          "rateyourmusic.com": "fa fa-star",
+          "allmusic.com": "fa fa-star",
+          "metal-archives.com": "fa fa-guitar",
+          "songkick.com": "fa fa-calendar-days",
+          "bandsintown.com": "fa fa-calendar-days",
+          "setlist.fm": "fa fa-list",
+          "twitch.tv": "fab fa-twitch",
+          "reverbnation.com": "fa fa-music",
+          "linktr.ee": "fa fa-link",
+          "beatport.com": "fa fa-music",
+          "genius.com": "fa fa-lightbulb",
+          "napster.com": "fa fa-music",
+          "qobuz.com": "fa fa-music",
+          "patreon.com": "fab fa-patreon",
+          "linkedin.com": "fab fa-linkedin",
+          "vimeo.com": "fab fa-vimeo-v",
+        };
+        return map[rootDomain] || "fa fa-globe";
       }
 
       function slugify(name) {
