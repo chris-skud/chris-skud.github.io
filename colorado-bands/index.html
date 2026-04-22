@@ -139,6 +139,18 @@
         color: #d0d0d0;
       }
 
+      .si-icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.125em;
+        filter: invert(54%);
+        transition: filter 0.2s ease;
+      }
+
+      .social-links a:hover .si-icon {
+        filter: invert(82%);
+      }
+
       .count {
         color: #666;
         font-size: 0.75rem;
@@ -617,21 +629,21 @@
           "tumblr.com": "fa fa-tumblr",
           "imdb.com": "fa fa-imdb",
           "loc.gov": "fa fa-landmark-dome",
-          "tidal.com": "fa fa-music",
-          "deezer.com": "fa fa-music",
+          "tidal.com": "si:tidal",
+          "deezer.com": "si:deezer",
           "discogs.com": "fa fa-record-vinyl",
           "rateyourmusic.com": "fa fa-star",
           "allmusic.com": "fa fa-star",
           "metal-archives.com": "fa fa-guitar",
-          "songkick.com": "fa fa-calendar-days",
-          "bandsintown.com": "fa fa-calendar-days",
+          "songkick.com": "si:songkick",
+          "bandsintown.com": "si:bandsintown",
           "setlist.fm": "fa fa-list",
           "twitch.tv": "fab fa-twitch",
-          "reverbnation.com": "fa fa-music",
+          "reverbnation.com": "si:reverbnation",
           "linktr.ee": "fa fa-link",
-          "beatport.com": "fa fa-music",
+          "beatport.com": "si:beatport",
           "genius.com": "fa fa-lightbulb",
-          "napster.com": "fa fa-music",
+          "napster.com": "si:napster",
           "qobuz.com": "fa fa-music",
           "patreon.com": "fab fa-patreon",
           "linkedin.com": "fab fa-linkedin",
@@ -691,9 +703,16 @@
               link.href = href;
               link.target = "_blank";
               link.title = href;
-              const icon = document.createElement("i");
               const className = getIconClassFromUrl(href);
-              icon.className = className;
+              let icon;
+              if (className.startsWith("si:")) {
+                icon = document.createElement("img");
+                icon.src = `https://cdn.simpleicons.org/${className.slice(3)}/000000`;
+                icon.className = "si-icon";
+              } else {
+                icon = document.createElement("i");
+                icon.className = className;
+              }
               link.appendChild(icon);
               socialLinks.appendChild(link);
             } catch (err) {
