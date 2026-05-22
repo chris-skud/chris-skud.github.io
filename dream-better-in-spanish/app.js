@@ -20,7 +20,7 @@ async function main() {
     return;
   }
 
-  const response = await fetch(`/data/episodes/${encodeURIComponent(episodeId)}.json`, { cache: "no-store" });
+  const response = await fetch(`/dream-better-in-spanish/data/episodes/${encodeURIComponent(episodeId)}.json`, { cache: "no-store" });
   if (!response.ok) {
     titleEl.textContent = `Failed to load transcript (${response.status})`;
     return;
