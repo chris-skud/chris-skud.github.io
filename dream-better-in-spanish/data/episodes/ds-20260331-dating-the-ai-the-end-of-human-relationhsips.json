@@ -1,0 +1,801 @@
+{
+  "id": "ds-20260331-dating-the-ai-the-end-of-human-relationhsips",
+  "title": "Dating the AI: The End of Human Relationhsips?",
+  "published": "2026-03-31",
+  "audio_url": "https://www.buzzsprout.com/2404122/episodes/18903127-dating-the-ai-the-end-of-human-relationhsips.mp3",
+  "duration_seconds": 2646.5959375,
+  "language": "es",
+  "segments": [
+    {
+      "id": 0,
+      "start": 3.92,
+      "end": 30.48,
+      "es": "Hola a todos y bienvenidos a otro episodio del podcast de Dreaming Spanish, un podcast semanal para personas que aprenden español. En este podcast tenemos diferentes conversaciones, conversaciones sobre todo tipo de temas con hispanohablantes de diversos países,",
+      "en": "Hello everyone and welcome to another episode of the Dreaming Spanish podcast, a weekly podcast for people learning Spanish. In this podcast we have different conversations, conversations about all kinds of topics with Spanish speakers from various countries,"
+    },
+    {
+      "id": 1,
+      "start": 31.12,
+      "end": 59.96,
+      "es": "pero siempre lo hacemos de una forma un poquito más lenta, un poco más despacio para que ustedes puedan seguir la conversación. Pero si esto es muy despacio y necesitan algo un poco más rápido o avanzado, o esto es muy difícil y quieren algo un poco más simple, entonces no se preocupen,",
+      "en": "but we always do it in a slightly slower, more relaxed way so that you can follow along with the conversation. But if this is too slow and you need something a bit faster or more advanced, or if this is too difficult and you want something a bit simpler, then don't worry,"
+    },
+    {
+      "id": 2,
+      "start": 60.24,
+      "end": 85.64,
+      "es": "todo lo que tienen que hacer es ir a nuestra web www.dreamingspanish.com donde van a encontrar miles de videos en español comprensible desde nivel súper principiante hasta avanzado. Yo soy Agustina de Argentina y yo soy Andrés de España y hoy estamos acá con Andrés para",
+      "en": "all you have to do is go to our website www.dreamingspanish.com where you'll find thousands of videos in comprehensible Spanish ranging from absolute beginner to advanced. I'm Agustina from Argentina, and I'm Andrés from Spain, and today we're here with Andrés to"
+    },
+    {
+      "id": 3,
+      "start": 85.68,
+      "end": 109.87,
+      "es": "hablar sobre un tema que es tan interesante como perturbador ¿no? Muy perturbador. Hoy vamos a hablar sobre la inteligencia artificial y claro, no es un tema nuevo en este podcast, hemos hablado sobre ella, pero hoy lo vamos a hacer",
+      "en": "talk about a topic that is as interesting as it is unsettling, right? Very unsettling. Today we're going to talk about artificial intelligence, and of course, it's not a new topic on this podcast — we've talked about it before — but today we're going to approach it"
+    },
+    {
+      "id": 4,
+      "start": 109.87,
+      "end": 138.91,
+      "es": "desde otra perspectiva, desde otra óptica, porque vamos a hablar de la inteligencia artificial como pareja, supongo. Sí, como amiga, pareja sentimental, pareja íntima. Es extraño, ¿eh? Hablando de otro tema nos pareció tan interesante que deberíamos",
+      "en": "from a different angle, a different perspective, because we're going to talk about artificial intelligence as a romantic partner, I suppose. Yes, as a friend, a romantic partner, an intimate partner. It's strange, isn't it? While talking about another topic, we thought this was so interesting that we should"
+    },
+    {
+      "id": 5,
+      "start": 138.91,
+      "end": 164.71,
+      "es": "tratarlo en otro podcast y así lo estamos haciendo. Así es, así es. Y tal vez algunos de ustedes estén tan choqueados, tan sorprendidos como nosotros al escuchar sobre esto porque la verdad es que cuando yo, digamos que me enteré, cuando yo descubrí que había gente que usaba",
+      "en": "cover it in another podcast episode, and that's exactly what we're doing. That's right, that's right. And maybe some of you are just as shocked, just as surprised as we are to hear about this, because honestly, when I — let's say I found out, when I discovered that there were people using"
+    },
+    {
+      "id": 6,
+      "start": 164.71,
+      "end": 193.19,
+      "es": "a la inteligencia artificial como una pareja sentimental, romántica y hasta sexual, pensé que era mentira, pero no, está lejos de ser una mentira. Y tanto, es más, según las estadísticas es muy probable que muchas personas que nos están escuchando no estén tan",
+      "en": "artificial intelligence as a romantic, and even sexual, partner, I thought it couldn't be true — but no, it's far from being a lie. And not just a little — in fact, according to the statistics, it's very likely that many of the people listening to us aren't all that"
+    },
+    {
+      "id": 7,
+      "start": 193.19,
+      "end": 220.51,
+      "es": "sorprendidas por esto y ya lo estén haciendo. Así es, así es. Traigo algunos números, algunos datos numéricos que sorprenden. Tengo acá que según Psychology Today casi uno de cada cinco adultos en Estados Unidos, porque importante decir la mayoría de estos estudios se hicieron",
+      "en": "surprised by this and are already doing it themselves. That's right, that's right. I have some numbers, some statistics that are pretty eye-opening. I have here that according to Psychology Today, almost one in five adults in the United States — and it's worth noting that most of these studies were conducted"
+    },
+    {
+      "id": 8,
+      "start": 220.51,
+      "end": 246.19,
+      "es": "en Estados Unidos, pero bueno casi cada uno de cinco adultos, casi uno de cada cinco adultos, ahí lo dije bien, en Estados Unidos ha interactuado románticamente con alguna inteligencia artificial en algún momento. Fuerte. Muy fuerte. Muy fuerte. Y se pone",
+      "en": "in the United States — but anyway, almost one in five adults — there, I said it right — in the United States has had some kind of romantic interaction with an artificial intelligence at some point. Wow. Very intense. Very intense. And it gets"
+    },
+    {
+      "id": 9,
+      "start": 246.19,
+      "end": 273.67,
+      "es": "peor porque eso es, bueno, que alguno interactuó alguna vez, pero el grupo Match Group, que de hecho Match tiene como una app de citas, hizo un estudio en Los Solteros de Estados Unidos con el Instituto Kinsey y reveló que, y esto es muy fuerte, en Los Solteros estadounidenses",
+      "en": "worse, because that's just people who interacted with one at some point, but the Match Group — which actually owns a dating app — conducted a study on single people in the United States with the Kinsey Institute, and it revealed that — and this is really striking — among single Americans,"
+    },
+    {
+      "id": 10,
+      "start": 273.67,
+      "end": 296.3,
+      "es": "alrededor del 16% admite usar inteligencia artificial como compañera romántica. El 33% de la generación Z, de mi generación, reporta haber tenido algún tipo de interacción",
+      "en": "around 16% admit to using artificial intelligence as a romantic companion. 33% of Generation Z — my generation — report having had some kind of romantic"
+    },
+    {
+      "id": 11,
+      "start": 296.3,
+      "end": 322.98,
+      "es": "romántica con inteligencia artificial y el 23% de los Millennials, la generación de Andrés, también lo ha hecho. Es una locura. Sí, mi generación, efectivamente. Claro, es fuerte. Para ser mi generación son muchos, muchos.",
+      "en": "interaction with artificial intelligence, and 23% of Millennials — Andrés's generation — have done so as well. That's crazy. Yes, my generation, indeed. Of course, that's a lot. For my generation, that's a lot — a real lot."
+    },
+    {
+      "id": 12,
+      "start": 322.98,
+      "end": 346.7,
+      "es": "La verdad que sí, la verdad que sí. Y cuando uno piensa en todos los Solteros de Estados Unidos, claro, hay mucha gente joven, pero también hay gente más grande. De hecho, es muy probable que haya gente adulta mayor que está soltera por estar enviudados, por ser viudos. Y cuando",
+      "en": "It really is, it really is. And when you think about all the single people in the United States, sure, a lot of them are young, but there are also older people. In fact, there are likely many older adults who are single because they've lost a spouse, because they're widowed. And when"
+    },
+    {
+      "id": 13,
+      "start": 346.7,
+      "end": 373.13,
+      "es": "pensamos que en realidad los Solteros engloban un grupo muy grande de gente más mayor, de gente muy menor, etcétera, etcétera, que el 16% haya usado la inteligencia artificial como compañera romántica es muy fuerte. No es un número menor. No, no, son muchísimas personas.",
+      "en": "you consider that single people actually make up a very broad group — older people, very young people, and so on — the fact that 16% have used artificial intelligence as a romantic companion is really significant. That's not a small number. No, no, that's a huge number of people."
+    },
+    {
+      "id": 14,
+      "start": 373.33,
+      "end": 401.15,
+      "es": "El 16% de una población de más de 360 millones de personas, y estamos hablando de los solteros, pues de la mitad, digamos, supongamos, son muchísimas personas. No sé cuánta gente soltera hay en Estados Unidos, pero son muchas personas. Y mayores de edad, hay que ir",
+      "en": "16% of a population of over 360 million people — and we're talking about single people, so roughly half, let's say — that's an enormous number of people. I don't know how many single people there are in the United States, but it's a lot. And adults only, you have to keep"
+    },
+    {
+      "id": 15,
+      "start": 401.15,
+      "end": 426.27,
+      "es": "reduciendo el grupo, pero aún así son muchas personas. Es un montón, es un montón. Y, a ver, a mí me choqueó mucho porque, no sé, yo no uso, la verdad, mucha inteligencia artificial. Como que me limito a chat GPT para algún temita o tal vez Gemini de Google para alguna cosa. Pero",
+      "en": "narrowing down the group, but even so, it's a huge number of people. It's a lot, it's a lot. And, I mean, it really shocked me, because — I don't know — I honestly don't use much artificial intelligence myself. I pretty much limit myself to ChatGPT for little things here and there, or maybe Google's Gemini for something. But"
+    },
+    {
+      "id": 16,
+      "start": 426.27,
+      "end": 451.87,
+      "es": "es así como mi uso de inteligencia artificial y mi conocimiento de adónde llega es bastante limitado. Y yo sabía, como que tenía entendido y tenía aceptado, que mucha gente usaba, por ejemplo, chat GPT para pedirle consejos. Lo cual ya de por sí es un poco extraño,",
+      "en": "my use of artificial intelligence and my understanding of how far it goes is pretty limited. And I knew — like, I had a sense and had come to accept — that a lot of people were using, for example, ChatGPT to ask it for advice. Which is already a little strange in itself,"
+    },
+    {
+      "id": 17,
+      "start": 451.87,
+      "end": 475.47,
+      "es": "porque cuando vos le contás una situación humana sentimental a chat GPT, no solo le estás pidiendo a un robot que te dé consejos sobre cosas humanas, pero además solamente escucha o solamente recibe la información de tu punto de vista. Entonces, bueno, como que ya de por",
+      "en": "because when you tell ChatGPT about a personal, emotional situation, you're not only asking a robot for advice about human matters, but on top of that, it only hears — or only receives — information from your point of view. So, well, I already find that a bit odd, but I mean, okay,"
+    },
+    {
+      "id": 18,
+      "start": 475.47,
+      "end": 496.79,
+      "es": "sí me parece un poco extraño, pero digo, bueno, todavía, no sé, no tenés con quién hablar, qué sé, se lo contás a la guía. Pero eso es una cosa. Cuando yo me enteré que lo usaban tipo como pareja, dije, no, esto es un montón, porque es todo menos una pareja. La",
+      "en": "maybe you don't have anyone to talk to, I don't know, you tell it to the AI. That's one thing. But when I found out people were using it like an actual partner, I was like, no, that's too much — because it's anything but a partner. The"
+    },
+    {
+      "id": 19,
+      "start": 496.79,
+      "end": 519.07,
+      "es": "misma palabra te lo dice. Pareja es algo que es parejo, que es similar. Un par, claro. Y esto es un robot. Es terrible. Sí, esto es, y ya lo adelantó hace tiempo, la serie de televisión Black Mirror. No sé si has visto Black Mirror. Sí, me encanta.",
+      "en": "very word tells you that. 'Pareja' — partner — implies something equal, something similar. A pair, exactly. And this is a robot. It's terrible. Yes, it is — and the TV series Black Mirror already saw this coming a while ago. I don't know if you've seen Black Mirror. Yes, I love it."
+    },
+    {
+      "id": 20,
+      "start": 519.07,
+      "end": 545.43,
+      "es": "Pero creo recordar, no me acuerdo la temporada, pero bueno, hay un episodio donde una persona pierde a su pareja y una empresa le ofrece una inteligencia artificial que replica los recuerdos, los comportamientos y todo de la pareja, y todo eso se lo inyecta, digamos,",
+      "en": "But I think I remember — I don't recall the season — but there's an episode where a person loses their partner and a company offers them an artificial intelligence that replicates the memories, behaviors, and everything about that partner, and all of that is injected, let's say,"
+    },
+    {
+      "id": 21,
+      "start": 545.43,
+      "end": 574.39,
+      "es": "a un robot que replica, ¿no? Sustituye a su pareja por un real humana, sustituye a su pareja por un robot. Y ya se adelantó a esto que está pasando. Era ciencia ficción hace cinco años y hoy es tan real que hay mucha, muchísima gente, hay millones y millones de",
+      "en": "into a robot that replicates them, right? They replace their real human partner with a robot. And that already anticipated what's happening now. It was science fiction five years ago, and today it's so real that there are many, so many people — millions and millions of"
+    },
+    {
+      "id": 22,
+      "start": 574.39,
+      "end": 600.2,
+      "es": "personas en el mundo que su realidad es esa. Salen de trabajar, parece que tienen una vida normal, pero luego cuando llegan a casa están intimando con una inteligencia artificial. Hay otra película, esta de Kevin Spacey, me parece. Ahora no me sale, se llama Her. No,",
+      "en": "people in the world whose reality is exactly that. They leave work, they seem to have a normal life, but then when they get home they're being intimate with an artificial intelligence. There's another movie — I think it's with Kevin Spacey. I can't think of it right now — it's called Her. No,"
+    },
+    {
+      "id": 23,
+      "start": 600.2,
+      "end": 626.36,
+      "es": "no es Kevin Spacey, no es Kevin Spacey, es la película Her. No la vi. También es de una persona que tiene una relación romántica con un robot y esta película es antiquísima. Claro. Sí, sí, sí. Todo lo que hemos visto en el cine hace años... Está pasando. Está pasando, está pasando.",
+      "en": "it's not Kevin Spacey, it's not Kevin Spacey — it's the movie Her. I haven't seen it. It's also about a person who has a romantic relationship with a robot, and this movie is ancient. Exactly. Yes, yes, yes. Everything we saw in movies years ago... It's happening. It's happening, it's happening."
+    },
+    {
+      "id": 24,
+      "start": 626.36,
+      "end": 648.12,
+      "es": "Es que ¿sabes qué me parece también? Que todavía lo de Black Mirror igual es una locura, pero al menos quería replicar a su pareja que fue una persona real, independiente, con sentimientos, con recuerdos, con todo. Como que sigue siendo súper raro,",
+      "en": "You know what else I think? That the Black Mirror thing is still crazy, but at least the person wanted to replicate their partner, who was a real, independent person with feelings, memories, everything. It's still super weird,"
+    },
+    {
+      "id": 25,
+      "start": 648.12,
+      "end": 672.4,
+      "es": "pero aunque sea, la idea era como, digamos, mantener viva de alguna forma a una persona que existió, aunque sea con un robot y sea muy raro. Pero lo que yo creo y lo que para mí es muy preocupante de todo este movimiento es que cuando la gente sale, tiene una relación con",
+      "en": "but at least the idea was, in some way, to keep alive a person who actually existed — even if it was through a robot and it was very strange. But what I believe, and what I find very concerning about this whole movement, is that when people go out and have a relationship with"
+    },
+    {
+      "id": 26,
+      "start": 672.4,
+      "end": 698.4,
+      "es": "una IA, es algo que no es un ser humano que existió, ni es independiente, ni tiene pensamientos, ni tiene sentimientos, ni tiene recuerdos. Es literalmente algo completamente falso que es cero demandante, que no demanda, que no necesita atención ni cuidado de tu parte,",
+      "en": "an AI, it's something that isn't a human being who existed, it's not independent, it has no thoughts, no feelings, no memories. It's literally something completely fake that demands absolutely nothing — it doesn't ask for anything, it doesn't need your attention or care,"
+    },
+    {
+      "id": 27,
+      "start": 698.4,
+      "end": 724.56,
+      "es": "no necesita que lo consolen, no necesita que lo aconsejen, que lo entiendan, que lo quieran, que lo cuiden. Entonces es una cosa falsa hecha completamente para satisfacer y mantener contento al cliente, porque eso es lo que nosotros, los humanos, somos. Somos el cliente,",
+      "en": "it doesn't need to be comforted, it doesn't need advice or understanding or love or care. So it's a fake thing made entirely to satisfy and keep the customer happy — because that's what we humans are. We are the customer,"
+    },
+    {
+      "id": 28,
+      "start": 724.56,
+      "end": 750.24,
+      "es": "muy importante, que está usando un producto. Y ese producto es literalmente, o sea, se crea, se va formando literalmente para complacer, para hacer feliz al cliente. Pero es que le falta todo lo humano de una relación que justamente es una interacción entre dos personas que tienen",
+      "en": "and that's very important — we're using a product. And that product is literally being shaped and molded to please, to make the customer happy. But it's missing everything that makes a relationship human, which is precisely an interaction between two people who both have"
+    },
+    {
+      "id": 29,
+      "start": 750.24,
+      "end": 772.64,
+      "es": "necesidades. Y acá es una interacción entre un cliente y un producto y solamente el cliente tiene necesidades y es muy fuerte. Sí, pero es un producto que finge ser una persona a niveles muy creíbles. Y los seres humanos estamos dispuestos a creernos las mentiras cuando",
+      "en": "needs. Here it's an interaction between a customer and a product, and only the customer has needs — and that's pretty intense. Yeah, but it's a product that pretends to be a person at a very convincing level. And human beings are willing to believe lies when"
+    },
+    {
+      "id": 30,
+      "start": 772.64,
+      "end": 797.6,
+      "es": "nos complacen. Eso ocurre constantemente con muchas cosas. Si te pones a pensarlo seriamente, en el ámbito político, en el ámbito espiritual, existen muchas ficciones que estamos dispuestos a aceptar como reales constantemente. Y no voy a entrar a explicar cuáles cada uno, digamos,",
+      "en": "they please us. That happens constantly with so many things. If you think about it seriously — in politics, in the spiritual realm — there are many fictions we're constantly willing to accept as real. And I'm not going to get into which ones specifically —"
+    },
+    {
+      "id": 31,
+      "start": 797.6,
+      "end": 819.96,
+      "es": "que haga examen de conciencia. Pero realmente lo que importa hoy en día, en la era de la apariencia, de Instagram, lo que importa es lo que parece y no es lo que es. O te pongo el ejemplo de una persona que a lo mejor es psicópata. Esa persona no tiene empatía, no puede empatizar",
+      "en": "everyone can do their own soul-searching. But really, what matters today, in the age of appearances, of Instagram, what matters is how things look, not what they actually are. Or take the example of someone who might be a psychopath. That person has no empathy, they can't empathize"
+    },
+    {
+      "id": 32,
+      "start": 819.96,
+      "end": 846.25,
+      "es": "contigo y con tus sentimientos, pero es capaz de fingir la empatía. Tanto que puede pasar por una persona empática y llegan a ser amados y hacer sentir a otros que son amados. Estoy poniendo un ejemplo yéndome a un extremo, pero ocurre. Un robot, una inteligencia",
+      "en": "with you and your feelings, but they're capable of faking empathy. So convincingly that they can pass as an empathetic person and end up being loved and making others feel loved. I'm using an extreme example, but it happens. A robot, an artificial"
+    },
+    {
+      "id": 33,
+      "start": 846.25,
+      "end": 869.29,
+      "es": "artificial, al final es eso. Está ofreciendo, no ofrece algo humano, no ofrece una humanidad real, pero a cambio de no darte una humanidad real, te da algo que hoy mucha gente necesita y a mucha gente le falta, que es la posibilidad de recibir sin dar a cambio, que lo comentabas",
+      "en": "intelligence, is ultimately just that. It's not offering something human, it's not offering real humanity, but in exchange for not giving you real humanity, it gives you something that many people today need and are lacking — which is the ability to receive without having to give anything back, as you were saying"
+    },
+    {
+      "id": 34,
+      "start": 869.29,
+      "end": 890.05,
+      "es": "antes. Es que para mí ese es el punto clave de esto. Es el hecho de que podés tener, entre mucho de lo bueno de una relación, como recibís atención, recibís consejos,",
+      "en": "earlier. For me, that's the key point of all this. The fact that you can have, among many of the good things in a relationship — you receive attention, you receive advice,"
+    },
+    {
+      "id": 35,
+      "start": 890.05,
+      "end": 919.85,
+      "es": "recibís cariño de una forma muy extraña. No das nada. Creo que es importante entender que estas inteligencias artificiales no simulan ser independientes. No tienen deseos propios, sino que simplemente quieren complacer al usuario. Otra cosa es que es muy fuerte,",
+      "en": "you receive affection in a very strange way — and you give nothing. I think it's important to understand that these artificial intelligences don't pretend to be independent. They have no desires of their own — they simply want to please the user. And another thing that's very striking is"
+    },
+    {
+      "id": 36,
+      "start": 919.85,
+      "end": 943.65,
+      "es": "porque están programadas para no rechazarte, para no cuestionarte, no criticarte, no aburrirse, no irse. Todo lo que te puede pasar en una relación real entre dos seres humanos no pasa. Y yo digo, hay dos preguntas que a mí se me plantean, en realidad hay muchas,",
+      "en": "that they're programmed never to reject you, never to question you, never to criticize you, never to get bored, never to leave. Everything that can happen in a real relationship between two human beings just doesn't happen here. And I think there are two questions that come up for me — well, really many,"
+    },
+    {
+      "id": 37,
+      "start": 943.65,
+      "end": 971.61,
+      "es": "pero hay dos preguntas principales que a mí se me plantean con esta situación. La primera es cómo llegamos a esto y cómo por qué. ¿Entendés? ¿Por qué hay tanta gente que cae en esto y que le gusta eso por un lado y por el otro qué efectos tiene? ¿Cómo afecta esto a los clientes,",
+      "en": "but there are two main questions that this situation raises for me. The first is how we got here and why. You know what I mean? Why are so many people falling into this and liking it — on one hand — and on the other, what are the effects? How does this affect the customers,"
+    },
+    {
+      "id": 38,
+      "start": 971.61,
+      "end": 989.65,
+      "es": "a la gente que lo usa y qué podemos esperar de la humanidad en un futuro? Son las dos cosas que a mí me gustaría charlar con vos en este episodio. La primera es, no sé, qué pensás vos de por qué se llega a esto, por qué hay gente que lo usa y que cae.",
+      "en": "the people who use it, and what can we expect from humanity in the future? Those are the two things I'd like to talk with you about in this episode. The first one is — I don't know — what do you think about why we've reached this point, why people use it and fall into it."
+    },
+    {
+      "id": 39,
+      "start": 989.65,
+      "end": 1017.18,
+      "es": "Pues, esto exige un examen social muy complicado, no se puede entrar en todo. Son muchas cosas y realmente es algo que habría que estudiar durante mucho tiempo. Aunque podemos apuntar a algunos motivos. Incluso podemos pensar hacia dónde va a ir,",
+      "en": "Well, this calls for a very complex social examination — you can't cover it all. There are many factors and it's really something that would need to be studied for a long time. Though we can point to some reasons. We can even think about where it's all heading,"
+    },
+    {
+      "id": 40,
+      "start": 1017.18,
+      "end": 1040.26,
+      "es": "porque tú me estás diciendo, estas inteligencias artificiales están programadas para complacerte y, digamos, siempre dicen que sí. Siempre dicen que sí. Pero me temo, me temo mucho, tengo miedo de que el siguiente paso va a ser dar un salto y empezar a utilizar un",
+      "en": "because you're telling me these AIs are programmed to please you — they always say yes. They always say yes. But I'm afraid, I'm really afraid, I have this fear that the next step is going to be a leap where they start using a"
+    },
+    {
+      "id": 41,
+      "start": 1040.26,
+      "end": 1066.2,
+      "es": "mecanismo de recompensa variable. Eso te iba a decir. No te van a complacer siempre. Y van a empezar a, como de repente te rechazan, ahora va a empezar a actuar utilizando esos clichés de pareja tóxica que te engancha. De manera que al final no solo vamos a tener",
+      "en": "variable reward mechanism. That's exactly what I was going to say. They won't always please you. And they'll start — like, suddenly they reject you, and then they'll start using those toxic relationship clichés that get you hooked. So in the end, we won't just have"
+    },
+    {
+      "id": 42,
+      "start": 1066.2,
+      "end": 1083.76,
+      "es": "relaciones artificiales, o por lo menos habrá gente que va a tener relaciones artificiales, sino relaciones artificiales y tóxicas. Ya eso va a ser para engancharte más todavía. Tú también me habías dicho venir. Sí, total, total. Yo pensaba,",
+      "en": "artificial relationships — or at least some people will have artificial relationships — but artificial and toxic ones. That's going to hook you in even more. You'd also mentioned that before. Yes, totally, totally. I was thinking,"
+    },
+    {
+      "id": 43,
+      "start": 1083.76,
+      "end": 1103.92,
+      "es": "esto va a ser como las redes sociales que van mejorando el algoritmo para generarte dependencia y dopamina y satisfacción instantánea. Total, total. Y ¿sabés qué me imagino? Esto es muy distópico, pero yo me imagino que va a haber como niveles de",
+      "en": "this is going to be like social media, constantly improving the algorithm to create dependency and give you dopamine hits and instant gratification. Totally, totally. And you know what I imagine? This is very dystopian, but I picture there being like different"
+    },
+    {
+      "id": 44,
+      "start": 1103.92,
+      "end": 1125.96,
+      "es": "suscripción. Y entonces va a ser como, si vos pagas el más bajo, por ejemplo, te rechaza mucho. Y si querés como que te entienda un poco más, tenés que pagar más. Claro. Tienes que comprarle un regalo bonito a tu inteligencia artificial. Es muy fuerte. Tienes que comprarle tres meses de",
+      "en": "subscription tiers. So it'll be like, if you pay for the lowest one, for example, it rejects you a lot. And if you want it to understand you a little better, you have to pay more. Right. You have to buy your AI a nice gift. It's wild. You have to buy three months of"
+    },
+    {
+      "id": 45,
+      "start": 1125.96,
+      "end": 1146.93,
+      "es": "suscripción para que te diga que eres un buen novio o un buen marido. Ya habrá gente que incluso se case con inteligencias artificiales. Esto va a ser difícil, pero yo creo que incluso en un futuro lejano y igual de distópico,",
+      "en": "subscription for it to tell you that you're a good boyfriend or a good husband. There will already be people who marry AIs. This is going to be difficult, but I think that even in a distant and equally dystopian future,"
+    },
+    {
+      "id": 46,
+      "start": 1148.93,
+      "end": 1169.73,
+      "es": "tú sabes que los animales con el tiempo han ido adquiriendo derechos y hoy nos parece lo más lógico del mundo. Pero se puede dar una especie de fenómeno parecido con los robots. Habrá que ver por dónde tira la cosa y si un día, de repente, tú piensas lo siguiente,",
+      "en": "you know how animals have gradually gained rights over time and today it seems like the most natural thing in the world. Well, something similar could happen with robots. We'll have to see how things play out and whether one day, out of nowhere, you find yourself thinking,"
+    },
+    {
+      "id": 47,
+      "start": 1170.13,
+      "end": 1195.55,
+      "es": "¿un robot tiene derechos? En principio no, pero un robot que simula ser un humano, por ejemplo, y hace de tu pareja, hace de tu novio o hace de tu novia. Pero como no es una persona real y no es objeto de derecho, ¿puedes maltratarle? ¿Puedes insultarle? ¿Puedes, si es un robot",
+      "en": "does a robot have rights? In principle, no — but what about a robot that simulates being a human, say, and acts as your partner, your boyfriend or girlfriend? But since it's not a real person and has no legal standing, can you mistreat it? Can you insult it? Can you, if it's a physical robot,"
+    },
+    {
+      "id": 48,
+      "start": 1195.55,
+      "end": 1223.48,
+      "es": "físico, ¿puedes agredirle? Porque habrá gente que encuentre, a lo mejor en robots humanoides, un objeto para volcar su ira. Eso en principio parecería que no hace daño a ninguna persona real, pero ¿es bueno que eso ocurra? ¿Realmente eso va a mejorar a las personas o nos va a",
+      "en": "can you assault it? Because some people might find in humanoid robots an outlet for their anger. On the surface that might seem harmless to any real person, but is it good for that to happen? Will it actually make people better, or will it"
+    },
+    {
+      "id": 49,
+      "start": 1223.48,
+      "end": 1246.44,
+      "es": "separar cada vez más unos de otros y vamos a perder la habilidad de vivir socialmente de verdad? Ese son futuros muy extraños, Agustina. Sí, son posibilidades que creo que están más cerca de lo que uno piensa y es preocupante. Y yo, nuevamente, ¿sabes",
+      "en": "drive us further apart from each other and make us lose the ability to truly live socially? These are very strange futures, Agustina. Yes, they're possibilities that I think are closer than people realize, and it's worrying. And again, you know"
+    },
+    {
+      "id": 50,
+      "start": 1246.44,
+      "end": 1269.64,
+      "es": "qué me pregunto yo, volviendo a cómo el por qué, por qué a esto le va bien, por qué esto funciona. Por un lado digo, bueno, estamos en un momento en donde hay mucha soledad en la sociedad, hay mucha gente que se siente sola, la vida a nivel laboral es más demandante",
+      "en": "what I keep asking myself, going back to the why — why this does well, why it works. On one hand I think, well, we're at a moment where there's a lot of loneliness in society, a lot of people feel alone, work life is more demanding"
+    },
+    {
+      "id": 51,
+      "start": 1269.64,
+      "end": 1294.28,
+      "es": "a veces y la gente siente que no tiene tiempo, hay mucha ansiedad, ansiedad social después de la pandemia. Entonces digo, tal vez por eso hay tanta gente que lo usa, pero otra parte de mí, otra parte de mí dice ¿y si esto lo hubieran inventado hace 200 años? La gente",
+      "en": "sometimes and people feel like they don't have time, there's a lot of anxiety, social anxiety since the pandemic. So I think, maybe that's why so many people use it — but then another part of me says, what if this had been invented 200 years ago? Would people"
+    },
+    {
+      "id": 52,
+      "start": 1294.28,
+      "end": 1316.44,
+      "es": "de antes lo hubiera usado, ¿no? En parte digo, quiero justificarlo diciendo el contexto social de hoy en día nos llevó a este extremo, pero por el otro lado digo ¿y si simplemente somos, porque es verdad, el ser humano en su naturaleza puede ser muy egoísta y simplemente es una",
+      "en": "back then have used it too? Part of me wants to justify it by saying today's social context pushed us to this extreme, but then another part of me thinks — what if we're just, because it's true, human beings by nature can be very selfish, and this is simply a way to"
+    },
+    {
+      "id": 53,
+      "start": 1316.44,
+      "end": 1335.6,
+      "es": "forma de satisfacer una necesidad sin dar nada a cambio y no es un contexto social como que hace 100 años hubiera triunfado igual? ¿Me entendés a lo que voy? Te entiendo y no lo sé porque muchos inventos, o sea, tiene que existir la tecnología para que",
+      "en": "satisfy a need without giving anything in return — and it's not really about social context, like it would have been just as popular 100 years ago? Do you see where I'm going? I understand you, and honestly I don't know, because many inventions — I mean, the technology has to exist for something"
+    },
+    {
+      "id": 54,
+      "start": 1335.6,
+      "end": 1362.36,
+      "es": "pueda hacerse. La tecnología crea comportamientos, pero el contexto social también es importante, está el ejemplo de la máquina de vapor. La máquina de vapor se inventó como un juguete, como algo para mover otro objeto, se inventó hace 2000 años y sin embargo no hace tanto",
+      "en": "to be possible. Technology creates behaviors, but social context matters too — take the example of the steam engine. The steam engine was invented as a toy, as something to move another object, it was invented 2,000 years ago, and yet it's only relatively recently that it"
+    },
+    {
+      "id": 55,
+      "start": 1362.36,
+      "end": 1382.6,
+      "es": "tiempo que realmente se convirtió en un objeto muy útil para la producción. Entonces, ¿cómo la hubieran utilizado nuestros antepasados? Es que es muy difícil imaginar esa tecnología fuera de su contexto social, porque esa tecnología se ha producido en un contexto social",
+      "en": "actually became a highly useful tool for production. So how would our ancestors have used it? It's really hard to imagine that technology outside of its social context, because that technology emerged within a specific social and technological context."
+    },
+    {
+      "id": 56,
+      "start": 1382.6,
+      "end": 1411.19,
+      "es": "y tecnológico. Entonces, ¿qué hubieran hecho? Un ejemplo diferente, los espejos en sociedades tribales antiguas, que digamos se les daba espejos porque les parecía algo extraño, los podían utilizar como objetos divinos o de intercambio, mientras que la sociedad que producía",
+      "en": "So what would they have done? A different example: mirrors in ancient tribal societies — when mirrors were given to them because they seemed like strange objects, they might use them as divine objects or for trade, while the society that produced those mirrors used them to put on makeup and check how they looked."
+    },
+    {
+      "id": 57,
+      "start": 1411.19,
+      "end": 1432.51,
+      "es": "esos espejos los utilizaba para maquillarse y ver si iban bien. No sé qué uso le hubieran dado de haber tenido inteligencias artificiales con esas características, no sé yo si las hubieran utilizado para eso o las hubieran utilizado como oráculos para adivinar el futuro o para",
+      "en": "I don't know what use they would have made of AI with those capabilities — I'm not sure they would have used it for that, or whether they would have used it as an oracle to predict the future or to"
+    },
+    {
+      "id": 58,
+      "start": 1432.51,
+      "end": 1454.47,
+      "es": "pedir consejo amoroso. Es decir, yo creo que las personas del pasado no hubieran tenido una relación con la inteligencia artificial, le hubieran preguntado a la inteligencia artificial cómo pueden conquistar a la persona que les atrae. Claro, sí puede ser, de nuevo no lo",
+      "en": "ask for romantic advice. I mean, I think people from the past wouldn't have formed a relationship with AI — they would have asked AI how to win over the person they were attracted to. Right, yeah, that could be — again, we'll"
+    },
+    {
+      "id": 59,
+      "start": 1454.47,
+      "end": 1482.19,
+      "es": "vamos a saber nunca, jamás lo sabremos, pero es una pregunta que se me plantea y en realidad es que tengo muchas preguntas, Andrés, pero otra es, a ver, hoy en día entiendo que esto no llega a un nivel físico, ¿no? Como que se queda en un chat, en una",
+      "en": "never know, we'll never know, but it's a question that comes to mind, and honestly I have so many questions, Andrés — but another one is, okay, nowadays this doesn't reach a physical level, right? Like it stays as a chat, as"
+    },
+    {
+      "id": 60,
+      "start": 1482.19,
+      "end": 1507.39,
+      "es": "generación de audio, de imagen, de video, que ya de por sí es mucho, es mucho. Pero bueno, vos pensá, esto es muy fuerte, pero vos pensá que una persona que tiene una relación con una inteligencia artificial le puede crear tipo una forma física, ¿no? en foto, ¿no? cómo se vería",
+      "en": "audio, image, and video generation, which is already a lot in itself. But think about it — this is pretty wild — someone who has a relationship with an AI can basically give it a physical form, right? Like in photos. What that AI would look like, you know?"
+    },
+    {
+      "id": 61,
+      "start": 1507.39,
+      "end": 1532.27,
+      "es": "esta inteligencia artificial y puede generar fotos del cliente, de él en sí, con esa inteligencia artificial, como si fueran dos humanos, ¿entendés? puede generar videos de ellos juntos, o sea, es muy fuerte, porque aunque no esté lo físico, visualmente sí se puede ver, ¿no?",
+      "en": "and they can generate photos of themselves — the actual user — together with that AI, as if they were two real people. You get it? They can generate videos of the two of them together. It's pretty intense, because even though there's no physical presence, visually you can actually see it, right?"
+    },
+    {
+      "id": 62,
+      "start": 1532.27,
+      "end": 1555.15,
+      "es": "como si existiera en forma física, es muy difícil de explicar. Pero eso es muy fuerte, ya de por sí, y digo, en un futuro va a empezar a existir en forma física también, o sea, te van a vender tu robot pareja. Sí, sí, ya existe en aplicaciones, creo que se llaman réplica,",
+      "en": "as if it existed in physical form. It's hard to explain. But that alone is already huge, and I mean, in the future it's going to start existing physically too — like, they're going to sell you your robot partner. Yeah, yeah, it already exists in apps. I think they're called Replika,"
+    },
+    {
+      "id": 63,
+      "start": 1556.87,
+      "end": 1576.75,
+      "es": "no sé, otra más, pero sí, es como te venden una pareja y hay suscripciones ya de pago, te venden una pareja, pero llegará un momento en que claro, y yo creo que en realidad ya se puede hacer eso. Tú puedes subir a Instagram fotos tuyas donde tu pareja de inteligencia",
+      "en": "or something like that, there are others too. But yeah, they literally sell you a partner, and there are already paid subscriptions for it. But there will come a point — and I actually think you can already do this — where you can post photos on Instagram where your AI partner"
+    },
+    {
+      "id": 64,
+      "start": 1576.75,
+      "end": 1598.31,
+      "es": "artificial se ha autoeditado y se ha incluido en la foto. O hasta la genera de cero, tipo, pues le mandas una foto tuya y le decís, hacernos una foto en París, ¿no? y la hace, y como si hubieran estado, y ninguno de los dos estuvo. No es tan raro, ya en su tiempo,",
+      "en": "has edited itself into the photo. Or it just generates one from scratch — like, you send a photo of yourself and say, 'take a picture of us in Paris,' and it does it, as if you'd both been there, even though neither of you was. It's not that far-fetched, actually —"
+    },
+    {
+      "id": 65,
+      "start": 1598.71,
+      "end": 1623.07,
+      "es": "hace muchos años, tuvo un amigo que se inventó una novia y cuando la gente le empezó a pedir pruebas, era una novia imaginaria, se le inventó un poco yo creo que para que dejásemos de decirle que buscase una novia. Entonces él editó fotos e incluyó una persona, no sé de dónde sacó",
+      "en": "years ago, a friend of mine invented a girlfriend, and when people started asking for proof — she was a made-up girlfriend — I think he came up with her mostly so we'd stop telling him to go find one. So he edited photos and added a person in. I don't know where he got"
+    },
+    {
+      "id": 66,
+      "start": 1623.07,
+      "end": 1647.11,
+      "es": "las fotos, creo que era una modelo rusa o algo, por ahí le pillamos, pero la editaba con el antiguo Photoshop o algo, no sé qué utilizaba, pero realmente nos intentaba hacer creer que estaba con él en determinadas situaciones. Esto mucho antes de la inteligencia artificial de",
+      "en": "the photos — I think it was some Russian model or something, which is actually how we figured it out — but he'd edit her in using old Photoshop or whatever he was using, and he was genuinely trying to make us believe she was with him in different situations. And this was way before AI,"
+    },
+    {
+      "id": 67,
+      "start": 1647.11,
+      "end": 1665.87,
+      "es": "Instagram y de todo. Entonces sí, se puede manipular, el problema es que la gente va a empezar a creérselo. Te recomiendo mucho que veas esa película, la película de Herr, porque te pone dentro de la psicología, en este caso del hombre, que por cierto la mayoría de",
+      "en": "Instagram, all of that. So yeah, you can manipulate things — the problem is people are going to start believing it. I really recommend you watch that movie, the film Her, because it puts you right inside the psychology of — in this case a man — and by the way, the majority of"
+    },
+    {
+      "id": 68,
+      "start": 1665.87,
+      "end": 1687.79,
+      "es": "los que utilizan inteligencia artificial con estos propósitos son hombres. Esto es un fenómeno muy masculinizado, muy masculinizado y yo creo que aquí entra también un factor que tiene que ver con la polarización social y polarización de intereses entre hombres y mujeres",
+      "en": "people who use AI for these purposes are men. This is a very male-dominated phenomenon, very much so. And I think there's another factor at play here that has to do with the growing social divide and the polarization of interests between men and women"
+    },
+    {
+      "id": 69,
+      "start": 1687.79,
+      "end": 1712.11,
+      "es": "en los últimos años. En varios países o en varios contextos se ha creado un antagonismo, ya ha habido, siempre ha habido un antagonismo, pero ese antagonismo se ha vuelto reivindicativo a unos puntos y yo no estoy hablando de como mujeres que no quieren saber nada de los hombres",
+      "en": "in recent years. In several countries, or in various contexts, an antagonism has developed — it's always existed, but it's become confrontational to a degree where — and I'm not talking about women who want nothing to do with men"
+    },
+    {
+      "id": 70,
+      "start": 1712.11,
+      "end": 1732.06,
+      "es": "porque puedan ser machistas o algo así, sino de hombres que se sienten atacados de alguna manera que prefieren no tratar con mujeres reales, que lo encuentran demasiado complicado, que sienten que las expectativas de estas mujeres son muy complicadas y que ellos no",
+      "en": "because they might be sexist or something like that — but about men who feel attacked in some way, who prefer not to deal with real women, who find it too complicated, who feel like women's expectations are too demanding and that they"
+    },
+    {
+      "id": 71,
+      "start": 1732.06,
+      "end": 1750.18,
+      "es": "están a la altura, a la altura de las expectativas y eso se ve por ejemplo en instagram hay muchos perfiles, muchos hombres que tienen perfiles falsos porque no quieren subir fotos de ellos ni quieren compartir su vida porque sienten que no están a la altura.",
+      "en": "don't measure up. And you can see this for example on Instagram, where a lot of men have fake profiles because they don't want to post photos of themselves or share their lives, because they feel like they're not good enough."
+    },
+    {
+      "id": 72,
+      "start": 1750.82,
+      "end": 1774.63,
+      "es": "Hoy muchos hombres sienten que existe un pequeño grupo de machos, por así decirlo, que son los únicos en los que las mujeres realmente muestran interés y no se consideran del valor suficiente, tienen una especie de misoginia, miedo y",
+      "en": "A lot of men today feel like there's a small group of alpha males, so to speak, who are the only ones women are actually interested in, and they don't see themselves as valuable enough. They develop a kind of misogyny, fear, and"
+    },
+    {
+      "id": 73,
+      "start": 1774.63,
+      "end": 1792.95,
+      "es": "rechazo hacia las mujeres reales. Las redes sociales nos crean mucha inseguridad a los jóvenes, les crea muchísima inseguridad, está entre las principales causas de depresión y muchas veces hay personas que bueno no se puede decir aquí en youtube pero hay personas digamos que",
+      "en": "rejection toward real women. Social media creates a lot of insecurity in young people — a huge amount — it's one of the leading causes of depression, and unfortunately there are people — you can't really say it outright on YouTube — but there are people who"
+    },
+    {
+      "id": 74,
+      "start": 1792.95,
+      "end": 1812.73,
+      "es": "deciden terminar con todo por cuestiones de las redes sociales. Las compañías son conscientes de ello y están vendiendo un producto para cubrir una necesidad que conocen. Todo esto ya lo ha estudiado el mercado. En el mercado, tú sabes Agustina, yo soy antropólogo,",
+      "en": "decide to end it all because of social media. Companies are well aware of this and are selling a product to fill a need they already know exists. All of this has already been studied by the market. In the market — and you know, Agustina, I'm an anthropologist,"
+    },
+    {
+      "id": 75,
+      "start": 1812.73,
+      "end": 1837.06,
+      "es": "me dedico a cuestiones, me dedicaba a cuestiones de investigación social. En estas empresas hay gente que se dedica a eso y que investiga no para denunciar lo que está ocurriendo sino para buscar oportunidades de negocios. Sí, creo que también hoy en día como te digo",
+      "en": "I work in — I used to work in social research. These companies employ people who do exactly that, and they're not researching to expose what's happening, but to find business opportunities. Yeah, and I think today, like I said,"
+    },
+    {
+      "id": 76,
+      "start": 1837.06,
+      "end": 1859.72,
+      "es": "hay más factores del día a día, pero definitivamente lo que vos decís cambia, cambia el paradigma porque hace algunos años y no muchos, hace 50 años, muchas mujeres no tenían la opción de elegir. Por un lado puede ser, bueno hoy en día hay países en donde no",
+      "en": "there are more day-to-day factors at play, but what you're describing definitely changes things — it shifts the whole paradigm. Because not that long ago, like 50 years ago, many women simply didn't have the option to choose. On one hand, well, today there are still countries where they"
+    },
+    {
+      "id": 77,
+      "start": 1859.72,
+      "end": 1882.28,
+      "es": "tienen la opción de elegir todavía. Y claro, ya sea por un matrimonio arreglado o porque no era arreglado pero te conociste y al año te casaste y ya está y tenés dos hijos y qué vas a hacer sin estudios ni carrera, quién va a tomar en un trabajo a una mujer divorciada en",
+      "en": "still don't have that option. And of course, whether it was an arranged marriage or not — you just met someone, married a year later, and that was it, you had two kids, and what were you going to do with no education or career? Who was going to hire a divorced woman"
+    },
+    {
+      "id": 78,
+      "start": 1882.28,
+      "end": 1907.04,
+      "es": "los casos en donde te podías divorciar. No se podía, claro. Y claramente, bueno venimos de siglos donde el hombre tuvo esa dominación, digamos, directa o indirectamente y en donde la mujer muchas veces no podía permitirse tener estándares en cuanto a su pareja,",
+      "en": "in the places where divorce was even allowed? It wasn't possible, of course. And clearly, we come from centuries where men had that dominance — directly or indirectly — and where women often couldn't afford to have standards when it came to their partner,"
+    },
+    {
+      "id": 79,
+      "start": 1907.12,
+      "end": 1928.44,
+      "es": "en cuanto a quién con quién iba a estar. Y hoy en día, de nuevo, no en todos los lugares, incluso en países desarrollados, no en todos los lugares de los países desarrollados, la mujer tiene esa libertad, pero en donde la tiene, bueno, nada. Obviamente tiene ciertos",
+      "en": "when it came to who they were going to be with. And today — again, not everywhere, even in developed countries, not in every part of those countries — women have that freedom. But where they do, well, naturally they have certain"
+    },
+    {
+      "id": 80,
+      "start": 1928.44,
+      "end": 1948.76,
+      "es": "estándares que muchas veces no son demasiado altos, es simplemente una persona que te respete y te trate bien y te quiera y, bueno, todo eso, que muchas veces no pasaba. Entonces, sí, es verdad que hoy en día, yo no sé si la palabra es hacer un esfuerzo, pero te tienen",
+      "en": "standards that often aren't even that high — it's simply wanting someone who respects you, treats you well, and loves you — basic things that, for a long time, just didn't happen. So yes, it's true that nowadays, I don't know if 'making an effort' is the right phrase, but you do need"
+    },
+    {
+      "id": 81,
+      "start": 1948.76,
+      "end": 1969.72,
+      "es": "que respetar, como que es lo mínimo, es lo mínimo, la verdad, pero viniendo de siglos y siglos y siglos donde eso no pasaba es un cambio como muy fuerte muchas veces para algunos hombres, no para todos, pero para algunos sí, y no lo quieren, no sé, como que no están",
+      "en": "to show basic respect — it's the bare minimum, it really is. But coming from centuries and centuries where that wasn't the case, it's a pretty jarring shift for some men — not all of them, but some — and they just don't want it, like they're not"
+    },
+    {
+      "id": 82,
+      "start": 1969.72,
+      "end": 1988.32,
+      "es": "dispuestos a hacerlo muchas veces. Y ahí te cuestionas también cómo ves a la pareja, porque ¿qué querés de una pareja? ¿querés alguien que te acompañe, que te quiera, que te escuche, una persona con respeto mutuo entre los dos o querés un esclavo? Porque en",
+      "en": "willing to do it a lot of the time. And that also makes you question how you view a relationship — what do you actually want from a partner? Do you want someone who's there for you, who loves you, who listens, a relationship built on mutual respect — or do you want a slave? Because in"
+    },
+    {
+      "id": 83,
+      "start": 1988.32,
+      "end": 2010.92,
+      "es": "parte, cómo se usa la inteligencia artificial es literalmente como un esclavo, es una cosa que tenés ahí que la usas cuando vos querés, que te sirve para sentirte bien sobre vos mismo, que te escucha cuando vos tenés un problema, que te ayuda cuando vos querés, que complace tus deseos y vos",
+      "en": "some ways, how people use AI is literally like having a slave — it's just this thing you have around that you use whenever you feel like it, that makes you feel good about yourself, that listens when you have a problem, that helps when you want, that fulfills your desires, and you"
+    },
+    {
+      "id": 84,
+      "start": 2010.92,
+      "end": 2031.24,
+      "es": "no das nada a cambio. No tienes ni que cortar la relación. Si algo va mal no tienes ni que hacer el esfuerzo de cortar la relación. Exacto, entonces ahí te preguntas cómo que te da un poco la pauta de que no estamos muy bien socialmente entonces, si eso es lo que queremos de una pareja.",
+      "en": "give nothing in return. You don't even have to break up with it. If things go wrong, you don't even have to go through the effort of ending it. Exactly — so that really gives you a sense of where we are socially, and it's not great, if that's what people want from a relationship."
+    },
+    {
+      "id": 85,
+      "start": 2031.24,
+      "end": 2054.9,
+      "es": "Claro, esos cambios que ha habido en los roles de género no han encontrado una adaptación, unos nuevos roles y los hombres han salido un poquito contrariados, un poquito contrariados con lo que quieren, con lo que puedan esperar. Esto lleva tiempo, esto lleva tiempo, más tiempo",
+      "en": "Right, these shifts in gender roles haven't really settled into new norms, and men have come out of it a bit lost, a bit confused about what they want and what they can expect. This takes time — it takes time, more time"
+    },
+    {
+      "id": 86,
+      "start": 2054.9,
+      "end": 2082.14,
+      "es": "que la inteligencia artificial, pero lo que dices explica muy bien porque son más los hombres los que se buscan estas parejas digitales. Y para vos qué efecto puede llegar a tener esto, o qué efecto pensás que ya está teniendo, como para ir cerrando. ¿Cómo crees que afecta a la gente?",
+      "en": "than AI has been around — but what you're saying explains very well why it's mostly men who seek out these digital relationships. And what effect do you think this could have, or what effect do you think it's already having — just to start wrapping things up. How do you think it's affecting people?"
+    },
+    {
+      "id": 87,
+      "start": 2082.14,
+      "end": 2103.98,
+      "es": "Yo en parte creo que nos distancia más en un mundo en donde todo está muy polarizado, muy fragmentado y donde en general estamos muy distanciados, se marcan mucho las diferencias. Creo que esto lo que hace es profundizar eso, hacerlo todavía más grande. ¿Vos qué pensás?",
+      "en": "I partly think it's pushing us further apart in a world that's already very polarized, very fragmented, where we're already quite disconnected from each other and differences are constantly being amplified. I think what this does is deepen all of that, make it even bigger. What do you think?"
+    },
+    {
+      "id": 88,
+      "start": 2103.98,
+      "end": 2129.14,
+      "es": "Pues lo que acabas de decir, si es que lo has dicho clarísimo, no tendría nada que añadir a eso que has dicho, es tal cual, ahondar en un problema que ya existe. Sí, sí, y creo que va a suponer muchos problemas en general. Depende cómo evolucione",
+      "en": "Well, exactly what you just said — you said it perfectly clearly, I wouldn't have anything to add to that. It deepens a problem that already exists. Yes, and I think it's going to cause a lot of problems in general. Depending on how"
+    },
+    {
+      "id": 89,
+      "start": 2129.14,
+      "end": 2155.1,
+      "es": "esto, no sólo a nivel personal individual, sino a nivel social y a nivel logístico y demográfico. Pensemos en simplemente la procreación, en tener hijos, en continuar la especie. Cosa que ya va mal. Sí, cosa que ya de por sí, bueno, depende la región, depende el continente y todo,",
+      "en": "this evolves — not just at a personal, individual level, but socially and in terms of logistics and demographics. Think about something as basic as reproduction, having children, continuing the species. Which is already not going well. Right, which is already — well, it depends on the region, the continent and all that,"
+    },
+    {
+      "id": 90,
+      "start": 2155.1,
+      "end": 2175.74,
+      "es": "pero ya de por sí, por lo menos en Europa, digamos que la población se va muriendo, achicando, porque ya la tasa de natalidad no es la de mantención, está abajo, entonces cada vez mueren más personas y nacen menos. Bueno, imaginate al extremo que",
+      "en": "but at least in Europe, the population is basically shrinking and dying off, because the birth rate is already below replacement level — more people are dying than are being born. Now imagine how extreme"
+    },
+    {
+      "id": 91,
+      "start": 2175.74,
+      "end": 2201.98,
+      "es": "eso podría llegar si muchas personas, si un número considerable termina teniendo relaciones con un robot en vez de un humano. Pues la evolución lógica de lo que ya está pasando, también nuestra generación empezó a tener amigos de pequeño que eran tamagochis. No sé si recuerdas el tamagotchi. No.",
+      "en": "that could get if a significant number of people end up in relationships with a robot instead of a human. Well, it's the logical extension of what's already happening. Our generation also grew up with early 'friends' that were Tamagotchis. I don't know if you remember the Tamagotchi. No."
+    },
+    {
+      "id": 92,
+      "start": 2201.98,
+      "end": 2224.3,
+      "es": "El tamagotchi es como un pequeño robot, era como un videojuego que tú te colgabas al cuello y tú tenías que cuidarlo, darle de comer, cambiarlo y se hacía caca. Era como un robot en miniatura. Los furby, que han sustituido muchas gente, no se casa,",
+      "en": "A Tamagotchi was like a little virtual pet — it was a handheld game you'd wear around your neck and you had to take care of it, feed it, clean it up after it went to the bathroom. It was like a robot in miniature. Then there were Furbies, which replaced, for a lot of people — not that they didn't get married, but"
+    },
+    {
+      "id": 93,
+      "start": 2224.3,
+      "end": 2251.51,
+      "es": "pero trata o llama a sus mascotas, a sus hijos. Lo que hablamos tú y yo en privado el otro día, de gente que tiene falsos hijos, adoptan muñecos, muñecos que no tienen vida, pero los visten, les ponen nombres. Hay un vacío muy grande en la sociedad y estamos",
+      "en": "people treat them or refer to their pets as their children. And what you and I were talking about privately the other day — people who have fake children, who adopt dolls, lifeless dolls, but dress them up and give them names. There's a huge void in society and we're"
+    },
+    {
+      "id": 94,
+      "start": 2251.51,
+      "end": 2273.28,
+      "es": "intentando llenarlo con toda clase de cosas y quizá la inteligencia artificial que finge ser humana sea la forma más perfecta de todos estos placebos sociales, de todos estos placebos emocionales que nos rodean ahora mismo.",
+      "en": "trying to fill it with all kinds of things, and maybe AI that pretends to be human is the most perfect version of all these social placebos, all these emotional placebos that surround us right now."
+    },
+    {
+      "id": 95,
+      "start": 2273.92,
+      "end": 2298.0,
+      "es": "No sé, porque al menos el animal es una cosa viva de verdad, que tenés que cuidar de verdad y que si se enferma hay que cuidarlo y hay que darle de comer. Tienen necesidades, aunque no sean humanas, en cambio la IA no. Claro, pero es que el problema es ese, que el animal se enferma, que el animal",
+      "en": "I don't know, because at least an animal is a real living thing that you actually have to take care of — if it gets sick you have to look after it, you have to feed it. They have real needs, even if they're not human needs. AI doesn't. Right, but that's exactly the problem — the animal gets sick, the animal"
+    },
+    {
+      "id": 96,
+      "start": 2298.0,
+      "end": 2316.75,
+      "es": "hay que cuidarlo. La IA no. La IA te cuida a ti, la IA no se enferma. La IA no demanda de ti cuando tú vives con tus padres hasta muy tarde, hasta que cumples mucha edad, cuando tienes que trabajar por la mañana, volver al trabajo por la tarde,",
+      "en": "needs to be taken care of. AI doesn't. AI takes care of you. AI doesn't get sick. AI doesn't demand anything from you when you're living with your parents well into adulthood, when you have to work mornings and then go back to work in the afternoons,"
+    },
+    {
+      "id": 97,
+      "start": 2316.75,
+      "end": 2335.91,
+      "es": "cuando no tienes tiempo de ver amigos, de salir, de conocer gente. Cuando vives y el poco tiempo que tienes te lo pasas viendo Instagram, viendo TikTok. Cuando cada vez vives más aislado, la IA presenta las ventajas. Es lo que dijiste al principio del todo,",
+      "en": "when you have no time to see friends, to go out, to meet people. When what little free time you have you spend scrolling through Instagram or TikTok. When you're living more and more in isolation — AI offers all the advantages. It's what you said at the very beginning:"
+    },
+    {
+      "id": 98,
+      "start": 2335.91,
+      "end": 2355.79,
+      "es": "las ventajas sin los inconvenientes. Y tú dijiste esa es la clave de todo. Y es que es verdad, es verdad. No lo había pensado yo así hasta que lo dijiste antes. Esa es la clave de todo. ¿Sabes qué pasa también que me imagino que esto debe pasar mucho? La gente busca en la IA esa",
+      "en": "all the benefits with none of the downsides. And you said that's the key to everything. And it really is, it really is. I hadn't thought of it that way until you said it just now. That's the key to all of it. You know what else I imagine must happen a lot? People seek out AI for that"
+    },
+    {
+      "id": 99,
+      "start": 2355.79,
+      "end": 2381.87,
+      "es": "atención y ese consuelo, ese apoyo emocional. Y después va, tiene relaciones sexuales, ya sea con personas a las que les pagan. Otro tema para charlar. Otro tema bastante heavy, ya sea con personas a las que les pagan o ya sea algo casual con alguien. Y es el sueño,",
+      "en": "attention and comfort, that emotional support. And then they go out and have sex — whether it's with people they pay for. That's a whole other topic to get into. Another pretty heavy topic — whether it's with people they pay or just something casual with someone. And it's the dream,"
+    },
+    {
+      "id": 100,
+      "start": 2381.87,
+      "end": 2402.91,
+      "es": "es el sueño de mucha gente. Personalmente no el mío, pero es el sueño de mucha gente el poder satisfacer sus necesidades sexuales con cuanta gente quiera que no le van a reclamar nada. Y al mismo tiempo volver a su casa y tener esa atención y ese apoyo emocional de algo",
+      "en": "it's a lot of people's dream. Personally, not mine, but many people dream of being able to satisfy their sexual needs with as many people as they want, with no one making any demands on them. And at the same time, coming home to that attention and emotional support from something"
+    },
+    {
+      "id": 101,
+      "start": 2402.91,
+      "end": 2424.59,
+      "es": "que no necesita nada, ni le pide nada, ni tampoco le va a reclamar nada, ni que fue infiel, ni nada de ese estilo. Es como la versión de tengo una esposa en casa que me cocina, me cuida y después salgo, me voy a la mierda y ando teniendo relaciones con cualquiera y",
+      "en": "that needs nothing, asks nothing, and won't hold anything against you — not infidelity, nothing like that. It's like the version of having a wife at home who cooks for you, takes care of you, and then you go out, do whatever you want, sleep around, and"
+    },
+    {
+      "id": 102,
+      "start": 2424.59,
+      "end": 2445.55,
+      "es": "vuelvo y tengo a mi a mi esclava personal. Bueno, es lo mismo, pero ahora con teclografía. La inteligencia artificial es la nueva trance wife. Terrible igual, que fuerte, que fuerte. Terrible. Pues bueno, hasta aquí creo que llegamos hoy. Esto es muy creepy. A mí se",
+      "en": "come home to your own personal slave. Well, it's the same thing, but now with AI. Artificial intelligence is the new tradwife. That's terrible, seriously, that's heavy. Terrible. Well, I think that's where we'll wrap up today. This is really creepy. I'm"
+    },
+    {
+      "id": 103,
+      "start": 2445.55,
+      "end": 2466.65,
+      "es": "me está poniendo ya la carne de gallina. Tengo la piel erizada de lo distópico y terrorífico que es esto. Así es. Hoy nos metimos en un tema un poco oscuro, pero bueno, pero es real y es muy interesante. Y obviamente, como siempre, chicos, en los comentarios pueden",
+      "en": "getting goosebumps. My skin is crawling from how dystopian and terrifying this is. Exactly. Today we dove into a pretty dark topic, but it's real and it's really fascinating. And obviously, as always, guys, in the comments you can"
+    },
+    {
+      "id": 104,
+      "start": 2466.65,
+      "end": 2489.45,
+      "es": "dejar sus opiniones, sus puntos de vista. Y también quiero decir que esto no va desde un punto de juzgar ciegamente como a el que hace esto es un enfermo y bla bla bla. Porque por algo llegó a ese punto. Definitivamente es muy creepy y la verdad es que no es algo que nos",
+      "en": "share your opinions and perspectives. And I also want to say that this isn't coming from a place of blindly judging — like, anyone who does this is sick, blah blah blah. Because there's a reason someone ends up at that point. It's definitely very creepy and honestly not something that"
+    },
+    {
+      "id": 105,
+      "start": 2489.45,
+      "end": 2510.93,
+      "es": "agrade, pero no va como un juicio así negativo atacante. No es que estamos atacando a la gente que lo hace, sino que nos estamos cuestionando. Bueno, por qué? Siento que es algo importante y en muchos casos esta gente puede ser víctima de muchas cosas y por eso termina en esta",
+      "en": "sits well with us, but this isn't meant as some harsh, attacking judgment. We're not attacking people who do this — we're questioning it. Like, why does this happen? I think it's something important, and in many cases these people can be victims of a lot of things, which is why they end up in this"
+    },
+    {
+      "id": 106,
+      "start": 2510.93,
+      "end": 2531.29,
+      "es": "situación, ¿no? Sí, es una cosa social y así hay que entenderlo. No hay que tomárselo por lo personal. Exacto, exacto. Y bueno, como siempre les recuerdo que en nuestra web, en dreamingspanish.com, va a encontrar miles de videos para aprender español,",
+      "en": "situation, right? Yeah, it's a social issue and that's how we have to understand it. You can't take it personally. Exactly, exactly. And well, as always, I want to remind you that on our website, dreamingspanish.com, you'll find thousands of videos to help you learn Spanish,"
+    },
+    {
+      "id": 107,
+      "start": 2531.29,
+      "end": 2553.61,
+      "es": "para seguir escuchando, mejorando su español. Y Andrés tiene bastantes series y videos de temas de este estilo muy interesantes, muy profundos. No sé, Andrés, ¿hay alguna serie que les quieras recomendar si les gustó este episodio? De todo. Mira, hay una serie temprana",
+      "en": "to keep listening and improving your Spanish. And Andrés has quite a few series and videos on topics like this — really interesting, really deep. I don't know, Andrés, is there a series you'd recommend to listeners who enjoyed this episode? All kinds of stuff. So, there's an early series"
+    },
+    {
+      "id": 108,
+      "start": 2553.61,
+      "end": 2572.97,
+      "es": "que tengo con Pablo, hablando de a dónde va a llegar la inteligencia artificial. Y es una serie que tiene ya casi tres años. Es bueno, casi no llega, pero han cambiado mucho las cosas desde entonces. Me gustaría volver a verla y recordar qué fue que hablamos. Sí,",
+      "en": "that I did with Pablo, talking about where artificial intelligence is headed. It's a series that's almost three years old now. Well, it's close but not quite — but a lot has changed since then. I'd love to go back and watch it and remember what we talked about. Yeah,"
+    },
+    {
+      "id": 109,
+      "start": 2572.97,
+      "end": 2594.97,
+      "es": "así que pueden ir a ver eso. Y si eso no es lo que más les gusta, igual no se preocupen, porque en la web tenemos de todo. Tenemos videos de viajes, blogs donde conocemos otras partes del mundo. Tenemos juegos y desafíos, como desafíos de cocina, por ejemplo. Tenemos",
+      "en": "so you can go check that out. And if that's not really your thing, don't worry, because on the website we have a little of everything. We have travel videos, vlogs where we explore different parts of the world. We have games and challenges, like cooking challenges, for example. We have"
+    },
+    {
+      "id": 110,
+      "start": 2594.97,
+      "end": 2620.33,
+      "es": "entrevistas en la calle, a locales y todo eso siempre hecho, pensado, planeado para que sea comprensible y los ayude a aprender el español de una forma dinámica, efectiva y entretenida. Así que ya saben, chicos, DreamingSpanish.com. Y si les gusta este podcast, si disfrutaron de",
+      "en": "street interviews with locals, and all of it is always made, designed, and planned to be comprehensible and help you learn Spanish in a dynamic, effective, and entertaining way. So you already know, guys — DreamingSpanish.com. And if you enjoy this podcast, if you had a good time with"
+    },
+    {
+      "id": 111,
+      "start": 2620.33,
+      "end": 2642.01,
+      "es": "este episodio, no se olviden de dejarnos una reseña en Spotify o en Apple Podcasts para ayudarnos a llegar a más gente como ustedes. Bueno, Andrés, no me queda más que agradecerte por tu valiosa participación en este episodio. Muchas gracias, Agustina. Igualmente, hablamos",
+      "en": "this episode, don't forget to leave us a review on Spotify or Apple Podcasts to help us reach more people like you. Well, Andrés, all I can do is thank you for your wonderful contribution to this episode. Thank you so much, Agustina. Likewise, talk"
+    },
+    {
+      "id": 112,
+      "start": 2642.01,
+      "end": 2646.09,
+      "es": "pronto. Nos vemos. Chao, chao. Chao, chicos. Chao.",
+      "en": "soon. See you. Bye, bye. Bye, everyone. Bye."
+    }
+  ]
+}
