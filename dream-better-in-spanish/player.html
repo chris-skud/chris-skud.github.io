@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Better In Spanish</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-link">← Episodes</a>
+    <h1 id="title">Loading…</h1>
+    <audio id="audio" controls preload="metadata"></audio>
+    <div class="controls">
+      <div class="speed-group">
+        <span class="control-label">Speed</span>
+        <button class="speed-btn" data-rate="0.5">0.5×</button>
+        <button class="speed-btn" data-rate="0.75">0.75×</button>
+        <button class="speed-btn active" data-rate="1">1×</button>
+        <button class="speed-btn" data-rate="1.25">1.25×</button>
+      </div>
+      <button id="replay-segment" disabled>⟲ Replay segment</button>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-en"> Hide English
+      </label>
+    </div>
+  </header>
+  <main id="transcript"></main>
+  <script src="app.js?v=1"></script>
+</body>
+</html>
