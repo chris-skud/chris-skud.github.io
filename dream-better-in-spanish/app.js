@@ -2,6 +2,17 @@ async function main() {
   const titleEl = document.getElementById("title");
   const audioEl = document.getElementById("audio");
   const transcriptEl = document.getElementById("transcript");
+  const headerEl = document.querySelector("header");
+
+  // Publish the sticky header's real height so CSS scroll-padding-top can keep
+  // scrollIntoView() targets clear of it. The header grows/shrinks as controls
+  // wrap (e.g. on rotation), so keep it in sync.
+  const syncHeaderHeight = () => {
+    document.documentElement.style.setProperty("--header-h", `${headerEl.offsetHeight}px`);
+  };
+  syncHeaderHeight();
+  if (window.ResizeObserver) new ResizeObserver(syncHeaderHeight).observe(headerEl);
+  window.addEventListener("resize", syncHeaderHeight);
 
   const episodeId = new URLSearchParams(window.location.search).get("ep");
   if (!episodeId) {
@@ -9,7 +20,7 @@ async function main() {
     return;
   }
 
-  const response = await fetch(`data/episodes/${encodeURIComponent(episodeId)}.json`, { cache: "no-store" });
+  const response = await fetch(`/data/episodes/${encodeURIComponent(episodeId)}.json`, { cache: "no-store" });
   if (!response.ok) {
     titleEl.textContent = `Failed to load transcript (${response.status})`;
     return;
@@ -49,15 +60,22 @@ async function main() {
   const replayBtn = document.getElementById("replay-segment");
   let activeIdx = -1;
 
+  // block: "start" pins the active row just under the header (via the CSS
+  // scroll-padding-top) instead of centering it, so the top of a tall phrase
+  // chunk never slides under the sticky controls.
+  const scrollToActive = (behavior) => {
+    if (activeIdx >= 0) rows[activeIdx].scrollIntoView({ behavior, block: "start" });
+  };
+
   audioEl.addEventListener("timeupdate", () => {
     const idx = findSegmentIndex(data.segments, audioEl.currentTime);
     if (idx === activeIdx) return;
     if (activeIdx >= 0) rows[activeIdx].classList.remove("active");
+    activeIdx = idx;
     if (idx >= 0) {
       rows[idx].classList.add("active");
-      rows[idx].scrollIntoView({ behavior: "smooth", block: "center" });
+      scrollToActive("smooth");
     }
-    activeIdx = idx;
     replayBtn.disabled = idx < 0;
   });
 
@@ -80,6 +98,9 @@ async function main() {
   const toggleEnEl = document.getElementById("toggle-en");
   toggleEnEl.addEventListener("change", () => {
     document.body.classList.toggle("hide-en", toggleEnEl.checked);
+    // Toggling reflows every row (two columns -> one), which shifts the active
+    // row off-screen; snap back to it.
+    scrollToActive("auto");
   });
 }
 

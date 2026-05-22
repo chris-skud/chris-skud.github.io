@@ -1,7 +1,7 @@
 async function main() {
   const root = document.getElementById("episodes");
 
-  const response = await fetch("data/index.json", { cache: "no-store" });
+  const response = await fetch("/data/index.json", { cache: "no-store" });
   if (!response.ok) {
     root.textContent = `Failed to load index (${response.status})`;
     return;

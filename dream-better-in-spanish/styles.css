@@ -1,5 +1,12 @@
 * { box-sizing: border-box; }
 
+html {
+  /* Keep scrollIntoView() clear of the sticky header. --header-h is kept in
+     sync with the real header height by app.js; the fallback covers first paint. */
+  scroll-padding-top: calc(var(--header-h, 9rem) + 0.5rem);
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   margin: 0;
@@ -138,11 +145,19 @@ header h1 {
 
 .segment {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* minmax(0, 1fr) lets columns shrink below their content's intrinsic width,
+     so a long unbroken phrase can't blow the 50/50 split out of alignment. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 2rem;
   padding: 0.75rem 0.5rem;
   border-bottom: 1px solid #eee;
   cursor: pointer;
+}
+
+.segment .es,
+.segment .en {
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .segment:hover {
@@ -169,4 +184,50 @@ body.hide-en .segment {
 
 body.hide-en .segment .en {
   display: none;
+}
+
+/* On phones two narrow side-by-side columns are unreadable with long phrase
+   chunks, so stack Spanish over its translation and give controls real touch
+   targets. */
+@media (max-width: 640px) {
+  header {
+    padding: 0.6rem 1rem;
+  }
+
+  header h1 {
+    font-size: 1rem;
+  }
+
+  .controls {
+    gap: 0.6rem 0.9rem;
+  }
+
+  .speed-btn,
+  #replay-segment {
+    padding: 0.5rem 0.75rem;
+    min-height: 2.5rem;
+  }
+
+  .toggle {
+    min-height: 2.5rem;
+  }
+
+  #transcript {
+    padding: 1rem;
+  }
+
+  .segment {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding: 0.9rem 0.6rem;
+  }
+
+  .segment .es {
+    font-size: 1.05rem;
+  }
+
+  .segment .en {
+    padding-left: 0.75rem;
+    border-left: 2px solid #e6e6e6;
+  }
 }
