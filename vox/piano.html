@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piano Keyboard</title>
+<style>
+  /*
+    Real piano proportions:
+      52 white keys span the full keyboard width (~1225 mm).
+      A white key is ~23.5 mm wide × ~150 mm long → ~1 : 6.4 aspect ratio.
+      A black key is ~60% the width of a white key and ~62% the length.
+    Each white key here gets (100vw / 52) of horizontal space, so the keyboard
+    height is sized as a multiple of that to keep correct proportions.
+  */
+  :root {
+    /* C2–C5 = 22 white keys */
+    --white-key-width: calc(100vw / 22);
+    --piano-height: calc(var(--white-key-width) * 6.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0 0.6rem;
+  }
+  h1 {
+    color: #ddd;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    margin-bottom: 0.6rem;
+  }
+  .piano {
+    position: relative;
+    width: 100vw;
+    height: var(--piano-height);
+    max-height: calc(100vh - 4rem);
+    display: flex;
+    user-select: none;
+    background: #0a0a0a;
+    padding: 6px 0 0;
+    border-top: 6px solid #2a1810;
+    border-bottom: 4px solid #1a0f08;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.04);
+  }
+  .white-key {
+    flex: 1 1 0;
+    background: linear-gradient(to bottom,
+      #fafafa 0%,
+      #ffffff 4%,
+      #ffffff 88%,
+      #f0ede6 96%,
+      #d8d4c8 100%);
+    border-left: 1px solid #c8c5bd;
+    border-right: 1px solid #999590;
+    border-bottom: 3px solid #6a665e;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.04s, transform 0.04s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 0.6vw;
+    color: #777;
+    font-size: calc(var(--white-key-width) * 0.32);
+    font-weight: 500;
+    box-shadow: inset 0 -4px 6px rgba(0,0,0,0.08);
+  }
+  .white-key:first-child { border-left: none; }
+  .white-key:last-child  { border-right: none; }
+  .white-key:hover {
+    background: linear-gradient(to bottom, #f5f5f5 0%, #ececec 100%);
+  }
+  .white-key.active {
+    background: linear-gradient(to bottom, #b8d4f0 0%, #8db8e0 100%);
+    border-bottom-color: #4a6a90;
+  }
+  .white-key .note-label {
+    pointer-events: none;
+    line-height: 1.1;
+    text-align: center;
+  }
+  .white-key .register {
+    font-size: calc(var(--white-key-width) * 0.40);
+    font-weight: 700;
+    color: #222;
+  }
+  .black-keys {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 100%;
+    height: 62%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .black-key {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(to bottom,
+      #383838 0%,
+      #1a1a1a 6%,
+      #0a0a0a 70%,
+      #050505 92%,
+      #2a2a2a 96%,
+      #1a1a1a 100%);
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 0 0 3px 3px;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background 0.04s;
+    box-shadow:
+      0 4px 4px rgba(0,0,0,0.5),
+      inset 0 -2px 0 rgba(255,255,255,0.08),
+      inset 0 -4px 0 rgba(0,0,0,0.5);
+  }
+  .black-key:hover {
+    background: linear-gradient(to bottom, #4a4a4a 0%, #111 100%);
+  }
+  .black-key.active {
+    background: linear-gradient(to bottom, #5a78a0 0%, #2a4870 100%);
+  }
+  .hint {
+    color: #666;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+  }
+</style>
+</head>
+<body>
+  <h1>PIANO</h1>
+  <div class="piano" id="piano">
+    <div class="black-keys" id="blackKeys"></div>
+  </div>
+  <div class="hint">Click any key to play · C2 – C5</div>
+
+  <script src="piano.js?v=4"></script>
+</body>
+</html>
