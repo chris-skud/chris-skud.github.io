@@ -182,7 +182,7 @@ function triadInversionsOnSet(triad, stringSet) {
 
   // Desired pitch-class order from low string to high string per inversion.
   const inversions = [
-    { name: 'Root position', order: [R, T, F] },
+    { name: 'Root', order: [R, T, F] },
     { name: '1st inversion', order: [T, F, R] },
     { name: '2nd inversion', order: [F, R, T] },
   ];
