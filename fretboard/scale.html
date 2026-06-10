@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scale — Fretboard</title>
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+<div class="wrap">
+  <div class="crumb"><a id="back" href="index.html">← all scales</a></div>
+
+  <header class="masthead" style="margin-bottom:1rem">
+    <div class="scale-title">
+      <h1 id="title">Scale</h1>
+      <span class="scale-sub" id="subtitle"></span>
+    </div>
+    <div class="notes-line" id="notes"></div>
+    <div class="formula-line" id="formula"></div>
+    <div class="inst-toggle" id="inst" style="margin-top:.9rem"></div>
+  </header>
+
+  <section id="degrees-section">
+    <h2>Scale degrees</h2>
+    <table class="deg-table" id="degrees"></table>
+  </section>
+
+  <section>
+    <h2>Fretboard <span class="hint">note names — full neck</span></h2>
+    <div class="fb-scroll" id="board"></div>
+    <div class="legend">
+      <span><i class="swatch root"></i> root</span>
+      <span><i class="swatch scale"></i> scale tone</span>
+    </div>
+  </section>
+
+  <section id="chords-section">
+    <h2>Chords in the key <span class="hint">root · 1st · 2nd inversion on the G–B–e strings</span></h2>
+    <div class="chord-grid" id="chords"></div>
+    <div class="legend">
+      <span><i class="swatch root"></i> chord root (R)</span>
+      <span><i class="swatch accent"></i> 3rd / 5th</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Other scales in this key</h2>
+    <div class="related" id="related"></div>
+  </section>
+
+  <footer class="site">Built with vanilla JavaScript.</footer>
+</div>
+
+<script src="theory.js?v=2"></script>
+<script src="render.js?v=2"></script>
+<script>
+(function () {
+  const T = window.Theory;
+  const R = window.Render;
+  const params = new URLSearchParams(location.search);
+  let root = params.get('root') || 'D';
+  let scaleKey = params.get('scale') || 'major';
+  let instKey = params.get('inst') || 'guitar';
+  if (!T.ROOTS.includes(root)) root = 'D';
+  if (!T.SCALES[scaleKey]) scaleKey = 'major';
+  if (!T.INSTRUMENTS[instKey]) instKey = 'guitar';
+  const inst = T.INSTRUMENTS[instKey];
+  const instParam = instKey === 'guitar' ? '' : `&inst=${instKey}`;
+
+  const def = T.SCALES[scaleKey];
+  const notes = T.buildScale(root, scaleKey);
+  const rootPc = notes[0].pc;
+
+  // --- instrument toggle + back link ---
+  document.getElementById('back').href =
+    'index.html' + (instKey === 'guitar' ? '' : '?inst=' + instKey) + '#' + encodeURIComponent(root);
+  const instBox = document.getElementById('inst');
+  for (const key of Object.keys(T.INSTRUMENTS)) {
+    const b = R.el('button', null, T.INSTRUMENTS[key].name);
+    if (key === instKey) b.classList.add('active');
+    b.addEventListener('click', () => {
+      const ip = key === 'guitar' ? '' : `&inst=${key}`;
+      location.search = `?root=${encodeURIComponent(root)}&scale=${scaleKey}${ip}`;
+    });
+    instBox.appendChild(b);
+  }
+
+  // --- header ---
+  document.title = `${root} ${def.name} — Fretboard`;
+  document.getElementById('title').textContent = `${root} ${def.name}`;
+  document.getElementById('subtitle').textContent =
+    `${notes.length} notes${notes.length === 7 ? ' · septatonic' : notes.length === 5 ? ' · pentatonic' : ''}`;
+
+  const notesLine = document.getElementById('notes');
+  notes.forEach((n) => {
+    const s = R.el('span', 'n', n.name);
+    if (n.pc === rootPc) s.classList.add('root');
+    notesLine.appendChild(s);
+  });
+  document.getElementById('formula').textContent =
+    'Steps: ' + T.stepPattern(scaleKey).join(' – ');
+
+  // --- degrees table ---
+  const DEGREE_NAMES = ['Tonic', 'Supertonic', 'Mediant', 'Subdominant',
+    'Dominant', 'Submediant', 'Leading tone'];
+  const degTable = document.getElementById('degrees');
+  if (notes.length === 7) {
+    const thead = R.el('tr');
+    ['Degree', 'Note', 'Semitones', 'Name'].forEach((h) => thead.appendChild(R.el('th', null, h)));
+    degTable.appendChild(thead);
+    notes.forEach((n, i) => {
+      const tr = R.el('tr');
+      if (n.pc === rootPc) tr.classList.add('is-root');
+      tr.appendChild(R.el('td', null, String(i + 1)));
+      tr.appendChild(R.el('td', 'note', n.name));
+      tr.appendChild(R.el('td', null, String(n.semis)));
+      // The 7th is a "leading tone" only a half-step below the octave; a whole
+      // step below (e.g. natural minor, Dorian, Mixolydian) is the "subtonic".
+      let degName = DEGREE_NAMES[i];
+      if (i === 6 && n.semis === 10) degName = 'Subtonic';
+      tr.appendChild(R.el('td', null, degName));
+      degTable.appendChild(tr);
+    });
+  } else {
+    document.getElementById('degrees-section').style.display = 'none';
+  }
+
+  // --- full fretboard ---
+  document.getElementById('board').appendChild(R.renderFullFretboard(notes, rootPc, inst.strings));
+
+  // --- chords & inversions (guitar only) ---
+  const triads = inst.showChords ? T.diatonicTriads(notes) : [];
+  const chordsBox = document.getElementById('chords');
+  if (triads.length) {
+    triads.forEach((tri) => chordsBox.appendChild(R.renderChordCard(tri)));
+  } else {
+    document.getElementById('chords-section').style.display = 'none';
+  }
+
+  // --- related scales ---
+  const rel = document.getElementById('related');
+  for (const key of T.SCALE_ORDER) {
+    const a = R.el('a', null, T.SCALES[key].name);
+    a.href = `scale.html?root=${encodeURIComponent(root)}&scale=${key}${instParam}`;
+    if (key === scaleKey) a.classList.add('active');
+    rel.appendChild(a);
+  }
+})();
+</script>
+</body>
+</html>

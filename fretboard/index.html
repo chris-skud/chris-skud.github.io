@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fretboard — Guitar Scales & Chord Inversions</title>
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1><span class="accent">Fretboard</span> — scales &amp; chord inversions</h1>
+    <p>Pick a root note, then a scale. Every scale shows the full fretboard with
+       note names, plus the major &amp; minor inversions for each chord in the key.</p>
+  </header>
+
+  <p class="picker-label">Instrument</p>
+  <div class="inst-toggle" id="inst" style="margin-bottom:1.6rem"></div>
+
+  <p class="picker-label">Root note</p>
+  <div class="root-grid" id="roots"></div>
+
+  <div id="scales"></div>
+
+  <footer class="site">
+    Built with vanilla JavaScript · inversions follow the string-set approach from
+    Applied Guitar Theory.
+  </footer>
+</div>
+
+<script src="theory.js?v=2"></script>
+<script src="render.js?v=2"></script>
+<script>
+(function () {
+  const T = window.Theory;
+  const { el } = window.Render;
+  const instBox = document.getElementById('inst');
+  const rootsBox = document.getElementById('roots');
+  const scalesBox = document.getElementById('scales');
+
+  // Root is remembered in the URL hash; instrument in the query string.
+  let currentRoot = decodeURIComponent((location.hash || '#D').slice(1));
+  if (!T.ROOTS.includes(currentRoot)) currentRoot = 'D';
+  let currentInst = new URLSearchParams(location.search).get('inst') || 'guitar';
+  if (!T.INSTRUMENTS[currentInst]) currentInst = 'guitar';
+
+  function syncUrl() {
+    const search = currentInst === 'guitar' ? '' : '?inst=' + currentInst;
+    history.replaceState(null, '', search + '#' + encodeURIComponent(currentRoot));
+  }
+
+  function drawScales(root) {
+    scalesBox.innerHTML = '';
+    scalesBox.appendChild(el('p', 'picker-label', `${root} scales`));
+    const grid = el('div', 'scale-grid');
+    const instParam = currentInst === 'guitar' ? '' : `&inst=${currentInst}`;
+    for (const key of T.SCALE_ORDER) {
+      const notes = T.buildScale(root, key);
+      const a = el('a', 'scale-card');
+      a.href = `scale.html?root=${encodeURIComponent(root)}&scale=${key}${instParam}`;
+      a.appendChild(el('div', 'sc-name', `${root} ${T.SCALES[key].name}`));
+      a.appendChild(el('div', 'sc-notes', notes.map((n) => n.name).join('  ')));
+      grid.appendChild(a);
+    }
+    scalesBox.appendChild(grid);
+  }
+
+  function drawInst() {
+    instBox.innerHTML = '';
+    for (const key of Object.keys(T.INSTRUMENTS)) {
+      const b = el('button', null, T.INSTRUMENTS[key].name);
+      if (key === currentInst) b.classList.add('active');
+      b.addEventListener('click', () => {
+        currentInst = key;
+        syncUrl();
+        drawInst();
+        drawScales(currentRoot); // links carry the instrument forward
+      });
+      instBox.appendChild(b);
+    }
+  }
+
+  function drawRoots() {
+    rootsBox.innerHTML = '';
+    for (const r of T.ROOTS) {
+      const b = el('button', 'root-btn', r);
+      if (r === currentRoot) b.classList.add('active');
+      b.addEventListener('click', () => {
+        currentRoot = r;
+        syncUrl();
+        drawRoots();
+        drawScales(r);
+      });
+      rootsBox.appendChild(b);
+    }
+  }
+
+  drawInst();
+  drawRoots();
+  drawScales(currentRoot);
+})();
+</script>
+</body>
+</html>
