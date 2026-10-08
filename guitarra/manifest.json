@@ -1,0 +1,14 @@
+{
+  "name": "Guitar Practice Coach",
+  "short_name": "Practice",
+  "description": "Guided deliberate-practice sessions for guitar: metronome, fretboard quiz, and a progress log.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f1ea",
+  "theme_color": "#1f7a6d",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
